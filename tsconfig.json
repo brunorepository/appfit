@@ -1,3 +1,30 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+	"compilerOptions": {
+		"baseUrl": "./",
+		"paths": {
+			"adapters": ["src/adapters/*"],
+			"animations/*": ["src/assets/animations/*"],
+			"assets/*": ["src/assets/*"],
+			"components/*": ["src/components/*"],
+			"constants/*": ["src/constants/*"],
+			"routes/*": ["src/routes/*"],
+			"views/*": ["src/views/*"],
+			"store/*": ["src/store/*"],
+			"services/*": ["src/services/*"]
+		},
+		"allowJs": true,
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		"isolatedModules": true,
+		"jsx": "react-native",
+		"lib": ["es2017"],
+		"types": ["react-native", "jest", "@types/styled-components-react-native"],
+		"moduleResolution": "node",
+		"noEmit": true,
+		"strict": true,
+		"resolveJsonModule": true,
+		"target": "esnext",
+		"module": "esnext"
+	},
+	"exclude": ["node_modules", "babel.config.js", "metro.config.js", "jest.config.js"]
 }

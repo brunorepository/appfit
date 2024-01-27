@@ -1,0 +1,85 @@
+{
+	"env": {
+		"es6": true,
+		"jest": true
+	},
+	"extends": ["plugin:react/recommended", "airbnb", "airbnb/hooks", "prettier", "plugin:prettier/recommended"],
+	"globals": {
+		"Atomics": "readonly",
+		"SharedArrayBuffer": "readonly",
+		"__DEV__": "readonly"
+	},
+	"parser": "@typescript-eslint/parser",
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"plugins": ["react", "react-hooks", "prettier", "eslint-plugin-import-helpers", "@typescript-eslint"],
+	"rules": {
+		"react/no-unstable-nested-components": [
+			"warn",
+			{
+				"allowAsProps": true,
+				"customValidators": [] /* optional array of validators used for propTypes validation */
+			}
+		],
+
+		"import/no-duplicates": ["off"],
+		"global-require": 0,
+		"camelcase": "error",
+		"no-use-before-define": "off",
+		"no-debugger": "warn",
+		"import/named": "off",
+		"import/export": "off",
+		"import/no-extraneous-dependencies": "off",
+		"import/extensions": "off",
+		"import/no-unresolved": "off",
+		"react/jsx-no-constructed-context-values": "off",
+		"react/jsx-filename-extension": [
+			"warn",
+			{
+				"extensions": [".js", ".jsx", ".tsx"]
+			}
+		],
+		"react/function-component-definition": [
+			2,
+			{
+				"namedComponents": "arrow-function",
+				"unnamedComponents": "arrow-function"
+			}
+		],
+		"react/jsx-indent": [2, "tab"],
+		"react/jsx-indent-props": [2, "tab"],
+		"react/jsx-props-no-spreading": "off",
+		"react/jsx-wrap-multilines": "off",
+		"react/require-default-props": "off",
+		"react/display-name": "off",
+		"react/destructuring-assignment": "off",
+		"@typescript-eslint/explicit-function-return-type": "off",
+		"@typescript-eslint/ban-types": "off",
+		"@typescript-eslint/no-non-null-assertion": "off",
+		"@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+		"@typescript-eslint/ban-ts-comment": "off",
+		"no-nested-ternary": "off",
+		"no-param-reassign": "off",
+		"func-names": "off",
+		"radix": "off",
+
+		"import/prefer-default-export": "off",
+		"import-helpers/order-imports": [
+			"warn",
+			{
+				"groups": ["/^react/", "module", "/^@/", ["parent", "sibling", "index"]],
+				"alphabetize": { "order": "asc", "ignoreCase": true }
+			}
+		]
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	}
+}
