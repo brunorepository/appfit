@@ -3,11 +3,12 @@ import { Button, Text } from './styles'
 
 type ButtonLgProps = {
 	children?: ReactNode
+	onPress: () => void
 }
 
-const ButtonLg: React.FC<ButtonLgProps> = ({ children }) => {
+const ButtonLg: React.FC<ButtonLgProps> = ({ children, onPress }) => {
 	return (
-		<Button activeOpacity={0.8}>
+		<Button activeOpacity={0.8} onPress={onPress}>
 			<Text>{children || 'Entrar'}</Text>
 		</Button>
 	)

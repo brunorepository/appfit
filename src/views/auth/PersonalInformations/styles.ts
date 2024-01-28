@@ -4,13 +4,14 @@ export const Container = styled.View`
 	flex: 1;
 	align-items: center;
 	justify-content: center;
+	padding-bottom: 32px;
 `
 export const Header = styled.ImageBackground`
 	width: 100%;
 	height: 200px;
+	flex-direction: column;
 	border-bottom-right-radius: 120px;
 	align-items: center;
-	justify-content: center;
 `
 export const Logo = styled.Image`
 	width: 85px;
@@ -56,7 +57,7 @@ export const ForgotPassword = styled.Text`
 	color: #cdcdcd;
 	font-family: 'OpenSans-SemiBold';
 	text-decoration: underline;
-	margin-top: 12px;
+	margin-top: 6px;
 	align-self: flex-start;
 	margin-left: 20px;
 `
@@ -69,5 +70,5 @@ export const Footer = styled.View`
 	width: 100%;
 	align-items: center;
 	justify-content: center;
-	margin-top: 96px;
+	margin-top: 12px;
 `

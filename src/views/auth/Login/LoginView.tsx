@@ -1,7 +1,7 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { ButtonLg } from 'components/core'
-import { InputUserEmail } from 'components/forms'
+import { Input } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { useNavigation } from '@react-navigation/native'
 import { Images } from '../../../adapters/constants'
@@ -33,8 +33,8 @@ const LoginView: React.FC = () => {
 					Bem vindo(a) de volta ao <TitleYellow>HFit!</TitleYellow>
 				</Title>
 				<InputContainer>
-					<InputUserEmail placeholder="Endereço de e-mail" />
-					<InputUserEmail placeholder="Senha" />
+					<Input placeholder="Endereço de e-mail" />
+					<Input placeholder="Senha" />
 					<ForgotPassword>Recuperar senha</ForgotPassword>
 				</InputContainer>
 				<Footer>

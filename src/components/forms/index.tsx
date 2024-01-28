@@ -1,1 +1,1 @@
-export { default as InputUserEmail } from './InputUserEmail'
+export { default as Input } from './Input'

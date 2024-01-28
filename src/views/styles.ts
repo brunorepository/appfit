@@ -7,7 +7,7 @@ export const Container = styled.View`
 `
 export const Header = styled.ImageBackground`
 	width: 100%;
-	height: 200px;
+	height: 230px;
 	border-bottom-right-radius: 120px;
 	align-items: center;
 	justify-content: center;
