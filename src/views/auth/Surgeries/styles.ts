@@ -4,7 +4,6 @@ export const Container = styled.View`
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-	padding-bottom: 32px;
 `
 export const Heading = styled.View`
 	flex-direction: column;
@@ -37,10 +36,9 @@ export const TitleYellow = styled.Text`
 	font-family: 'OpenSans-Bold';
 `
 export const InputContainer = styled.View`
-	margin-top: 12px;
 	width: 100%;
-	align-items: center;
-	margin-bottom: 12px;
+	padding-left: 18px;
+	padding-right: 18px;
 `
 export const CreateAccount = styled.Text`
 	margin-top: 30px;

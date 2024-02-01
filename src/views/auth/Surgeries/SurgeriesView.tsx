@@ -1,9 +1,9 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { ButtonLg } from 'components/core'
+import { InputTextArea } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
-import QuizList from 'views/auth/Quiz/components/QuizList'
 import { useNavigation } from '@react-navigation/native'
 
 import {
@@ -18,7 +18,7 @@ import {
 	Warning,
 } from './styles'
 
-const QuizView: React.FC = () => {
+const SurgeriesView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
 
 	return (
@@ -27,10 +27,10 @@ const QuizView: React.FC = () => {
 				<Title>
 					Formulário de <TitleYellow>anamnese</TitleYellow>
 				</Title>
-				<Warning>Selecione abaixo as opções que se aplicam a você</Warning>
+				<Warning>Insira abaixo outras doenças não especificadas no questionário anterior</Warning>
 			</Heading>
 			<InputContainer>
-				<QuizList />
+				<InputTextArea />
 			</InputContainer>
 			<Footer>
 				<ButtonLg onPress={() => navigation.navigate('Surgeries')}>Continuar</ButtonLg>
@@ -51,4 +51,4 @@ const QuizView: React.FC = () => {
 	)
 }
 
-export default QuizView
+export default SurgeriesView
