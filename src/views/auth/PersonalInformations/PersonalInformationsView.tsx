@@ -1,70 +1,61 @@
-import React from 'react'
-import { TouchableOpacity, View } from 'react-native'
-import Back from 'react-native-vector-icons/MaterialCommunityIcons'
+import React, { useState } from 'react'
+import { TouchableOpacity } from 'react-native'
 import { ButtonLg } from 'components/core'
-import { Input } from 'components/forms'
+import { InputEmail, InputGender, InputName, InputNascimentDate } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
+import { propsStack } from 'routes/models/stack-models'
 import { useNavigation } from '@react-navigation/native'
-import { Images } from '../../../adapters/constants'
 
 import {
-	Container,
 	CreateAccount,
 	CreateAccountYellow,
 	Footer,
-	Header,
+	Heading,
 	InputContainer,
-	Logo,
 	TextRow,
 	Title,
 	TitleYellow,
+	Warning,
 } from './styles'
 
 const PersonalInformationsView: React.FC = () => {
-	const navigation = useNavigation()
+	const navigation = useNavigation<propsStack>()
+
+	const [email, setEmail] = useState<string>('')
+
+	const handleConfirm = () => {
+		navigation.navigate('Quiz')
+	}
 
 	return (
 		<AuthTemplate>
-			<Container>
-				<Header source={Images.HEADER_BACKGROUND}>
-					<TouchableOpacity
-						style={{
-							alignSelf: 'flex-start',
-							marginLeft: 14,
-							paddingTop: 12,
-						}}
-						activeOpacity={0.8}
-						onPress={() => navigation.goBack()}
-					>
-						<Back name="chevron-left" size={30} color="#ffff" />
-					</TouchableOpacity>
-					<Logo source={Images.LOGO} />
-				</Header>
+			<Heading>
 				<Title>
-					Seja bem vindo(a) ao <TitleYellow>HFit!</TitleYellow>
+					Seja bem vindo(a) ao <TitleYellow>Fit!</TitleYellow>
 				</Title>
-				<InputContainer>
-					<Input placeholder="Ex: João Costa Moreira" />
-					<Input placeholder="E-mail" />
-					<Input placeholder="Sexo" />
-					<Input placeholder="Data de nascimento" />
-				</InputContainer>
-				<Footer>
-					<ButtonLg onPress={() => navigation.navigate('Quiz')}>Continuar</ButtonLg>
+				<Warning>Preencha as informações abaixo para continuarmos</Warning>
+			</Heading>
+			<InputContainer>
+				<InputName />
+				<InputEmail value={email} onChangeText={(text: string) => setEmail(text)} />
+				<InputGender />
+				<InputNascimentDate placeholder="" />
+			</InputContainer>
+			<Footer>
+				<ButtonLg onPress={handleConfirm}>Continuar</ButtonLg>
 
-					<TextRow>
-						<CreateAccount>Já tem uma conta?</CreateAccount>
-						<TouchableOpacity
-							activeOpacity={0.8}
-							onPress={() => {
-								navigation.navigate('PersonalInformations')
-							}}
-						>
-							<CreateAccountYellow>Entre</CreateAccountYellow>
-						</TouchableOpacity>
-					</TextRow>
-				</Footer>
-			</Container>
+				<TextRow>
+					<CreateAccount>Já tem uma conta?</CreateAccount>
+					<TouchableOpacity
+						activeOpacity={0.8}
+						onPress={() => {
+							navigation.navigate('PersonalInformations')
+						}}
+					>
+						<CreateAccountYellow>Entre</CreateAccountYellow>
+					</TouchableOpacity>
+				</TextRow>
+			</Footer>
 		</AuthTemplate>
 	)
 }

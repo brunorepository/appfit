@@ -1,30 +1,26 @@
 import styled from 'styled-components/native'
 
-export const Container = styled.View`
-	flex: 1;
-	align-items: center;
-	justify-content: center;
-`
-export const Header = styled.ImageBackground`
-	width: 100%;
-	height: 200px;
-	border-bottom-right-radius: 120px;
-	align-items: center;
-	justify-content: center;
-`
-export const Logo = styled.Image`
-	width: 85px;
-	height: 85px;
+export const Heading = styled.View`
+	flex-direction: column;
+	align-self: flex-start;
+	padding-right: 64px;
 `
 export const Title = styled.Text`
 	color: #ffff;
 	font-size: 26px;
-	margin-top: -50px;
+	margin-top: -55px;
 	align-self: flex-start;
 	margin-left: 24px;
 	max-width: 260px;
 	font-family: 'OpenSans-SemiBold';
 	line-height: 34px;
+`
+
+export const Warning = styled.Text`
+	font-family: 'OpenSans-SemiBold';
+	color: #ffff;
+	margin-top: 6px;
+	margin-left: 24px;
 `
 export const TitleYellow = styled.Text`
 	color: #ccff00;
@@ -36,10 +32,9 @@ export const TitleYellow = styled.Text`
 	font-family: 'OpenSans-Bold';
 `
 export const InputContainer = styled.View`
-	margin-top: 12px;
 	width: 100%;
 	align-items: center;
-	margin-bottom: 12px;
+	margin-bottom: 64px;
 `
 export const CreateAccount = styled.Text`
 	margin-top: 30px;
@@ -69,5 +64,5 @@ export const Footer = styled.View`
 	width: 100%;
 	align-items: center;
 	justify-content: center;
-	margin-top: 96px;
+	flex-shrink: 0;
 `

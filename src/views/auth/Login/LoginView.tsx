@@ -1,58 +1,55 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { ButtonLg } from 'components/core'
-import { Input } from 'components/forms'
+import { InputEmail, InputPassword } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
+import { propsStack } from 'routes/models/stack-models'
 import { useNavigation } from '@react-navigation/native'
-import { Images } from '../../../adapters/constants'
 
 import {
-	Container,
 	CreateAccount,
 	CreateAccountYellow,
 	Footer,
 	ForgotPassword,
-	Header,
+	Heading,
 	InputContainer,
-	Logo,
 	TextRow,
 	Title,
 	TitleYellow,
+	Warning,
 } from './styles'
 
 const LoginView: React.FC = () => {
-	const navigation = useNavigation()
+	const navigation = useNavigation<propsStack>()
 
 	return (
 		<AuthTemplate>
-			<Container>
-				<Header source={Images.HEADER_BACKGROUND}>
-					<Logo source={Images.LOGO} />
-				</Header>
+			<Heading>
 				<Title>
-					Bem vindo(a) de volta ao <TitleYellow>HFit!</TitleYellow>
+					Bem vindo(a) de volta ao <TitleYellow>Fit!</TitleYellow>
 				</Title>
-				<InputContainer>
-					<Input placeholder="Endereço de e-mail" />
-					<Input placeholder="Senha" />
-					<ForgotPassword>Recuperar senha</ForgotPassword>
-				</InputContainer>
-				<Footer>
-					<ButtonLg />
+				<Warning>Preencha as informações abaixo para acessar sua conta</Warning>
+			</Heading>
+			<InputContainer>
+				<InputEmail />
+				<InputPassword />
+				<ForgotPassword>Recuperar senha</ForgotPassword>
+			</InputContainer>
+			<Footer>
+				<ButtonLg onPress={() => null} />
 
-					<TextRow>
-						<CreateAccount>Não tem uma conta?</CreateAccount>
-						<TouchableOpacity
-							activeOpacity={0.8}
-							onPress={() => {
-								navigation.navigate('PersonalInformations')
-							}}
-						>
-							<CreateAccountYellow>Cadastre-se</CreateAccountYellow>
-						</TouchableOpacity>
-					</TextRow>
-				</Footer>
-			</Container>
+				<TextRow>
+					<CreateAccount>Não tem uma conta?</CreateAccount>
+					<TouchableOpacity
+						activeOpacity={0.8}
+						onPress={() => {
+							navigation.navigate('PersonalInformations')
+						}}
+					>
+						<CreateAccountYellow>Cadastre-se</CreateAccountYellow>
+					</TouchableOpacity>
+				</TextRow>
+			</Footer>
 		</AuthTemplate>
 	)
 }
