@@ -1,29 +1,27 @@
-import React, { useState } from 'react'
-import { InputEmail, InputGender, InputName, InputNascimentDate } from 'components/forms'
+import React from 'react'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
 import { useNavigation } from '@react-navigation/native'
+import QuizList from './components/QuizList'
 
 import { InputContainer } from './styles'
 
-const PersonalInformationsView: React.FC = () => {
+const QuizView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
-
-	const [email, setEmail] = useState<string>('')
 
 	const onPressLogin = () => {
 		navigation.navigate('Login')
 	}
 
 	const onPressNext = () => {
-		navigation.navigate('Quiz')
+		navigation.navigate('DiseasesFamily')
 	}
 
 	return (
 		<AuthTemplate
-			title="Seja bem vindo(a) ao"
-			titleYellow="FitPersonal!"
-			warning="Preencha as informações abaixo para continuarmos"
+			title="Formulário de"
+			titleYellow="anamnese"
+			warning="Selecione abaixo as vácinas que você já tomou"
 			yellowButtonText="Continuar"
 			onPressYellowButton={onPressNext}
 			onPressYellowText={onPressLogin}
@@ -31,13 +29,10 @@ const PersonalInformationsView: React.FC = () => {
 			footerYellowText="Acesse aqui"
 		>
 			<InputContainer>
-				<InputName />
-				<InputEmail value={email} onChangeText={(text: string) => setEmail(text)} />
-				<InputGender />
-				<InputNascimentDate placeholder="" />
+				<QuizList />
 			</InputContainer>
 		</AuthTemplate>
 	)
 }
 
-export default PersonalInformationsView
+export default QuizView

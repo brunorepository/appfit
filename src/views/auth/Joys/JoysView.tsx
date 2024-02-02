@@ -1,29 +1,27 @@
-import React, { useState } from 'react'
-import { InputEmail, InputGender, InputName, InputNascimentDate } from 'components/forms'
+import React from 'react'
+import { InputTextArea } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
 import { useNavigation } from '@react-navigation/native'
 
 import { InputContainer } from './styles'
 
-const PersonalInformationsView: React.FC = () => {
+const JoysView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
-
-	const [email, setEmail] = useState<string>('')
 
 	const onPressLogin = () => {
 		navigation.navigate('Login')
 	}
 
 	const onPressNext = () => {
-		navigation.navigate('Quiz')
+		navigation.navigate('Medicines')
 	}
 
 	return (
 		<AuthTemplate
-			title="Seja bem vindo(a) ao"
-			titleYellow="FitPersonal!"
-			warning="Preencha as informações abaixo para continuarmos"
+			title="Formulário de"
+			titleYellow="anamnese"
+			warning="Insira abaixo quaisquer alergias que você tenha"
 			yellowButtonText="Continuar"
 			onPressYellowButton={onPressNext}
 			onPressYellowText={onPressLogin}
@@ -31,13 +29,10 @@ const PersonalInformationsView: React.FC = () => {
 			footerYellowText="Acesse aqui"
 		>
 			<InputContainer>
-				<InputName />
-				<InputEmail value={email} onChangeText={(text: string) => setEmail(text)} />
-				<InputGender />
-				<InputNascimentDate placeholder="" />
+				<InputTextArea placeholder="Descreva quaisquer alergias que você tenha, incluindo alergias a medicamentos, alimentos, ou ambientais." />
 			</InputContainer>
 		</AuthTemplate>
 	)
 }
 
-export default PersonalInformationsView
+export default JoysView

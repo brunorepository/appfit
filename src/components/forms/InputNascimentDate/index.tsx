@@ -15,7 +15,7 @@ const InputNascimentDate: React.FC<InputProps> = ({ placeholder }) => {
 				format: 'DD/MM/YYYY',
 			}}
 			placeholder={placeholder || 'Data de nascimento'}
-			placeholderTextColor="#999898"
+			placeholderTextColor="#CDCDCD"
 			value={value}
 			onChangeText={(text: React.SetStateAction<string>) => setValue(text)}
 			style={{}}

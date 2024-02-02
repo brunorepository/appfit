@@ -8,7 +8,7 @@ type InputEmailProps = {
 
 const InputEmail: React.FC<InputEmailProps> = ({ value, onChangeText }) => {
 	return (
-		<FormControl minWidth="$80" mt={16} mb={16}>
+		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Input variant="underlined" borderColor="$white">
 				<InputField
 					fontFamily="OpenSans-Regular"
@@ -20,7 +20,7 @@ const InputEmail: React.FC<InputEmailProps> = ({ value, onChangeText }) => {
 					pl={4}
 					pt={2}
 					color="$white"
-					placeholderTextColor="#999898"
+					placeholderTextColor="#CDCDCD"
 					value={value}
 					onChange={onChangeText}
 				/>
