@@ -1,9 +1,13 @@
 import React from 'react'
 import { FormControl, Textarea, TextareaInput } from '@gluestack-ui/themed'
 
-const InputTextArea: React.FC = () => {
+type InputTextAreaProps = {
+	placeholder: string
+}
+
+const InputTextArea: React.FC<InputTextAreaProps> = ({ placeholder }) => {
 	return (
-		<FormControl mt={24} mb={16}>
+		<FormControl minWidth="90%" mt={24} mb={16}>
 			<Textarea
 				borderColor="$white"
 				borderWidth={0.5}
@@ -16,9 +20,9 @@ const InputTextArea: React.FC = () => {
 				<TextareaInput
 					color="$white"
 					fontFamily="OpenSans-Medium"
-					placeholder="Liste quaisquer condições médicas que você teve no passado ou tem atualmente"
+					placeholder={placeholder}
 					fontSize={14}
-					placeholderTextColor="#999898"
+					placeholderTextColor="#CDCDCD"
 				/>
 			</Textarea>
 		</FormControl>

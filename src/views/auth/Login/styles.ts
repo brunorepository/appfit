@@ -1,36 +1,5 @@
 import styled from 'styled-components/native'
 
-export const Heading = styled.View`
-	flex-direction: column;
-	align-self: flex-start;
-	padding-right: 64px;
-`
-export const Title = styled.Text`
-	color: #ffff;
-	font-size: 26px;
-	margin-top: -55px;
-	align-self: flex-start;
-	margin-left: 24px;
-	max-width: 260px;
-	font-family: 'OpenSans-SemiBold';
-	line-height: 34px;
-`
-
-export const Warning = styled.Text`
-	font-family: 'OpenSans-SemiBold';
-	color: #ffff;
-	margin-top: 6px;
-	margin-left: 24px;
-`
-export const TitleYellow = styled.Text`
-	color: #ccff00;
-	font-size: 30px;
-	margin-top: -6px;
-	align-self: flex-start;
-	margin-left: 24px;
-	max-width: 260px;
-	font-family: 'OpenSans-Bold';
-`
 export const InputContainer = styled.View`
 	width: 100%;
 	align-items: center;

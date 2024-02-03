@@ -11,18 +11,16 @@ type Question = {
 
 const QuizList: React.FC = () => {
 	const [questions, setQuestions] = useState<Question[]>([
-		{ id: '1', text: 'Fez alguma cirurgia?', isActive: false },
-		{ id: '2', text: 'É asmático?', isActive: false },
-		{ id: '3', text: 'É diabético?', isActive: false },
-		{ id: '4', text: 'Tem Artrite?', isActive: false },
-		{ id: '5', text: 'É Alergico?', isActive: false },
-		{ id: '6', text: 'Tem insônia?', isActive: false },
-		{ id: '7', text: 'É Anemico?', isActive: false },
-		{ id: '8', text: 'Hipercolesterol?', isActive: false },
-		{ id: '9', text: 'É Ansioso?', isActive: false },
-		{ id: '10', text: 'TDHA?', isActive: false },
-		{ id: '11', text: 'TAG?', isActive: false },
-		{ id: '12', text: 'Outro?', isActive: false },
+		{ id: '1', text: 'BCG', isActive: false },
+		{ id: '2', text: 'Hepatite', isActive: false },
+		{ id: '3', text: 'Pentavalente', isActive: false },
+		{ id: '4', text: 'Poliomielite', isActive: false },
+		{ id: '5', text: 'Rotavírus', isActive: false },
+		{ id: '6', text: 'Pneumocócica?', isActive: false },
+		{ id: '7', text: 'Meningocócica', isActive: false },
+		{ id: '8', text: 'Tríplice Vira', isActive: false },
+		{ id: '9', text: 'Febre Amarela?', isActive: false },
+		{ id: '10', text: 'Outro?', isActive: false },
 	])
 
 	const toggleIsActive = (id: string) => {

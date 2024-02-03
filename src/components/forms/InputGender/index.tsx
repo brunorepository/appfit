@@ -18,7 +18,7 @@ import {
 
 const InputGender: React.FC = () => {
 	return (
-		<FormControl minWidth="$80" mt={16} mb={16}>
+		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Select>
 				<SelectTrigger variant="underlined">
 					<SelectInput
@@ -29,7 +29,7 @@ const InputGender: React.FC = () => {
 						pl={4}
 						pt={2}
 						color="#ffff"
-						placeholderTextColor="#999898"
+						placeholderTextColor="#CDCDCD"
 					/>
 					<SelectIcon>
 						<Icon />

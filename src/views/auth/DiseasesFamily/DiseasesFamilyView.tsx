@@ -1,29 +1,28 @@
-import React, { useState } from 'react'
-import { InputEmail, InputGender, InputName, InputNascimentDate } from 'components/forms'
+import React from 'react'
+import { InputTextArea } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
+
 import { useNavigation } from '@react-navigation/native'
 
 import { InputContainer } from './styles'
 
-const PersonalInformationsView: React.FC = () => {
+const DiseasesFamilyView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
-
-	const [email, setEmail] = useState<string>('')
 
 	const onPressLogin = () => {
 		navigation.navigate('Login')
 	}
 
 	const onPressNext = () => {
-		navigation.navigate('Quiz')
+		navigation.navigate('Joys')
 	}
 
 	return (
 		<AuthTemplate
-			title="Seja bem vindo(a) ao"
-			titleYellow="FitPersonal!"
-			warning="Preencha as informações abaixo para continuarmos"
+			title="Formulário de"
+			titleYellow="anamnese"
+			warning="Insira abaixo doenças relevantes na sua fámilia"
 			yellowButtonText="Continuar"
 			onPressYellowButton={onPressNext}
 			onPressYellowText={onPressLogin}
@@ -31,13 +30,10 @@ const PersonalInformationsView: React.FC = () => {
 			footerYellowText="Acesse aqui"
 		>
 			<InputContainer>
-				<InputName />
-				<InputEmail value={email} onChangeText={(text: string) => setEmail(text)} />
-				<InputGender />
-				<InputNascimentDate placeholder="" />
+				<InputTextArea placeholder="Descreva doenças relevantes na sua fámilia ex: Minha fámilia é diabética" />
 			</InputContainer>
 		</AuthTemplate>
 	)
 }
 
-export default PersonalInformationsView
+export default DiseasesFamilyView

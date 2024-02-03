@@ -1,52 +1,36 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import { ButtonLg } from 'components/core'
 import { InputTextArea } from 'components/forms'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
 import { useNavigation } from '@react-navigation/native'
 
-import {
-	CreateAccount,
-	CreateAccountYellow,
-	Footer,
-	Heading,
-	InputContainer,
-	TextRow,
-	Title,
-	TitleYellow,
-	Warning,
-} from './styles'
+import { InputContainer } from './styles'
 
 const SurgeriesView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
 
-	return (
-		<AuthTemplate>
-			<Heading>
-				<Title>
-					Formulário de <TitleYellow>anamnese</TitleYellow>
-				</Title>
-				<Warning>Insira abaixo outras doenças não especificadas no questionário anterior</Warning>
-			</Heading>
-			<InputContainer>
-				<InputTextArea />
-			</InputContainer>
-			<Footer>
-				<ButtonLg onPress={() => navigation.navigate('Surgeries')}>Continuar</ButtonLg>
+	const onPressLogin = () => {
+		navigation.navigate('Login')
+	}
 
-				<TextRow>
-					<CreateAccount>Já tem uma conta?</CreateAccount>
-					<TouchableOpacity
-						activeOpacity={0.8}
-						onPress={() => {
-							navigation.navigate('PersonalInformations')
-						}}
-					>
-						<CreateAccountYellow>Entre</CreateAccountYellow>
-					</TouchableOpacity>
-				</TextRow>
-			</Footer>
+	const onPressNext = () => {
+		navigation.navigate('Joys')
+	}
+
+	return (
+		<AuthTemplate
+			title="Formulário de"
+			titleYellow="anamnese"
+			warning="Insira abaixo outras doenças não especificadas no questionário anterior"
+			yellowButtonText="Continuar"
+			onPressYellowButton={onPressNext}
+			onPressYellowText={onPressLogin}
+			footerText="Já tem uma conta?"
+			footerYellowText="Acesse aqui"
+		>
+			<InputContainer>
+				<InputTextArea placeholder="Insira abaixo cirurgias ou procedimentos médicos pelos quais você passou" />
+			</InputContainer>
 		</AuthTemplate>
 	)
 }

@@ -5,41 +5,10 @@ export const Container = styled.View`
 	align-items: center;
 	justify-content: center;
 `
-export const Header = styled.ImageBackground`
-	width: 100%;
-	height: 230px;
-	border-bottom-right-radius: 120px;
-	align-items: center;
-	justify-content: center;
-`
-export const Logo = styled.Image`
-	width: 85px;
-	height: 85px;
-`
-export const Title = styled.Text`
-	color: #ffff;
-	font-size: 26px;
-	margin-top: -50px;
-	align-self: flex-start;
-	margin-left: 24px;
-	max-width: 260px;
-	font-family: 'OpenSans-SemiBold';
-	line-height: 34px;
-`
-export const TitleYellow = styled.Text`
-	color: #ccff00;
-	font-size: 30px;
-	margin-top: -6px;
-	align-self: flex-start;
-	margin-left: 24px;
-	max-width: 260px;
-	font-family: 'OpenSans-Bold';
-`
 export const InputContainer = styled.View`
-	margin-top: 12px;
 	width: 100%;
-	align-items: center;
-	margin-bottom: 12px;
+	padding-left: 18px;
+	padding-right: 18px;
 `
 export const CreateAccount = styled.Text`
 	margin-top: 30px;
@@ -56,7 +25,7 @@ export const ForgotPassword = styled.Text`
 	color: #cdcdcd;
 	font-family: 'OpenSans-SemiBold';
 	text-decoration: underline;
-	margin-top: 12px;
+	margin-top: 6px;
 	align-self: flex-start;
 	margin-left: 20px;
 `
@@ -69,5 +38,5 @@ export const Footer = styled.View`
 	width: 100%;
 	align-items: center;
 	justify-content: center;
-	margin-top: 96px;
+	margin-top: 12px;
 `

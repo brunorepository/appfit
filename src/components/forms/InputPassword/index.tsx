@@ -8,13 +8,14 @@ const InputPassword: React.FC = () => {
 	}
 
 	return (
-		<FormControl minWidth="$80" mt={16} mb={16}>
+		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Input variant="underlined" borderColor="$white">
 				<InputField
 					fontFamily="OpenSans-Regular"
 					size="lg"
 					fontSize={16}
 					placeholder="Senha"
+					placeholderTextColor="#CDCDCD"
 					pl={4}
 					pt={2}
 					type={showPassword ? 'text' : 'password'}
