@@ -12,11 +12,11 @@ const LoginView: React.FC = () => {
 	const onPressLogin = async () => {
 		await axios
 			.get('/posts')
-			.then((response) => {
-				console.warn(response.data)
+			.then((response: { data: any }) => {
+				return response.data
 			})
-			.catch((error) => {
-				console.warn(error)
+			.catch((error: any) => {
+				return error
 			})
 	}
 
@@ -28,7 +28,7 @@ const LoginView: React.FC = () => {
 		<AuthTemplate
 			title="Bem vindo(a) de volta ao"
 			titleYellow="FitPersonal!"
-			warning=""
+			warning="Preencha os campos abaixo para acesar ua conta"
 			onPressYellowButton={onPressLogin}
 			onPressYellowText={onPressCreateAccount}
 			yellowButtonText="Entrar"
