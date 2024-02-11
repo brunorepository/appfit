@@ -7,7 +7,7 @@ import { GluestackUIProvider } from '@gluestack-ui/themed'
 const App: React.FC = () => {
 	return (
 		<GluestackUIProvider config={config}>
-			<StatusBar backgroundColor="#CCFF00" barStyle="dark-content" />
+			<StatusBar backgroundColor="#CCFF00" barStyle="light-content" />
 			<Navigation />
 		</GluestackUIProvider>
 	)

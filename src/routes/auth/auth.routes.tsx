@@ -1,6 +1,8 @@
 import React from 'react'
 import { propsNavigationStack } from 'routes/models/stack-models'
+import CheckDataView from 'views/auth/CheckData/FinalQuestionsView'
 import DiseasesFamilyView from 'views/auth/DiseasesFamily/DiseasesFamilyView'
+import FinalQuestionsView from 'views/auth/FinalQuestions/FinalQuestionsView'
 import IllnessesView from 'views/auth/Illnesses/IllnessesView'
 import JoysView from 'views/auth/Joys/JoysView'
 import LoginView from 'views/auth/Login/LoginView'
@@ -21,6 +23,8 @@ const SCREEN_CONFIG = [
 	{ id: 7, name: 'Medicines', component: MedicinesView, title: 'Remédios' },
 	{ id: 8, name: 'Vaccines', component: VaccinesView, title: 'Vacinas' },
 	{ id: 9, name: 'DiseasesFamily', component: DiseasesFamilyView, title: 'Doenças familiares relevantes' },
+	{ id: 10, name: 'FinalQuestions', component: FinalQuestionsView, title: 'Últimas perguntas' },
+	{ id: 11, name: 'CheckData', component: CheckDataView, title: 'Confira as informações' },
 ]
 
 const AuthNavigation: React.FC = () => {

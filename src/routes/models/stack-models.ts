@@ -10,6 +10,8 @@ export type propsNavigationStack = {
 	Vaccines: undefined
 	Medicines: undefined
 	DiseasesFamily: undefined
+	FinalQuestions: undefined
+	CheckData: undefined
 }
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>

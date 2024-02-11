@@ -2,6 +2,7 @@ import React from 'react'
 import AuthTemplate from 'components/templates/AuthTemplate'
 import { propsStack } from 'routes/models/stack-models'
 import QuizList from 'views/auth/Quiz/components/QuizList'
+import {} from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
 
 import { InputContainer } from './styles'

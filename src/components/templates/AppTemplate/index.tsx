@@ -1,7 +1,16 @@
-import React from 'react'
+import React, { ReactNode, memo } from 'react'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
-const AppTemplate: React.FC = () => {
-	return <div />
+type AppTemplateProps = {
+	children: ReactNode
 }
 
-export default AppTemplate
+const AppTemplate: React.FC<AppTemplateProps> = ({ children }) => {
+	return (
+		<KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#191A19' }}>
+			{children}
+		</KeyboardAwareScrollView>
+	)
+}
+
+export default memo(AppTemplate)

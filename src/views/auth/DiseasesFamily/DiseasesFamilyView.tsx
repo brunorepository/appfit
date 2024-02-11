@@ -15,7 +15,7 @@ const DiseasesFamilyView: React.FC = () => {
 	}
 
 	const onPressNext = () => {
-		navigation.navigate('Joys')
+		navigation.navigate('FinalQuestions')
 	}
 
 	return (
