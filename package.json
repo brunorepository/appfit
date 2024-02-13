@@ -15,8 +15,6 @@
     "@gluestack-style/react": "^1.0.45",
     "@gluestack-ui/config": "^1.1.1",
     "@gluestack-ui/themed": "^1.1.2",
-    "@react-native-community/checkbox": "^0.5.17",
-    "@react-native-picker/picker": "^2.6.1",
     "@react-navigation/bottom-tabs": "^6.5.11",
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/native": "^6.1.9",

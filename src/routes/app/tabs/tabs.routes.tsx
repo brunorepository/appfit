@@ -38,7 +38,16 @@ const TabNavigation: React.FC = () => {
 				headerStyle: {
 					backgroundColor: '#1c1c1e',
 					height: 60,
+					shadowColor: '#CCFF00',
+					shadowOffset: {
+						width: 0,
+						height: 2,
+					},
+					shadowOpacity: 0.5,
+					shadowRadius: 3.84,
+					elevation: 8,
 				},
+
 				headerTintColor: '#CCFF00',
 				tabBarActiveTintColor: '#CCFF00',
 				headerTitleStyle: {
@@ -54,8 +63,16 @@ const TabNavigation: React.FC = () => {
 					paddingBottom: 6,
 					borderTopWidth: 0,
 					position: 'absolute',
-					borderTopLeftRadius: 20,
-					borderTopRightRadius: 20,
+					borderTopLeftRadius: 30,
+					borderTopRightRadius: 30,
+					shadowColor: '#CCFF00',
+					shadowOffset: {
+						width: 2,
+						height: 6,
+					},
+					shadowOpacity: 0.5,
+					shadowRadius: 5,
+					elevation: 8,
 				},
 			}}
 		>
