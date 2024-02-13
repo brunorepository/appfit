@@ -1,14 +1,25 @@
-import { LinearGradient } from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-export const Container = styled(LinearGradient)`
+export const Container = styled.View`
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-	padding-left: 10px;
-	padding-right: 10px;
-	padding-top: 8px;
-	padding-bottom: 80px;
+	padding-top: 4px;
+`
+export const Header = styled.View`
+	flex-direction: column;
+	width: 100%;
+	margin-top: 6px;
+	margin-left: 8px;
+`
+export const Value = styled.Text`
+	color: #ccff00;
+	font-family: 'OpenSans-SemiBold';
+	font-size: 8px;
+`
+export const FlexColumn = styled.View`
+	flex-direction: column;
+	margin-left: 4px;
 `
 export const Objective = styled.Text`
 	font-family: 'OpenSans-Medium';
@@ -21,42 +32,58 @@ export const Title = styled.Text`
 	color: #ffff;
 	font-family: 'OpenSans-Bold';
 	font-size: 18px;
-	margin-top: 4px;
 	align-self: flex-start;
-	max-width: 70%;
 `
 export const TitleYellow = styled.Text`
 	color: #ccff00;
 	font-family: 'OpenSans-ExtraBold';
 `
 export const Heading = styled.Text`
-	color: #ccff00;
+	color: #ffff;
 	font-family: 'OpenSans-SemiBold';
-	font-size: 16px;
-	margin-top: 10px;
+	font-size: 14px;
+	margin-top: 14px;
+	margin-bottom: 6px;
 	align-self: flex-start;
-	max-width: 70%;
+	margin-left: 14px;
 `
-
-export const Touchable = styled.TouchableOpacity`
-	width: 100%;
+export const HeaderStart = styled.View`
+	flex-direction: row;
+`
+export const Badge = styled.View`
+	flex-direction: row;
+	align-items: center;
+	background-color: #ccff00;
+	border-radius: 5px;
+	padding-left: 6px;
+	padding-right: 6px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+`
+export const BadgeText = styled.Text`
+	color: #000000;
+	font-family: 'OpenSans-SemiBold';
+	font-size: 10px;
 `
 export const Card = styled.ImageBackground`
-	width: 100%;
+	width: 95%;
 	margin-top: 10px;
-	border-radius: 10px;
-	height: 230px;
+	border-radius: 20px;
+	padding-top: 12px;
+	padding-bottom: 12px;
 	background-color: #323232;
 	justify-content: flex-end;
 	elevation: 5;
-	padding-bottom: 14px;
 `
 export const CardContent = styled.View`
 	padding-left: 12px;
+	padding-right: 16px;
 `
 export const CardTitle = styled.Text`
 	color: #ffff;
-	font-size: 20px;
+	font-size: 18px;
 	font-family: 'OpenSans-ExtraBold';
 	opacity: 1;
 	margin-bottom: 2px;
@@ -67,7 +94,6 @@ export const CardDescription = styled.Text`
 	font-family: 'OpenSans-Medium';
 	margin-bottom: 6px;
 `
-
 export const CardTitleSm = styled.Text`
 	color: #ffff;
 	font-size: 14px;
@@ -75,6 +101,10 @@ export const CardTitleSm = styled.Text`
 	opacity: 1;
 `
 export const CardFooter = styled.View`
+	flex-direction: row;
+	justify-content: space-between;
+`
+export const FooterStart = styled.View`
 	flex-direction: row;
 `
 export const CardTextRow = styled.View`
@@ -88,17 +118,21 @@ export const CardText = styled.Text`
 	font-family: 'OpenSans-Medium';
 	margin-left: 2px;
 `
-export const CardSm = styled.ImageBackground`
-	width: 130px;
-	border-radius: 10px;
-	height: 130px;
+export const Banner = styled.Image`
+	width: 100%;
+	height: 80px;
+	border-top-left-radius: 20px;
+	border-top-right-radius: 20px;
+`
+export const CardSm = styled.TouchableOpacity`
+	width: 250px;
+	border-radius: 20px;
 	background-color: #323232;
+	height: 150px;
 	elevation: 5;
 	margin-right: 8px;
-	justify-content: flex-end;
-	padding-bottom: 10px;
 `
 export const HList = styled.FlatList`
-	margin-top: 12px;
-	padding-bottom: 12px;
+	margin-top: 8px;
+	width: 95%;
 `

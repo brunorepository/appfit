@@ -1,10 +1,13 @@
 import React from 'react'
+import { AnimatedCircularProgress } from 'react-native-circular-progress'
+import Fire from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AppTemplate } from 'components/templates'
 // import { propsStack } from 'routes/models/stack-models'
 import { Images } from 'src/adapters/constants'
-import { Badge, BadgeText, ClockIcon, ExternalLinkIcon } from '@gluestack-ui/themed'
+import { ClockIcon } from '@gluestack-ui/themed'
 // import { useNavigation } from '@react-navigation/native'
 import {
+	Banner,
 	Card,
 	CardContent,
 	CardDescription,
@@ -15,12 +18,13 @@ import {
 	CardTitle,
 	CardTitleSm,
 	Container,
+	FooterStart,
 	HList,
 	Heading,
-	Objective,
-	Title,
-	TitleYellow,
-	Touchable,
+	BadgeText,
+	Value,
+	Badge,
+	HeaderStart,
 } from './styles'
 
 interface CardItem {
@@ -94,145 +98,127 @@ const HomeView: React.FC = () => {
 
 	return (
 		<AppTemplate>
-			<Container colors={['#1c1c1e', '#262525', '#0e0d0d']}>
-				<Objective>Segunda-feira, 12 de fevereiro de 2024</Objective>
-				<Title>
-					Olá <TitleYellow>Cid!</TitleYellow> Vamos lá! Tenha um treino incrível! 💪
-				</Title>
-				<Touchable activeOpacity={0.7} onPress={() => null}>
-					<Card
-						imageStyle={{
-							borderRadius: 10,
-							borderWidth: 2,
-							borderColor: '#ccff00',
-							opacity: 0.4,
-						}}
-						source={Images.TRAINING_ONE}
-					>
-						<CardContent>
-							<Badge
-								justifyContent="center"
-								alignItems="center"
-								maxWidth={75}
-								bgColor="$backgroundLightWarning"
-								mb={4}
-								borderRadius={5}
-								mt={6}
-							>
-								<BadgeText color="$black" fontFamily="OpenSans-Medium" textTransform="capitalize">
-									1 semana
+			<Container>
+				<Card>
+					<CardContent>
+						<HeaderStart>
+							<Badge>
+								<BadgeText
+									fontSize={11}
+									color="$black"
+									fontFamily="OpenSans-Medium"
+									textTransform="capitalize"
+									allowFontScaling={false}
+								>
+									Treino de hoje
 								</BadgeText>
 							</Badge>
-							<Badge
-								justifyContent="flex-start"
-								alignItems="flex-start"
-								maxWidth={115}
-								bgColor="#ccff00"
-								borderRadius={5}
-								mb={3}
-								mt={3}
-							>
-								<BadgeText color="$black" fontFamily="OpenSans-Medium" textTransform="capitalize">
-									Seu plano pessoal
-								</BadgeText>
-							</Badge>
+						</HeaderStart>
 
-							<CardTitle>Força em todo o corpo</CardTitle>
-							<CardDescription>
-								Um treino de corpo inteiro ataca todos os principais músculos com exercícios compostos e
-								isolados, incluindo aquecimento e alongamento.
-							</CardDescription>
+						<CardTitle allowFontScaling={false}>Força em todo o corpo</CardTitle>
+						<CardDescription allowFontScaling={false}>
+							Um treino de corpo inteiro ataca todos os principais músculos com exercícios compostos e
+							isolados, incluindo aquecimento e alongamento.
+						</CardDescription>
 
-							<CardFooter>
+						<CardFooter>
+							<FooterStart>
 								<CardTextRow>
 									<ClockIcon color="#ccff00" size="2xs" />
-									<CardText>10 minutos</CardText>
+									<CardText allowFontScaling={false}>10 minutos</CardText>
 								</CardTextRow>
 								<CardTextRow>
-									<ExternalLinkIcon color="#ccff00" size="2xs" />
-									<CardText>Força</CardText>
+									<Fire allowFontScaling={false} name="fire" color="#ccff00" size={15} />
+									<CardText allowFontScaling={false}>Força</CardText>
 								</CardTextRow>
-							</CardFooter>
-						</CardContent>
-					</Card>
-				</Touchable>
+							</FooterStart>
+							<AnimatedCircularProgress
+								size={32}
+								width={4}
+								fill={44}
+								tintColor="#ccff00"
+								onAnimationComplete={() => null}
+								backgroundColor="#585958"
+							>
+								{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
+							</AnimatedCircularProgress>
+						</CardFooter>
+					</CardContent>
+				</Card>
 
-				<Heading>Treinos da semana</Heading>
+				<Heading allowFontScaling={false}>Treinos da semana</Heading>
 				<HList
 					horizontal
 					data={data}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }: any) => (
-						<CardSm
-							source={Images.TRAINING_TWO}
-							imageStyle={{
-								borderWidth: 2,
-								borderColor: '#ccff00',
-								borderRadius: 10,
-								opacity: 0.4,
-							}}
-						>
-							<CardContent>
-								<Badge
-									justifyContent="flex-start"
-									alignItems="flex-start"
-									maxWidth={54}
-									bgColor="#ccff00"
-									borderRadius={5}
-									mt={3}
-								>
-									<BadgeText color="$black" fontFamily="OpenSans-Medium" textTransform="capitalize">
-										{item.exercise}
-									</BadgeText>
-								</Badge>
-								<CardTitleSm>{item.days}</CardTitleSm>
+						<CardSm activeOpacity={0.7} onPress={() => null}>
+							<Banner source={Images.TRAINING_ONE} />
+							<CardContent
+								style={{
+									marginTop: -10,
+								}}
+							>
+								<HeaderStart>
+									<Badge>
+										<BadgeText
+											fontSize={11}
+											color="$black"
+											fontFamily="OpenSans-Medium"
+											textTransform="capitalize"
+											allowFontScaling={false}
+										>
+											{item.exercise}
+										</BadgeText>
+									</Badge>
+								</HeaderStart>
+
+								<CardTitleSm allowFontScaling={false}>{item.days}</CardTitleSm>
 								{/* <CardDescription>Um treino de costas completo</CardDescription> */}
 								<CardFooter>
 									<CardTextRow>
 										<ClockIcon color="#ccff00" size="2xs" />
-										<CardText>16 minutos</CardText>
+										<CardText allowFontScaling={false}>16 minutos</CardText>
 									</CardTextRow>
 								</CardFooter>
 							</CardContent>
 						</CardSm>
 					)}
 				/>
-				<Heading>Dicas e recomendações</Heading>
-
+				<Heading allowFontScaling={false}>Dicas e recomendações</Heading>
 				<HList
 					horizontal
 					data={data}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }: any) => (
-						<CardSm
-							source={Images.TRAINING_TREE}
-							imageStyle={{
-								borderWidth: 2,
-								borderColor: '#ccff00',
-								borderRadius: 10,
-								opacity: 0.4,
-							}}
-						>
-							<CardContent>
-								<Badge
-									justifyContent="flex-start"
-									alignItems="flex-start"
-									maxWidth={54}
-									bgColor="$backgroundDark0"
-									borderRadius={5}
-									mb={3}
-									mt={3}
-								>
-									<BadgeText
-										alignSelf="flex-start"
-										color="$black"
-										fontFamily="OpenSans-Medium"
-										textTransform="capitalize"
-									>
-										{item.exercise}
-									</BadgeText>
-								</Badge>
-								<CardTitleSm>{item.days}</CardTitleSm>
+						<CardSm activeOpacity={0.7} onPress={() => null}>
+							<Banner source={Images.TRAINING_ONE} />
+							<CardContent
+								style={{
+									marginTop: -10,
+								}}
+							>
+								<HeaderStart>
+									<Badge>
+										<BadgeText
+											fontSize={11}
+											color="$black"
+											fontFamily="OpenSans-Medium"
+											textTransform="capitalize"
+											allowFontScaling={false}
+										>
+											{item.exercise}
+										</BadgeText>
+									</Badge>
+								</HeaderStart>
+								<CardTitleSm allowFontScaling={false}>{item.days}</CardTitleSm>
+								{/* <CardDescription>Um treino de costas completo</CardDescription> */}
+								<CardFooter>
+									<CardTextRow>
+										<ClockIcon color="#ccff00" size="2xs" />
+										<CardText allowFontScaling={false}>16 minutos</CardText>
+									</CardTextRow>
+								</CardFooter>
 							</CardContent>
 						</CardSm>
 					)}

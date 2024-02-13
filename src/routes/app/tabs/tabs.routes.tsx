@@ -24,11 +24,11 @@ const TabNavigation: React.FC = () => {
 	const navigation = useNavigation<propsDrawer>()
 
 	const UserPhoto = styled.Image`
-		width: 28px;
-		height: 28px;
+		width: 30px;
+		height: 30px;
 		border-radius: 120px;
 		background-color: #323232;
-		border: solid 0.5px #ccff00;
+		border: solid 1px #ccff00;
 	`
 	const Touchable = styled.TouchableOpacity``
 
@@ -40,19 +40,20 @@ const TabNavigation: React.FC = () => {
 					height: 60,
 					shadowColor: '#CCFF00',
 					shadowOffset: {
-						width: 0,
+						width: 2,
 						height: 2,
 					},
 					shadowOpacity: 0.5,
 					shadowRadius: 3.84,
 					elevation: 8,
 				},
-
+				tabBarAllowFontScaling: false,
+				headerTitleAllowFontScaling: false,
 				headerTintColor: '#CCFF00',
 				tabBarActiveTintColor: '#CCFF00',
 				headerTitleStyle: {
 					fontFamily: 'OpenSans-Bold',
-					fontSize: 16,
+					fontSize: 14,
 				},
 				tabBarStyle: {
 					backgroundColor: '#1c1c1efb',

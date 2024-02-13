@@ -1,14 +1,10 @@
-import { Dimensions } from 'react-native'
-import { LinearGradient } from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-export const Container = styled(LinearGradient)`
+export const Container = styled.View`
 	flex: 1;
 	align-items: center;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 20px;
-	height: ${Dimensions.get('window').height};
+	justify-content: center;
+	padding-top: 4px;
 `
 export const UserPhoto = styled.Image`
 	width: 95px;
