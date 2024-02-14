@@ -1,15 +1,13 @@
 import React from 'react'
 import { AppTemplate } from 'components/templates'
-import { Box, ChevronRightIcon, VStack } from '@gluestack-ui/themed'
-import { Text } from '@gluestack-ui/themed'
-import { Container, UserPhoto, UserName, ItemList } from './styles'
+import { Container } from './styles'
 
 const AccountView: React.FC = () => {
 	// eslint-disable-next-line react/jsx-no-useless-fragment
 	return (
 		<AppTemplate>
-			<Container colors={['#1c1c1e', '#262525', '#ccff00b1']}>
-				<ItemList>
+			<Container>
+				{/* <ItemList>
 					<UserPhoto
 						source={{
 							uri: 'https://media-gig4-1.cdn.whatsapp.net/v/t61.24694-24/360284187_628747575881805_6206994618273828932_n.jpg?ccb=11-4&oh=01_AdRH91AzlEIo3XpUT1kGcVm9sx1nUL4jUunaU-dMtTdhEA&oe=65CFAEEC&_nc_sid=e6ed6c&_nc_cat=108',
@@ -167,7 +165,7 @@ const AccountView: React.FC = () => {
 							</Box>
 						</VStack>
 					</Box>
-				</ItemList>
+				</ItemList> */}
 			</Container>
 		</AppTemplate>
 	)
