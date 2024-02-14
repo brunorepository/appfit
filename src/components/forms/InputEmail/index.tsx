@@ -16,7 +16,7 @@ const InputEmail: React.FC<InputEmailProps> = ({ value, onChangeText }) => {
 					fontSize={16}
 					type="text"
 					inputMode="email"
-					placeholder="E-mail"
+					placeholder="Endereço de E-mail"
 					pl={4}
 					pt={2}
 					color="$white"

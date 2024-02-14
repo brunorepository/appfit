@@ -19,6 +19,8 @@
     "@react-navigation/drawer": "^6.6.6",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
+    "@rneui/base": "^4.0.0-rc.8",
+    "@rneui/themed": "^4.0.0-rc.8",
     "@types/styled-components-react-native": "^5.2.5",
     "axios": "^1.6.7",
     "husky": "^9.0.6",

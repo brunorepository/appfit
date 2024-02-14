@@ -180,6 +180,16 @@ const HomeView: React.FC = () => {
 										<ClockIcon color="#ccff00" size="2xs" />
 										<CardText allowFontScaling={false}>16 minutos</CardText>
 									</CardTextRow>
+									<AnimatedCircularProgress
+										size={32}
+										width={4}
+										fill={44}
+										tintColor="#ccff00"
+										onAnimationComplete={() => null}
+										backgroundColor="#585958"
+									>
+										{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
+									</AnimatedCircularProgress>
 								</CardFooter>
 							</CardContent>
 						</CardSm>
@@ -218,6 +228,16 @@ const HomeView: React.FC = () => {
 										<ClockIcon color="#ccff00" size="2xs" />
 										<CardText allowFontScaling={false}>16 minutos</CardText>
 									</CardTextRow>
+									<AnimatedCircularProgress
+										size={32}
+										width={4}
+										fill={44}
+										tintColor="#ccff00"
+										onAnimationComplete={() => null}
+										backgroundColor="#585958"
+									>
+										{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
+									</AnimatedCircularProgress>
 								</CardFooter>
 							</CardContent>
 						</CardSm>
