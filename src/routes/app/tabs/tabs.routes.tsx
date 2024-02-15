@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native'
 
 const SCREEN_CONFIG = [
 	{ id: 1, name: 'Home', component: HomeView, title: 'Meu Plano', icon: 'calendar-check' },
-	{ id: 2, name: 'Training', component: WorkoutsView, title: 'Treinos', icon: 'file-document' },
+	{ id: 2, name: 'Training', component: WorkoutsView, title: 'Treinos extras', icon: 'file-document' },
 	{ id: 3, name: 'Nutrition', component: NutritionView, title: 'Nutrição', icon: 'food-apple' },
 	{ id: 4, name: 'Settings', component: AccountView, title: 'Conta', icon: 'account', showUserPhoto: true },
 ]

@@ -128,9 +128,10 @@ export const CardSm = styled.TouchableOpacity`
 	width: 250px;
 	border-radius: 20px;
 	background-color: #323232;
-	height: 150px;
+	height: 155px;
 	elevation: 5;
 	margin-right: 8px;
+	padding-bottom: 10px;
 `
 export const HList = styled.FlatList`
 	margin-top: 8px;
