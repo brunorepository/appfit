@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 export const Form = styled.View`
 	width: 95%;
-	padding-top: 18px;
+	padding-top: 24px;
 	padding-bottom: 24px;
 	border-radius: 20px;
 	height: ${Dimensions.get('window').height / 1.35};
@@ -11,13 +11,6 @@ export const Form = styled.View`
 	align-items: center;
 	justify-content: space-between;
 	margin-top: -44px;
-`
-export const Title = styled.Text`
-	color: #ffff;
-	font-family: 'OpenSans-Bold';
-	font-size: 22px;
-	align-self: flex-start;
-	margin-left: 16px;
 `
 export const UserType = styled.View`
 	flex-direction: row;
@@ -28,10 +21,10 @@ export const UserButton = styled.TouchableOpacity`
 	flex: 0.25;
 	padding-left: 8px;
 	padding-right: 8px;
-	padding-top: 14px;
-	padding-bottom: 14px;
-	background-color: #191919;
-	border-radius: 10px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #585958;
+	border-radius: 120px;
 	align-items: center;
 	justify-content: center;
 	border-color: #ccff00;
@@ -42,7 +35,7 @@ export const UserText = styled.Text`
 	margin-top: 6px;
 	font-family: 'OpenSans-SemiBold';
 	text-align: center;
-	font-size: 14px;
+	font-size: 12px;
 `
 export const Forms = styled.View``
 export const ForgotPassword = styled.Text`
@@ -53,6 +46,10 @@ export const ForgotPassword = styled.Text`
 `
 export const CreateAccount = styled.Text`
 	color: #ccff00;
-	font-size: 12px;
+	font-size: 14px;
 	font-family: 'OpenSans-SemiBold';
+`
+export const Icon = styled.Image`
+	width: 28px;
+	height: 28px;
 `

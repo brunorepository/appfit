@@ -42,7 +42,7 @@ export const HeaderTitle = styled.Text`
 export const HeaderInfo = styled.Text`
 	color: #191919;
 	font-family: 'OpenSans-SemiBold';
-	font-size: 12px;
+	font-size: 11px;
 	margin-top: 2px;
 	text-align: center;
 `

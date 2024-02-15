@@ -34,7 +34,7 @@ const InputPassword: React.FC = () => {
 					type={showPassword ? 'text' : 'password'}
 					color="$white"
 				/>
-				<InputSlot pr="$3" onPress={handleState}>
+				<InputSlot onPress={handleState}>
 					<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="#CCFF00" />
 				</InputSlot>
 			</Input>
