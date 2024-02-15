@@ -12,6 +12,9 @@ export type propsNavigationStack = {
 	DiseasesFamily: undefined
 	FinalQuestions: undefined
 	CheckData: undefined
+	Loading: undefined
+	ForgotPassword: undefined
+	CreateAccount: undefined
 }
 
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>

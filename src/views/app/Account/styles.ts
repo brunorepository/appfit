@@ -21,7 +21,7 @@ export const UserName = styled.Text`
 	margin-bottom: 6px;
 `
 export const ItemList = styled.View`
-	width: 100%;
+	width: 90%;
 	background-color: #323232;
 	border: solid 0.5px #ccff00;
 	align-items: center;
@@ -29,4 +29,6 @@ export const ItemList = styled.View`
 	elevation: 5;
 	height: 100%;
 	border-radius: 10px;
+	padding-bottom: 12px;
+	padding-bottom: 256px;
 `

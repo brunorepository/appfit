@@ -1,5 +1,14 @@
 import React, { useState } from 'react'
-import { FormControl, InputField, Input, InputSlot, InputIcon, EyeOffIcon, EyeIcon } from '@gluestack-ui/themed'
+import {
+	FormControl,
+	InputField,
+	Input,
+	InputIcon,
+	EyeOffIcon,
+	EyeIcon,
+	InputSlot,
+	LockIcon,
+} from '@gluestack-ui/themed'
 
 const InputPassword: React.FC = () => {
 	const [showPassword, setShowPassword] = useState(false)
@@ -10,14 +19,18 @@ const InputPassword: React.FC = () => {
 	return (
 		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Input variant="underlined" borderColor="$white">
+				<InputSlot>
+					<InputIcon size="md" color="$amber800">
+						<LockIcon color="#ffff" />
+					</InputIcon>
+				</InputSlot>
 				<InputField
 					fontFamily="OpenSans-Regular"
 					size="lg"
 					fontSize={16}
 					placeholder="Senha"
 					placeholderTextColor="#CDCDCD"
-					pl={4}
-					pt={2}
+					pl={6}
 					type={showPassword ? 'text' : 'password'}
 					color="$white"
 				/>

@@ -1,9 +1,15 @@
 import React from 'react'
 import { propsNavigationStack } from 'routes/models/stack-models'
+import CreateAccountView from 'views/auth/CreateAccount/CreateAccountView'
+import ForgotPasswordView from 'views/auth/ForgotPassword/ForgotPasswordView'
 import LoginView from 'views/auth/Login/LoginView'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-const SCREEN_CONFIG = [{ id: 1, name: 'Login', component: LoginView, title: 'Entrar' }]
+const SCREEN_CONFIG = [
+	{ id: 1, name: 'Login', component: LoginView },
+	{ id: 2, name: 'ForgotPassword', component: ForgotPasswordView },
+	{ id: 3, name: 'CreateAccount', component: CreateAccountView },
+]
 
 const AuthNavigation: React.FC = () => {
 	const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
@@ -27,8 +33,7 @@ const AuthNavigation: React.FC = () => {
 					name={screen.name as keyof propsNavigationStack}
 					component={screen.component as React.FC}
 					options={{
-						headerShown: true,
-						title: screen.title,
+						headerShown: false,
 					}}
 				/>
 			))}

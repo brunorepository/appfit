@@ -1,4 +1,5 @@
 import React from 'react'
+import Gender from 'react-native-vector-icons/MaterialCommunityIcons'
 import {
 	FormControl,
 	SelectContent,
@@ -21,13 +22,13 @@ const InputGender: React.FC = () => {
 		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Select>
 				<SelectTrigger variant="underlined">
+					<Gender name="gender-male-female" color="#ffff" size={20} />
 					<SelectInput
 						fontFamily="OpenSans-Regular"
 						fontSize={16}
 						inputMode="email"
 						placeholder="Sexo"
-						pl={4}
-						pt={2}
+						pl={6}
 						color="#ffff"
 						placeholderTextColor="#CDCDCD"
 					/>

@@ -1,10 +1,15 @@
 import React from 'react'
-import { FormControl, InputField, Input } from '@gluestack-ui/themed'
+import { FormControl, InputField, Input, InputSlot, InputIcon, InfoIcon } from '@gluestack-ui/themed'
 
 const InputName: React.FC = () => {
 	return (
 		<FormControl minWidth="90%" mt={16} mb={16}>
 			<Input variant="underlined" borderColor="$white">
+				<InputSlot>
+					<InputIcon size="md" color="$amber800">
+						<InfoIcon color="#ffff" />
+					</InputIcon>
+				</InputSlot>
 				<InputField
 					borderColor="$white"
 					fontFamily="OpenSans-Regular"
@@ -13,8 +18,7 @@ const InputName: React.FC = () => {
 					type="text"
 					inputMode="text"
 					placeholder="Ex: João Moreira Costa"
-					pl={4}
-					pt={2}
+					pl={6}
 					placeholderTextColor="#CDCDCD"
 					color="$white"
 				/>

@@ -45,14 +45,3 @@ export const UserText = styled.Text`
 	font-size: 14px;
 `
 export const Forms = styled.View``
-export const ForgotPassword = styled.Text`
-	margin-top: 4px;
-	font-family: 'OpenSans-SemiBold';
-	font-size: 14px;
-	color: #ccff00;
-`
-export const CreateAccount = styled.Text`
-	color: #ccff00;
-	font-size: 12px;
-	font-family: 'OpenSans-SemiBold';
-`

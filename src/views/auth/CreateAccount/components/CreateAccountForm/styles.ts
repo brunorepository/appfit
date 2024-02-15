@@ -16,34 +16,15 @@ export const Title = styled.Text`
 	color: #ffff;
 	font-family: 'OpenSans-Bold';
 	font-size: 22px;
-	align-self: flex-start;
-	margin-left: 16px;
+	align-self: center;
 `
-export const UserType = styled.View`
-	flex-direction: row;
-	width: 100%;
-	justify-content: space-around;
-`
-export const UserButton = styled.TouchableOpacity`
-	flex: 0.25;
-	padding-left: 8px;
-	padding-right: 8px;
-	padding-top: 14px;
-	padding-bottom: 14px;
-	background-color: #191919;
-	border-radius: 10px;
-	align-items: center;
-	justify-content: center;
-	border-color: #ccff00;
-	border-width: ${({ isSelected }: any) => (isSelected ? '1px' : '0px')};
-`
-export const UserText = styled.Text`
+export const Info = styled.Text`
 	color: #ffff;
-	margin-top: 6px;
-	font-family: 'OpenSans-SemiBold';
-	text-align: center;
+	font-family: 'OpenSans-Medium';
 	font-size: 14px;
+	margin-top: 2px;
 `
+
 export const Forms = styled.View``
 export const ForgotPassword = styled.Text`
 	margin-top: 4px;
@@ -51,7 +32,7 @@ export const ForgotPassword = styled.Text`
 	font-size: 14px;
 	color: #ccff00;
 `
-export const CreateAccount = styled.Text`
+export const LoginAccount = styled.Text`
 	color: #ccff00;
 	font-size: 12px;
 	font-family: 'OpenSans-SemiBold';
