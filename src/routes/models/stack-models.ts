@@ -16,6 +16,7 @@ export type propsNavigationStack = {
 	Goals: undefined
 	FinalQuestions: undefined
 	AvailableEquipment: undefined
+	Plans: undefined
 	CheckData: undefined
 	Loading: undefined
 	Availability: undefined

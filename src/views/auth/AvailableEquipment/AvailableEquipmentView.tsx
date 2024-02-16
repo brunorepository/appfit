@@ -8,7 +8,9 @@ import { Container } from './styles'
 const AvailableEquipmentView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
 
-	const handleLogin = () => {}
+	const handleLogin = () => {
+		navigation.navigate('Plans')
+	}
 
 	return (
 		<AuthTemplate

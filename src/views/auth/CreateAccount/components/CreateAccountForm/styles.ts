@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 export const Form = styled.View`
 	width: 95%;
 	padding-top: 24px;
-	padding-bottom: 24px;
+	padding-bottom: 32px;
 	border-radius: 20px;
 	height: ${Dimensions.get('window').height / 1.35};
 	background-color: #323232;

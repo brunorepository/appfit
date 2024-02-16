@@ -11,6 +11,7 @@ import LoginView from 'views/auth/Login/LoginView'
 
 import NutritionView from 'views/auth/Nutrition/NutritionView'
 import PhysicalActivityHistoryView from 'views/auth/PhysicalActivityHistory/PhysicalActivityHistoryView'
+import PlansView from 'views/auth/Plans/PlansView'
 import PhysicalAssessmentView from 'views/PhysicalAssessment/PhysicalAssessmentView'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -26,6 +27,7 @@ const SCREEN_CONFIG = [
 	{ id: 9, name: 'LifeHabits', component: LifeHabitsView },
 	{ id: 10, name: 'Availability', component: AvailabilityView },
 	{ id: 11, name: 'AvailableEquipment', component: AvailableEquipmentView },
+	{ id: 12, name: 'Plans', component: PlansView },
 ]
 
 const AuthNavigation: React.FC = () => {
