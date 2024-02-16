@@ -5,7 +5,7 @@ import { Container } from './styles'
 
 const ForgotPasswordView: React.FC = () => {
 	return (
-		<AuthTemplate>
+		<AuthTemplate showBack title="Recuperar senha" description="Insira seu e-mail abaixo para recuperar sua senha">
 			<Container>
 				<ForgotPasswordForm />
 			</Container>

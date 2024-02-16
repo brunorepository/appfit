@@ -1,23 +1,14 @@
 import React, { useState } from 'react' // Importando useState
-import { Alert, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import FlashMessage from 'react-native-flash-message'
-import Chalkboard from 'react-native-vector-icons/FontAwesome5'
-import User from 'react-native-vector-icons/FontAwesome5'
 
 import { ButtonLg } from 'components/core'
 import { InputEmail, InputPassword } from 'components/forms'
 import { propsStack } from 'routes/models/stack-models'
-import {
-	CreateAccount,
-	ForgotPassword,
-	Form,
-	Forms,
-	Title,
-	UserButton,
-	UserText,
-	UserType,
-} from 'views/auth/Login/components/LoginForm/styles'
+import { Images } from 'src/adapters/constants'
+import { EUserTypeProps } from 'src/types/Types'
 import { useNavigation } from '@react-navigation/native'
+import { CreateAccount, ForgotPassword, Form, Forms, UserButton, UserText, UserType, Icon } from './styles'
 
 type LoginFormProps = {
 	isLoading: boolean
@@ -30,17 +21,25 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 
 	const navigation = useNavigation<propsStack>()
 
+	const returnUserType = () => {
+		if (selected === 'student') {
+			return EUserTypeProps.Student
+		}
+
+		return EUserTypeProps.Personal
+	}
+
 	return (
 		<Form>
 			<FlashMessage position="top" />
-			<Title allowFontScaling={false}>Entrar</Title>
+
 			<UserType>
 				<UserButton
 					activeOpacity={0.8}
 					isSelected={selected === 'student'}
 					onPress={() => setSelected('student')}
 				>
-					<User name="user-alt" color="#CCFF00" size={25} />
+					<Icon source={Images.STUDENT} />
 					<UserText allowFontScaling={false}>Aluno(a)</UserText>
 				</UserButton>
 				<UserButton
@@ -48,7 +47,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 					isSelected={selected === 'teacher'}
 					onPress={() => setSelected('teacher')}
 				>
-					<Chalkboard name="chalkboard-teacher" color="#CCFF00" size={25} />
+					<Icon source={Images.PERSONAL} />
 					<UserText allowFontScaling={false}>Personal</UserText>
 				</UserButton>
 			</UserType>
@@ -62,11 +61,7 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 			<ButtonLg isLoading={isLoading} onPress={handleLogin} />
 			<TouchableOpacity
 				activeOpacity={0.8}
-				onPress={
-					selected === 'student'
-						? () => Alert.alert('Em desenvolvimento... tente acessar como Personal')
-						: () => navigation.navigate('CreateAccount')
-				}
+				onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}
 			>
 				<CreateAccount allowFontScaling={false}>Criar uma conta</CreateAccount>
 			</TouchableOpacity>

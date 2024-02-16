@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 export const Form = styled.View`
 	width: 95%;
-	padding-top: 24px;
 	padding-bottom: 24px;
 	border-radius: 20px;
 	height: ${Dimensions.get('window').height / 1.35};
@@ -11,10 +10,6 @@ export const Form = styled.View`
 	align-items: center;
 	justify-content: space-between;
 	margin-top: -44px;
-`
-export const Logo = styled.Image`
-	width: 80px;
-	height: 80px;
 `
 export const Info = styled.Text`
 	color: #ffff;

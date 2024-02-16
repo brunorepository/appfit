@@ -4,7 +4,7 @@ import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
 import { InputEmail } from 'components/forms'
-import { Form, Forms, Title } from 'views/auth/Login/components/LoginForm/styles'
+import { Form, Forms, Title } from './styles'
 
 const ForgotPasswordForm: React.FC = () => {
 	const handleLogin = () => {

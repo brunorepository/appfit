@@ -3,28 +3,20 @@ import { TouchableOpacity } from 'react-native'
 import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
-import { InputEmail, InputGender, InputName, InputPassword } from 'components/forms'
-import { Images } from 'src/adapters/constants'
-import { LoginAccount, Form, Forms, Logo } from './styles'
+import { LoginAccount, Form, Forms } from './styles'
 
-type CreateAccountFormProps = {
+type GoalsFormProps = {
 	handleLogin: () => void
 	handleBack: () => void
 	isLoading: boolean
 }
 
-const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ handleLogin, handleBack, isLoading }) => {
+const GoalsForm: React.FC<GoalsFormProps> = ({ handleLogin, handleBack, isLoading }) => {
 	return (
 		<Form>
 			<FlashMessage position="top" />
-			<Logo source={Images.LOGO} />
 
-			<Forms>
-				<InputName />
-				<InputEmail value="" onChangeText={undefined} />
-				<InputGender />
-				<InputPassword />
-			</Forms>
+			<Forms />
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
 			</ButtonLg>
@@ -35,4 +27,4 @@ const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ handleLogin, hand
 	)
 }
 
-export default CreateAccountForm
+export default GoalsForm
