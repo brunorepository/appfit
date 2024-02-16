@@ -1,15 +1,17 @@
 import React, { ReactNode } from 'react'
+import { DotIndicator } from 'react-native-indicators'
 import { Button, Text } from './styles'
 
 type ButtonLgProps = {
 	children?: ReactNode
 	onPress: () => void
+	isLoading?: boolean
 }
 
-const ButtonLg: React.FC<ButtonLgProps> = ({ children, onPress }) => {
+const ButtonLg: React.FC<ButtonLgProps> = ({ children, isLoading, onPress }) => {
 	return (
 		<Button activeOpacity={0.8} onPress={onPress}>
-			<Text>{children || 'Entrar'}</Text>
+			{isLoading ? <DotIndicator size={8} color="#000000" /> : <Text>{children || 'Entrar'}</Text>}
 		</Button>
 	)
 }

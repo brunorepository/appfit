@@ -45,7 +45,7 @@ export const Heading = styled.Text`
 	margin-top: 14px;
 	margin-bottom: 6px;
 	align-self: flex-start;
-	margin-left: 14px;
+	margin-left: 18px;
 `
 export const HeaderStart = styled.View`
 	flex-direction: row;
