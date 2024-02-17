@@ -2,6 +2,7 @@ import React from 'react'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import AvailabilityView from 'views/auth/Availability/AvailabilityView'
 import AvailableEquipmentView from 'views/auth/AvailableEquipment/AvailableEquipmentView'
+import ChangeDataHealthView from 'views/auth/ChangeDataHealth/ChangeDataHealthView'
 import CreateAccountView from 'views/auth/CreateAccount/CreateAccountView'
 import ForgotPasswordView from 'views/auth/ForgotPassword/ForgotPasswordView'
 import GoalsView from 'views/auth/Goals/GoalsView'
@@ -28,6 +29,7 @@ const SCREEN_CONFIG = [
 	{ id: 10, name: 'Availability', component: AvailabilityView },
 	{ id: 11, name: 'AvailableEquipment', component: AvailableEquipmentView },
 	{ id: 12, name: 'Plans', component: PlansView },
+	{ id: 13, name: 'ChangeDataHealth', component: ChangeDataHealthView },
 ]
 
 const AuthNavigation: React.FC = () => {

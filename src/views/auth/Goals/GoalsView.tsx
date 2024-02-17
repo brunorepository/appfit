@@ -1,19 +1,13 @@
 import React, { useState } from 'react'
 import AuthTemplate from 'components/templates/AuthTemplate'
-import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
-import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
 import { useNavigation } from '@react-navigation/native'
 import GoalsForm from './components/GoalsForm'
 import { Container } from './styles'
 
-interface IGoalsViewProps {}
-
-const GoalsView: React.FC<IGoalsViewProps> = () => {
+const GoalsView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
 	const [isLoading] = useState<boolean>(false)
-	// eslint-disable-next-line no-unused-vars
-	const [authState, setAuthState] = useRecoilState(isAuthenticated)
 
 	const handleLogin = () => {
 		navigation.navigate('Health')

@@ -6,6 +6,7 @@ import PlansForm from './components/PlansForm'
 import { Container } from './styles'
 
 const PlansView: React.FC = () => {
+	// eslint-disable-next-line no-unused-vars
 	const navigation = useNavigation<propsStack>()
 
 	const handleLogin = () => {}

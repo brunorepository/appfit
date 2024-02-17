@@ -1,14 +1,13 @@
 import React, { useState } from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
-import { ButtonLg } from 'components/core'
+import { ButtonLg, ButtonOutlinedLg } from 'components/core'
 import { InputEmail, InputPassword } from 'components/forms'
 import { propsStack } from 'routes/models/stack-models'
 import { Images } from 'src/adapters/constants'
 import { EUserTypeProps } from 'src/types/Types'
 import { useNavigation } from '@react-navigation/native'
-import { CreateAccount, ForgotPassword, Form, Forms, UserButton, UserText, UserType, Icon } from './styles'
+import { ForgotPassword, Form, Forms, UserButton, UserText, UserType, Icon, ButtonGroup } from './styles'
 
 type LoginFormProps = {
 	isLoading: boolean
@@ -31,8 +30,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 
 	return (
 		<Form>
-			<FlashMessage position="top" />
-
 			<UserType>
 				<UserButton
 					activeOpacity={0.8}
@@ -58,13 +55,12 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 					<ForgotPassword allowFontScaling={false}>Recuperar senha</ForgotPassword>
 				</TouchableOpacity>
 			</Forms>
-			<ButtonLg isLoading={isLoading} onPress={handleLogin} />
-			<TouchableOpacity
-				activeOpacity={0.8}
-				onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}
-			>
-				<CreateAccount allowFontScaling={false}>Criar uma conta</CreateAccount>
-			</TouchableOpacity>
+			<ButtonGroup>
+				<ButtonLg isLoading={isLoading} onPress={handleLogin} />
+				<ButtonOutlinedLg onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}>
+					Criar uma conta
+				</ButtonOutlinedLg>
+			</ButtonGroup>
 		</Form>
 	)
 }

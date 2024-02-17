@@ -11,7 +11,11 @@ type ButtonLgProps = {
 const ButtonLg: React.FC<ButtonLgProps> = ({ children, isLoading, onPress }) => {
 	return (
 		<Button activeOpacity={0.8} onPress={onPress}>
-			{isLoading ? <DotIndicator size={8} color="#000000" /> : <Text>{children || 'Entrar'}</Text>}
+			{isLoading ? (
+				<DotIndicator size={8} color="#000000" />
+			) : (
+				<Text allowFontScaling={false}>{children || 'Entrar'}</Text>
+			)}
 		</Button>
 	)
 }

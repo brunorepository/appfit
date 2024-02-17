@@ -9,7 +9,7 @@ export const Form = styled.View`
 	background-color: #323232;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: -44px;
+	margin-top: -38px;
 `
 export const Info = styled.Text`
 	color: #ffff;

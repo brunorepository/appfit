@@ -1,4 +1,4 @@
-import { ICreateAccount } from 'src/types/Types'
+import { ICreateAccount, IHealth } from 'src/types/Types'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export type propsNavigationStack = {
@@ -11,6 +11,7 @@ export type propsNavigationStack = {
 	Vaccines: undefined
 	Medicines: undefined
 	DiseasesFamily: undefined
+	ChangeDataHealth: IHealth
 	PhysicalAssessment: undefined
 	PhysicalActivityHistory: undefined
 	Goals: undefined

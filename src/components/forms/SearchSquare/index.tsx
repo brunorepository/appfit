@@ -13,10 +13,11 @@ const SearchSquare: React.FC = () => {
 				justifyContent="center"
 			>
 				<InputField
+					allowFontScaling={false}
 					borderColor="$white"
 					fontFamily="OpenSans-SemiBold"
 					size="lg"
-					fontSize={14}
+					fontSize={12}
 					type="text"
 					inputMode="text"
 					placeholder="Insira aqui o nome do medicamento"

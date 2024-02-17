@@ -3,7 +3,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { propsStack } from 'routes/models/stack-models'
 import { ChevronLeftIcon } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
-import { Header, HeaderTitle, HeaderInfo, LeftIconContainer, TextContainer } from './styles'
+import { Header, HeaderTitle, HeaderInfo, Top, Left } from './styles'
 
 type AuthTemplateProps = {
 	children: ReactNode
@@ -23,17 +23,17 @@ const AuthTemplate: React.FC<AuthTemplateProps> = ({ showBack, children, title, 
 		>
 			<Header>
 				{showBack && (
-					<LeftIconContainer activeOpacity={0.8} onPress={() => navigation.goBack()}>
-						<ChevronLeftIcon size="lg" />
-					</LeftIconContainer>
+					<Top>
+						<Left activeOpacity={0.8} onPress={() => navigation.goBack()}>
+							<ChevronLeftIcon size="lg" />
+						</Left>
+					</Top>
 				)}
-				<TextContainer>
-					<HeaderTitle allowFontScaling={false}>{title || 'Bem vindo(a) de volta!'}</HeaderTitle>
-					<HeaderInfo allowFontScaling={false}>
-						{description || 'Insira suas credenciais abaixo para acessar a plataforma'}
-					</HeaderInfo>
-				</TextContainer>
-				<LeftIconContainer />
+
+				<HeaderTitle allowFontScaling={false}>{title || 'Bem vindo(a) de volta!'}</HeaderTitle>
+				<HeaderInfo allowFontScaling={false}>
+					{description || 'Insira suas credenciais abaixo para acessar a plataforma'}
+				</HeaderInfo>
 			</Header>
 			{children}
 		</KeyboardAwareScrollView>

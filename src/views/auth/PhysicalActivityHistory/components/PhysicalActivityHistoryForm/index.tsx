@@ -1,9 +1,9 @@
 import React from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
-import { LoginAccount, Form, Forms } from './styles'
+import List from '../List'
+import { LoginAccount, Form } from './styles'
 
 type PhysicalActivityHistoryFormProps = {
 	handleLogin: () => void
@@ -18,9 +18,7 @@ const PhysicalActivityHistoryForm: React.FC<PhysicalActivityHistoryFormProps> = 
 }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
-
-			<Forms />
+			<List />
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
 			</ButtonLg>

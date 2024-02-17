@@ -16,7 +16,7 @@ const PhysicalActivityHistoryView: React.FC = () => {
 		<AuthTemplate
 			showBack
 			title="Histórico de Atividade Física"
-			description="Entender onde você está na sua jornada fitness nos ajuda a criar um plano que respeite seu nível atual."
+			description="Você já teve alguma experiência com treinos?."
 		>
 			<Container>
 				<PhysicalActivityHistoryForm handleLogin={handleLogin} handleBack={() => null} isLoading={false} />

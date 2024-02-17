@@ -15,7 +15,7 @@ const AvailableEquipmentView: React.FC = () => {
 	return (
 		<AuthTemplate
 			showBack
-			title="Equipamentos Disponíveis"
+			title="Onde você vai se exercitar?"
 			description="Com essa informação, personalizamos seus treinos com o que você tem à mão, seja em casa ou na academia."
 		>
 			<Container>
