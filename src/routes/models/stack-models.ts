@@ -4,6 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 export type propsNavigationStack = {
 	PersonalInformations: undefined
 	Quiz: undefined
+	Home: undefined
 	Login: undefined
 	Surgeries: undefined
 	Illnesses: undefined
@@ -11,7 +12,9 @@ export type propsNavigationStack = {
 	Vaccines: undefined
 	Medicines: undefined
 	DiseasesFamily: undefined
+	WorkRoom: undefined
 	ChangeDataHealth: IHealth
+	WorkoutPlan: undefined
 	PhysicalAssessment: undefined
 	PhysicalActivityHistory: undefined
 	Goals: undefined

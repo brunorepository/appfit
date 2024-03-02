@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import Toast from 'react-native-toast-message'
 import { AuthTemplate } from 'components/templates'
 import { propsStack } from 'routes/models/stack-models'
 import { EHealthProps } from 'src/types/Types'
@@ -16,6 +17,14 @@ const HealthView: React.FC = () => {
 	const onPressCard = () => {
 		navigation.navigate('ChangeDataHealth', { editingType: EHealthProps.Health })
 	}
+
+	useEffect(() => {
+		Toast.show({
+			type: 'success',
+			text1: 'Hello',
+			text2: 'This is some something 👋',
+		})
+	}, [])
 
 	return (
 		<AuthTemplate

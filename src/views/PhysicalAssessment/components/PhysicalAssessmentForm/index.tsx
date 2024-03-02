@@ -45,8 +45,6 @@ const PhysicalAssessmentForm: React.FC<PhysicalAssessmentFormProps> = ({ handleL
 					<InputSpinner
 						skin="modern"
 						max={250}
-						min={2}
-						step={2}
 						textColor="#ffff"
 						colorMax="#CCFF00"
 						colorMin="#242424"

@@ -18,7 +18,7 @@ const LoginView: React.FC = () => {
 	}
 
 	return (
-		<AuthTemplate title="" description="">
+		<AuthTemplate showBack title="" description="">
 			<Container>
 				<LoginForm isLoading={isLoading} handleLogin={handleLogin} />
 			</Container>

@@ -72,7 +72,7 @@ const PlansForm: React.FC<PhysicalActivityHistoryFormProps> = ({ handleLogin, is
 			<Header>
 				<PersonalPhoto
 					source={{
-						uri: 'https://scontent.cdninstagram.com/v/t51.2885-19/426680015_357818027102527_4131799786357857895_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=ukyD8WDJ1XYAX8m-5sH&edm=APs17CUBAAAA&ccb=7-5&oh=00_AfDkfmZr1NjZiVJA91zxbg0Qs9D-9oI_TWOIQA-e0w6tOA&oe=65D2FEA4&_nc_sid=10d13b',
+						uri: 'https://instagram.fvix5-1.fna.fbcdn.net/v/t51.2885-19/426680015_357818027102527_4131799786357857895_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fvix5-1.fna.fbcdn.net&_nc_cat=107&_nc_ohc=NJPvm1EikG8AX9bNQbJ&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAulCYjc-eoaxMaKaUVtwtnPvPOrsJwdVvnASqvVIueXw&oe=65DAE7A4&_nc_sid=8b3546',
 					}}
 				/>
 				<PriceRow>

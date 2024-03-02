@@ -1,10 +1,13 @@
 import React from 'react'
+import Toast from 'react-native-toast-message'
+import { CheckedIcon } from 'components/icons'
 import styled from 'styled-components/native'
 import { ChevronRightIcon } from '@gluestack-ui/themed'
 
 type CardProps = {
 	title: string
 	onPress: () => void
+	isSelected: boolean
 }
 
 const CardContainer = styled.TouchableOpacity<{ isSelected: boolean }>`
@@ -27,10 +30,23 @@ const Title = styled.Text`
 	font-family: 'OpenSans-Bold';
 `
 
-const Card: React.FC<CardProps> = ({ title, onPress }) => (
-	<CardContainer onPress={onPress} activeOpacity={0.8}>
+const Card: React.FC<CardProps> = ({ title, onPress, isSelected }) => (
+	<CardContainer
+		onPress={
+			isSelected
+				? () =>
+						Toast.show({
+							type: 'success',
+							text1: 'Hello',
+							text2: 'This is some something 👋',
+						})
+				: onPress
+		}
+		activeOpacity={isSelected ? 1 : 0.8}
+		isSelected={isSelected}
+	>
 		<Title>{title}</Title>
-		<ChevronRightIcon color="$white" />
+		{isSelected ? <CheckedIcon /> : <ChevronRightIcon size="sm" color="#ffff" />}
 	</CardContainer>
 )
 

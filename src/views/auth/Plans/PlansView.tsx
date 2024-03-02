@@ -18,7 +18,7 @@ const PlansView: React.FC = () => {
 			description="Conheça um pouco mais seu instrutor e explore seu plano de treinos personalizado."
 		>
 			<Container>
-				<PlansForm handleLogin={handleLogin} isLoading={false} />
+				<PlansForm handleLogin={handleLogin} isLoading />
 			</Container>
 		</AuthTemplate>
 	)
