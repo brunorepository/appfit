@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
 import { AppTemplate } from 'components/templates'
 // import { propsStack } from 'routes/models/stack-models'
 import { propsStack } from 'routes/models/stack-models'
 import { Images } from 'src/adapters/constants'
+import PersonalCharts from 'views/app/Home/components/PersonalCharts'
 import { ClockIcon } from '@gluestack-ui/themed'
 // import { useNavigation } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
+import ModalLink from './components/ModalLink'
 import {
 	Banner,
 	Card,
@@ -96,6 +99,21 @@ const data: CardItem[] = [
 
 const HomeView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
+
+	const [modalVisible, setModalVisible] = useState(false)
+
+	const loggedUserType = 'personal'
+
+	if (loggedUserType === 'personal') {
+		return (
+			<AppTemplate>
+				<Container>
+					<ModalLink isVisible={modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)} />
+					<PersonalCharts onPressLinkShare={() => setModalVisible(true)} />
+				</Container>
+			</AppTemplate>
+		)
+	}
 
 	return (
 		<AppTemplate>

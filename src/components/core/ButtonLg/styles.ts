@@ -1,7 +1,7 @@
 import styled from 'styled-components/native'
 
 export const Button = styled.TouchableOpacity`
-	width: 90%;
+	width: 95%;
 	height: 55px;
 	margin-top: 6px;
 	background-color: #ccff00;

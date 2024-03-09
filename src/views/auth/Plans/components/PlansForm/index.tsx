@@ -94,7 +94,7 @@ const PlansForm: React.FC<PhysicalActivityHistoryFormProps> = ({ handleLogin, is
 					/>
 				</PriceRow>
 				<PersonalName>Henrique Reis</PersonalName>
-				<PersonalInfo>Sou Henrique, Personal Trainer dedicado a transformar vidas pelo fitness.</PersonalInfo>
+				<PersonalInfo>CREF: 000000-P/SP</PersonalInfo>
 			</Header>
 			<HList
 				horizontal

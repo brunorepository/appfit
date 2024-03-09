@@ -1,27 +1,49 @@
 import React from 'react'
+import Users from 'react-native-vector-icons/FontAwesome6'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+
 import Bell from 'react-native-vector-icons/MaterialCommunityIcons'
 import StackNavigation from 'routes/app/stacks/stacks.routes'
 import { propsDrawer } from 'routes/models/drawer-navigation-models'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
 import NutritionView from 'views/app/Nutrition/NutritionView'
-import WorkoutsView from 'views/app/Workouts/WorkoutsView'
+import PromptView from 'views/app/Prompt/PromptView'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
-
-const SCREEN_CONFIG = [
-	{ id: 1, name: 'Home', component: StackNavigation, title: 'Meu Plano', icon: 'calendar-check' },
-	{ id: 2, name: 'Training', component: WorkoutsView, title: 'Treinos extras', icon: 'file-document' },
-	{ id: 3, name: 'Nutrition', component: NutritionView, title: 'Nutrição', icon: 'food-apple' },
-]
 
 const TabNavigation: React.FC = () => {
 	const { Navigator, Screen } = createBottomTabNavigator<propsNavigationStack>()
 
+	const userType = 'personal'
+
 	const navigation = useNavigation<propsDrawer>()
 
 	const Touchable = styled.TouchableOpacity``
+
+	const SCREEN_CONFIG = [
+		{
+			id: 1,
+			name: 'Home',
+			component: StackNavigation,
+			title: 'Meu Plano',
+			icon: userType === 'personal' ? 'money-bill-trend-up' : 'calendar-check',
+		},
+		{
+			id: 2,
+			name: 'Prompt',
+			component: PromptView,
+			title: 'Prompt',
+			icon: userType === 'personal' ? 'terminal' : 'terminal',
+		},
+		{
+			id: 3,
+			name: 'Nutrition',
+			component: NutritionView,
+			title: userType === 'personal' ? 'Clientes' : 'Nutrição',
+			icon: userType === 'personal' ? 'users' : 'food-apple',
+		},
+	]
 
 	return (
 		<Navigator
@@ -56,9 +78,14 @@ const TabNavigation: React.FC = () => {
 					component={screen.component as React.FC}
 					options={{
 						headerShown: true,
-						headerTitle: '1/12 COSTAS',
+						headerTitle: screen.title,
 						headerTitleAlign: 'center',
-						tabBarIcon: ({ color, size }) => <Icon name={screen.icon} size={size} color={color} />,
+						tabBarIcon: ({ color, size }) =>
+							userType === 'personal' ? (
+								<Users name={screen.icon} size={size} color={color} />
+							) : (
+								<Icon name={screen.icon} size={size} color={color} />
+							),
 						headerLeft: () => (
 							<Touchable activeOpacity={0.8} onPress={() => navigation.openDrawer()}>
 								<Bell

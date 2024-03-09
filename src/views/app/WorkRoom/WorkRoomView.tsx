@@ -1,5 +1,6 @@
 import React from 'react'
 import { Vibration } from 'react-native'
+import { InputValue } from 'components/forms'
 import { AppTemplate } from 'components/templates'
 import { InfoIcon, LockIcon, UnlockIcon } from '@gluestack-ui/themed'
 import Video from './components/Video'
@@ -9,7 +10,7 @@ const WorkRoomView: React.FC = () => {
 	const [locked, setLocked] = React.useState(false)
 
 	const handleLock = () => {
-		Vibration.vibrate(1000)
+		Vibration.vibrate(200)
 		setLocked(!locked)
 	}
 
@@ -27,7 +28,7 @@ const WorkRoomView: React.FC = () => {
 				</Texts>
 				<Actions>
 					<CircleWhite>
-						<CircleText>Não</CircleText>
+						<CircleText>N/A</CircleText>
 					</CircleWhite>
 
 					<CircleYellow activeOpacity={0.8} onPress={handleLock} showBorder={locked}>
@@ -38,6 +39,7 @@ const WorkRoomView: React.FC = () => {
 						<CircleText>5/20</CircleText>
 					</CircleWhite>
 				</Actions>
+				<InputValue value="" onChangeText={() => null} />
 			</Container>
 		</AppTemplate>
 	)

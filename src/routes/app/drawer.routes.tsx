@@ -7,7 +7,7 @@ import TabNavigation from './tabs/tabs.routes'
 const drawerStyle = {
 	swipeEnabled: false,
 	drawerStyle: {
-		backgroundColor: '#323332',
+		backgroundColor: '#191919',
 	},
 }
 

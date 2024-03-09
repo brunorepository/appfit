@@ -1,6 +1,5 @@
 import React from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
 import { LoginAccount, Form, Forms } from './styles'
@@ -14,8 +13,6 @@ type NutritionFormProps = {
 const NutritionForm: React.FC<NutritionFormProps> = ({ handleLogin, handleBack, isLoading }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
-
 			<Forms />
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
