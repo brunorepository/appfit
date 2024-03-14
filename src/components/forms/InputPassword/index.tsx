@@ -17,17 +17,18 @@ const InputPassword: React.FC = () => {
 	}
 
 	return (
-		<FormControl minWidth="90%" mt={16} mb={16}>
-			<Input variant="underlined" borderColor="$white">
+		<FormControl minWidth="90%" mt={10} mb={6}>
+			<Input variant="rounded" borderWidth={0} pl={12} pr={12} bgColor="#242424" size="xl">
 				<InputSlot>
 					<InputIcon size="md" color="$amber800">
 						<LockIcon color="#ffff" />
 					</InputIcon>
 				</InputSlot>
 				<InputField
+					allowFontScaling={false}
 					fontFamily="OpenSans-Regular"
 					size="lg"
-					fontSize={16}
+					fontSize={12}
 					placeholder="Senha"
 					placeholderTextColor="#CDCDCD"
 					pl={6}
@@ -35,7 +36,7 @@ const InputPassword: React.FC = () => {
 					color="$white"
 				/>
 				<InputSlot onPress={handleState}>
-					<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="#CCFF00" />
+					<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="#CCFF00" size="md" />
 				</InputSlot>
 			</Input>
 		</FormControl>

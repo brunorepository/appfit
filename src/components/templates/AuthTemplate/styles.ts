@@ -9,36 +9,36 @@ export const Content = styled.View`
 export const FlexColumn = styled.View`
 	flex-direction: column;
 `
-
 export const Header = styled.View`
 	width: 100%;
-	height: 170px;
+	padding-top: 18px;
+	padding-bottom: 64px;
 	background-color: #ccff00;
-	flex-direction: row;
-	justify-content: space-between;
 	align-items: center;
-	padding: 0 16px;
+	justify-content: center;
+	flex-direction: column;
+	padding-left: 8px;
+	padding-right: 8px;
 `
-
-export const LeftIconContainer = styled.TouchableOpacity`
-	flex: 1;
-	align-items: flex-start;
-	justify-content: flex-start;
-	padding-bottom: 100px;
-`
-
-export const TextContainer = styled.View`
+export const Left = styled.TouchableOpacity`
+	width: 50px;
+	height: 50px;
 	align-items: center;
 	justify-content: center;
 `
-
+export const Top = styled.View`
+	width: 100%;
+`
+export const Version = styled.Text`
+	color: #000000;
+	font-family: 'OpenSans-SemiBold';
+`
 export const HeaderTitle = styled.Text`
 	color: #191919;
 	font-family: 'OpenSans-Bold';
 	font-size: 20px;
 	text-align: center;
 `
-
 export const HeaderInfo = styled.Text`
 	color: #191919;
 	font-family: 'OpenSans-SemiBold';

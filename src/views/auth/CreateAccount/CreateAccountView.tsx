@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import AuthTemplate from 'components/templates/AuthTemplate'
-import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
 import { EUserTypeProps } from 'src/types/Types'
-import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
 import { useNavigation } from '@react-navigation/native'
 import CreateAccountForm from './components/CreateAccountForm'
 import { Container } from './styles'
@@ -19,8 +17,6 @@ interface ICreateAccountViewProps {
 const CreateAccountView: React.FC<ICreateAccountViewProps> = ({ route }) => {
 	const navigation = useNavigation<propsStack>()
 	const [isLoading] = useState<boolean>(false)
-	// eslint-disable-next-line no-unused-vars
-	const [authState, setAuthState] = useRecoilState(isAuthenticated)
 
 	const { type } = route.params
 

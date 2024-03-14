@@ -6,6 +6,7 @@ import PlansForm from './components/PlansForm'
 import { Container } from './styles'
 
 const PlansView: React.FC = () => {
+	// eslint-disable-next-line no-unused-vars
 	const navigation = useNavigation<propsStack>()
 
 	const handleLogin = () => {}
@@ -17,7 +18,7 @@ const PlansView: React.FC = () => {
 			description="Conheça um pouco mais seu instrutor e explore seu plano de treinos personalizado."
 		>
 			<Container>
-				<PlansForm handleLogin={handleLogin} isLoading={false} />
+				<PlansForm handleLogin={handleLogin} isLoading />
 			</Container>
 		</AuthTemplate>
 	)

@@ -1,9 +1,9 @@
 import React from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
+import InputSpinner from 'react-native-input-spinner'
 import { ButtonLg } from 'components/core'
-import { LoginAccount, Form, Forms } from './styles'
+import { LoginAccount, Form, ButtonsGroup, FlexColumn, Label, LabelText, Imc, ImcStrong } from './styles'
 
 type PhysicalAssessmentFormProps = {
 	handleLogin: () => void
@@ -14,9 +14,60 @@ type PhysicalAssessmentFormProps = {
 const PhysicalAssessmentForm: React.FC<PhysicalAssessmentFormProps> = ({ handleLogin, handleBack, isLoading }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
-
-			<Forms />
+			<ButtonsGroup>
+				<FlexColumn>
+					<Label>Altura:</Label>
+					<LabelText>(em Centímetros)</LabelText>
+					<InputSpinner
+						skin="modern"
+						max={250}
+						textColor="#ffff"
+						colorMax="#CCFF00"
+						colorMin="#242424"
+						color="#121212"
+						fontSize={22}
+						fontFamily="OpenSans-Bold"
+						value={0}
+						style={{
+							width: '100%',
+						}}
+						inputStyle={{
+							width: '100%',
+						}}
+						onChange={(num) => {
+							console.log(num)
+						}}
+					/>
+				</FlexColumn>
+				<FlexColumn>
+					<Label>Peso:</Label>
+					<LabelText>(em KG)</LabelText>
+					<InputSpinner
+						skin="modern"
+						max={250}
+						textColor="#ffff"
+						colorMax="#CCFF00"
+						colorMin="#242424"
+						color="#121212"
+						fontSize={22}
+						fontFamily="OpenSans-Bold"
+						value={0}
+						style={{
+							width: '100%',
+						}}
+						inputStyle={{
+							width: '100%',
+						}}
+						onChange={(num) => {
+							console.log(num)
+						}}
+					/>
+				</FlexColumn>
+			</ButtonsGroup>
+			<Imc>
+				O seu <ImcStrong>IMC de 163.5 é considerado obesidade.</ImcStrong> O peso recomendado para uma pessoa da
+				sua altura é 60-70kg
+			</Imc>
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
 			</ButtonLg>

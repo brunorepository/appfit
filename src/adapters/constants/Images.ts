@@ -4,4 +4,5 @@ export default {
 	TRAINING_ONE: require('../assets/images/training-1.jpg'),
 	STUDENT: require('../assets/images/student.png'),
 	PERSONAL: require('../assets/images/personal.png'),
+	USER: require('../assets/images/user.png'),
 }

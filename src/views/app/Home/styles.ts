@@ -4,7 +4,6 @@ export const Container = styled.View`
 	flex: 1;
 	align-items: center;
 	justify-content: center;
-	padding-top: 4px;
 `
 export const Header = styled.View`
 	flex-direction: column;
@@ -42,10 +41,10 @@ export const Heading = styled.Text`
 	color: #ffff;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 14px;
-	margin-top: 14px;
+	margin-top: 12px;
 	margin-bottom: 6px;
 	align-self: flex-start;
-	margin-left: 18px;
+	margin-left: 16px;
 `
 export const HeaderStart = styled.View`
 	flex-direction: row;
@@ -67,36 +66,36 @@ export const BadgeText = styled.Text`
 	font-family: 'OpenSans-SemiBold';
 	font-size: 10px;
 `
-export const Card = styled.ImageBackground`
+export const Card = styled.TouchableOpacity`
 	width: 95%;
 	margin-top: 10px;
-	border-radius: 20px;
-	padding-top: 12px;
-	padding-bottom: 12px;
-	background-color: #323232;
+	border-radius: 10px;
+	padding-bottom: 10px;
+	background-color: #191919;
 	justify-content: flex-end;
 	elevation: 5;
 `
 export const CardContent = styled.View`
 	padding-left: 12px;
 	padding-right: 16px;
+	margin-top: -14px;
 `
 export const CardTitle = styled.Text`
 	color: #ffff;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: 'OpenSans-ExtraBold';
 	opacity: 1;
 	margin-bottom: 2px;
 `
 export const CardDescription = styled.Text`
 	color: #ffff;
-	font-size: 12px;
+	font-size: 10px;
 	font-family: 'OpenSans-Medium';
 	margin-bottom: 6px;
 `
 export const CardTitleSm = styled.Text`
 	color: #ffff;
-	font-size: 14px;
+	font-size: 12px;
 	font-family: 'OpenSans-ExtraBold';
 	opacity: 1;
 `
@@ -106,6 +105,7 @@ export const CardFooter = styled.View`
 `
 export const FooterStart = styled.View`
 	flex-direction: row;
+	max-width: 90%;
 `
 export const CardTextRow = styled.View`
 	flex-direction: row;
@@ -114,20 +114,20 @@ export const CardTextRow = styled.View`
 `
 export const CardText = styled.Text`
 	color: #ccff00;
-	font-size: 12px;
+	font-size: 10px;
 	font-family: 'OpenSans-Medium';
 	margin-left: 2px;
 `
 export const Banner = styled.Image`
 	width: 100%;
 	height: 80px;
-	border-top-left-radius: 20px;
-	border-top-right-radius: 20px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 `
 export const CardSm = styled.TouchableOpacity`
 	width: 250px;
-	border-radius: 20px;
-	background-color: #323232;
+	border-radius: 10px;
+	background-color: #191919;
 	height: 155px;
 	elevation: 5;
 	margin-right: 8px;

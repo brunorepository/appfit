@@ -7,7 +7,7 @@ type AppTemplateProps = {
 
 const AppTemplate: React.FC<AppTemplateProps> = ({ children }) => {
 	return (
-		<KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#1c1c1e' }}>
+		<KeyboardAwareScrollView showsVerticalScrollIndicator={false} style={{ backgroundColor: '#141416' }}>
 			{children}
 		</KeyboardAwareScrollView>
 	)

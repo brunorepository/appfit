@@ -9,7 +9,7 @@ const PhysicalAssessmentView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
 
 	const handleLogin = () => {
-		navigation.navigate('Nutrition')
+		navigation.navigate('LifeHabits')
 	}
 
 	return (

@@ -19,13 +19,14 @@ import {
 
 const InputGender: React.FC = () => {
 	return (
-		<FormControl minWidth="90%" mt={16} mb={16}>
+		<FormControl minWidth="90%" mt={10} mb={6}>
 			<Select>
-				<SelectTrigger variant="underlined">
+				<SelectTrigger variant="rounded" borderWidth={0} pl={12} pr={12} bgColor="#242424" size="xl">
 					<Gender name="gender-male-female" color="#ffff" size={20} />
 					<SelectInput
+						allowFontScaling={false}
 						fontFamily="OpenSans-Regular"
-						fontSize={16}
+						fontSize={12}
 						inputMode="email"
 						placeholder="Sexo"
 						pl={6}

@@ -1,11 +1,8 @@
-import React from 'react' // Importando useState
+import React from 'react'
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
-
 import { ButtonLg } from 'components/core'
 import { InputEmail, InputGender, InputName, InputPassword } from 'components/forms'
-import { Images } from 'src/adapters/constants'
-import { LoginAccount, Form, Forms, Logo } from './styles'
+import { LoginAccount, Form, Forms } from './styles'
 
 type CreateAccountFormProps = {
 	handleLogin: () => void
@@ -16,9 +13,6 @@ type CreateAccountFormProps = {
 const CreateAccountForm: React.FC<CreateAccountFormProps> = ({ handleLogin, handleBack, isLoading }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
-			<Logo source={Images.LOGO} />
-
 			<Forms>
 				<InputName />
 				<InputEmail value="" onChangeText={undefined} />

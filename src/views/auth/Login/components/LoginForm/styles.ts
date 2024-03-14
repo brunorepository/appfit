@@ -10,7 +10,7 @@ export const Form = styled.View`
 	background-color: #323232;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: -44px;
+	margin-top: -38px;
 `
 export const UserType = styled.View`
 	flex-direction: row;
@@ -23,8 +23,8 @@ export const UserButton = styled.TouchableOpacity`
 	padding-right: 8px;
 	padding-top: 20px;
 	padding-bottom: 20px;
-	background-color: #585958;
-	border-radius: 120px;
+	background-color: #242424;
+	border-radius: 20px;
 	align-items: center;
 	justify-content: center;
 	border-color: #ccff00;
@@ -41,13 +41,14 @@ export const Forms = styled.View``
 export const ForgotPassword = styled.Text`
 	margin-top: 4px;
 	font-family: 'OpenSans-SemiBold';
-	font-size: 14px;
+	font-size: 12px;
 	color: #ccff00;
+	text-decoration-line: underline;
 `
-export const CreateAccount = styled.Text`
-	color: #ccff00;
-	font-size: 14px;
-	font-family: 'OpenSans-SemiBold';
+export const ButtonGroup = styled.View`
+	flex-direction: column;
+	width: 100%;
+	align-items: center;
 `
 export const Icon = styled.Image`
 	width: 28px;

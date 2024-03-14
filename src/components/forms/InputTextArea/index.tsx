@@ -7,7 +7,7 @@ type InputTextAreaProps = {
 
 const InputTextArea: React.FC<InputTextAreaProps> = ({ placeholder }) => {
 	return (
-		<FormControl minWidth="90%" mt={24} mb={16}>
+		<FormControl minWidth="90%" mt={6} mb={6}>
 			<Textarea
 				borderColor="$white"
 				borderWidth={0.5}
@@ -18,10 +18,11 @@ const InputTextArea: React.FC<InputTextAreaProps> = ({ placeholder }) => {
 				h="$64"
 			>
 				<TextareaInput
+					allowFontScaling={false}
 					color="$white"
 					fontFamily="OpenSans-Medium"
 					placeholder={placeholder}
-					fontSize={14}
+					fontSize={12}
 					placeholderTextColor="#CDCDCD"
 				/>
 			</Textarea>

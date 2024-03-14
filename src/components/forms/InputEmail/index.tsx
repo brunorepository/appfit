@@ -8,17 +8,18 @@ type InputEmailProps = {
 
 const InputEmail: React.FC<InputEmailProps> = ({ value, onChangeText }) => {
 	return (
-		<FormControl minWidth="90%" mt={16} mb={16}>
-			<Input variant="underlined" borderColor="$white">
+		<FormControl minWidth="90%" mt={10} mb={6}>
+			<Input variant="rounded" borderWidth={0} pl={12} pr={12} bgColor="#242424" size="xl">
 				<InputSlot>
 					<InputIcon size="md" color="$amber800">
 						<MailIcon color="#ffff" />
 					</InputIcon>
 				</InputSlot>
 				<InputField
+					allowFontScaling={false}
 					fontFamily="OpenSans-Regular"
 					size="lg"
-					fontSize={16}
+					fontSize={12}
 					type="text"
 					inputMode="email"
 					placeholder="Endereço de E-mail"

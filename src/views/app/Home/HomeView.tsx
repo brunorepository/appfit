@@ -1,11 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
+
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
-import Fire from 'react-native-vector-icons/MaterialCommunityIcons'
 import { AppTemplate } from 'components/templates'
 // import { propsStack } from 'routes/models/stack-models'
+import { propsStack } from 'routes/models/stack-models'
 import { Images } from 'src/adapters/constants'
+import PersonalCharts from 'views/app/Home/components/PersonalCharts'
 import { ClockIcon } from '@gluestack-ui/themed'
 // import { useNavigation } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
+import ModalLink from './components/ModalLink'
 import {
 	Banner,
 	Card,
@@ -94,12 +98,28 @@ const data: CardItem[] = [
 ]
 
 const HomeView: React.FC = () => {
-	// const navigation = useNavigation<propsStack>()
+	const navigation = useNavigation<propsStack>()
+
+	const [modalVisible, setModalVisible] = useState(false)
+
+	const loggedUserType = 'personal'
+
+	if (loggedUserType === 'personal') {
+		return (
+			<AppTemplate>
+				<Container>
+					<ModalLink isVisible={modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)} />
+					<PersonalCharts onPressLinkShare={() => setModalVisible(true)} />
+				</Container>
+			</AppTemplate>
+		)
+	}
 
 	return (
 		<AppTemplate>
 			<Container>
-				<Card>
+				<Card activeOpacity={0.8} onPress={() => navigation.navigate('WorkoutPlan')}>
+					<Banner source={Images.TRAINING_ONE} />
 					<CardContent>
 						<HeaderStart>
 							<Badge>
@@ -116,26 +136,18 @@ const HomeView: React.FC = () => {
 						</HeaderStart>
 
 						<CardTitle allowFontScaling={false}>Força em todo o corpo</CardTitle>
-						<CardDescription allowFontScaling={false}>
-							Um treino de corpo inteiro ataca todos os principais músculos com exercícios compostos e
-							isolados, incluindo aquecimento e alongamento.
-						</CardDescription>
 
 						<CardFooter>
 							<FooterStart>
-								<CardTextRow>
-									<ClockIcon color="#ccff00" size="2xs" />
-									<CardText allowFontScaling={false}>10 minutos</CardText>
-								</CardTextRow>
-								<CardTextRow>
-									<Fire allowFontScaling={false} name="fire" color="#ccff00" size={15} />
-									<CardText allowFontScaling={false}>Força</CardText>
-								</CardTextRow>
+								<CardDescription allowFontScaling={false}>
+									Um treino de corpo inteiro ataca todos os principais músculos com exercícios
+									compostos e isolados, incluindo aquecimento e alongamento.
+								</CardDescription>
 							</FooterStart>
 							<AnimatedCircularProgress
 								size={32}
 								width={4}
-								fill={44}
+								fill={100}
 								tintColor="#ccff00"
 								onAnimationComplete={() => null}
 								backgroundColor="#585958"

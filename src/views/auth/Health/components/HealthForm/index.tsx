@@ -1,22 +1,22 @@
 import React from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
-import { LoginAccount, Form, Forms } from './styles'
+import List from '../List'
+import { LoginAccount, Form } from './styles'
 
 type HealthFormProps = {
 	handleLogin: () => void
 	handleBack: () => void
+	onPressCard: () => void
 	isLoading: boolean
 }
 
-const HealthForm: React.FC<HealthFormProps> = ({ handleLogin, handleBack, isLoading }) => {
+const HealthForm: React.FC<HealthFormProps> = ({ handleLogin, onPressCard, handleBack, isLoading }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
+			<List onPress={onPressCard} />
 
-			<Forms />
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
 			</ButtonLg>

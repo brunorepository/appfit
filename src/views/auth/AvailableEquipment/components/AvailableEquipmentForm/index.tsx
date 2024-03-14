@@ -1,9 +1,9 @@
 import React from 'react' // Importando useState
 import { TouchableOpacity } from 'react-native'
-import FlashMessage from 'react-native-flash-message'
 
 import { ButtonLg } from 'components/core'
-import { LoginAccount, Form, Forms } from './styles'
+import List from '../List'
+import { LoginAccount, Form } from './styles'
 
 type AvailabilityFormProps = {
 	handleLogin: () => void
@@ -14,9 +14,7 @@ type AvailabilityFormProps = {
 const AvailabilityForm: React.FC<AvailabilityFormProps> = ({ handleLogin, handleBack, isLoading }) => {
 	return (
 		<Form>
-			<FlashMessage position="top" />
-
-			<Forms />
+			<List />
 			<ButtonLg isLoading={isLoading} onPress={handleLogin}>
 				Continuar
 			</ButtonLg>
