@@ -8,8 +8,7 @@ type ClientsProps = {
 
 const Clients: React.FC<ClientsProps> = ({ status }) => {
 	return (
-		<Card activeOpacity={0.7show
-		}>
+		<Card activeOpacity={0.7}>
 			<Start>
 				<UserPhoto
 					source={{

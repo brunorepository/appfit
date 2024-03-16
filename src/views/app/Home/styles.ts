@@ -38,13 +38,12 @@ export const TitleYellow = styled.Text`
 	font-family: 'OpenSans-ExtraBold';
 `
 export const Heading = styled.Text`
-	color: #ffff;
-	font-family: 'OpenSans-SemiBold';
+	color: #ccff00;
+	font-family: 'OpenSans-Bold';
 	font-size: 14px;
 	margin-top: 12px;
 	margin-bottom: 6px;
-	align-self: flex-start;
-	margin-left: 16px;
+	align-self: center;
 `
 export const HeaderStart = styled.View`
 	flex-direction: row;
@@ -125,7 +124,7 @@ export const Banner = styled.Image`
 	border-top-right-radius: 10px;
 `
 export const CardSm = styled.TouchableOpacity`
-	width: 250px;
+	width: 220px;
 	border-radius: 10px;
 	background-color: #191919;
 	height: 155px;

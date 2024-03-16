@@ -6,7 +6,7 @@ export type propsNavigationStack = {
 	Quiz: undefined
 	Home: undefined
 	Login: undefined
-	Surgeries: undefined
+	MakeApp: undefined
 	Illnesses: undefined
 	Joys: undefined
 	Vaccines: undefined
@@ -17,7 +17,7 @@ export type propsNavigationStack = {
 	WorkoutPlan: undefined
 	PhysicalAssessment: undefined
 	PhysicalActivityHistory: undefined
-	Goals: undefined
+	Payment: undefined
 	FinalQuestions: undefined
 	AvailableEquipment: undefined
 	Plans: undefined

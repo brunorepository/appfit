@@ -16,7 +16,7 @@ type LoginFormProps = {
 
 const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 	// Estado para controlar qual botão está selecionado
-	const [selected, setSelected] = useState('student') // 'student' ou 'teacher'
+	const [selected, setSelected] = useState('student') // 'student' ou 'personal'
 
 	const navigation = useNavigation<propsStack>()
 
@@ -41,8 +41,8 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 				</UserButton>
 				<UserButton
 					activeOpacity={0.8}
-					isSelected={selected === 'teacher'}
-					onPress={() => setSelected('teacher')}
+					isSelected={selected === 'personal'}
+					onPress={() => setSelected('personal')}
 				>
 					<Icon source={Images.PERSONAL} />
 					<UserText allowFontScaling={false}>Personal</UserText>
@@ -57,9 +57,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ isLoading, handleLogin }) => {
 			</Forms>
 			<ButtonGroup>
 				<ButtonLg isLoading={isLoading} onPress={handleLogin} />
-				<ButtonOutlinedLg onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}>
-					Criar uma conta
-				</ButtonOutlinedLg>
+				{selected === 'personal' && (
+					<ButtonOutlinedLg onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}>
+						Criar uma conta
+					</ButtonOutlinedLg>
+				)}
 			</ButtonGroup>
 		</Form>
 	)

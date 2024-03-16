@@ -102,7 +102,7 @@ const HomeView: React.FC = () => {
 
 	const [modalVisible, setModalVisible] = useState(false)
 
-	const loggedUserType = 'personal'
+	const loggedUserType = 'student'
 
 	if (loggedUserType === 'personal') {
 		return (
