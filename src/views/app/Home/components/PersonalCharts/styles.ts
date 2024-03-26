@@ -4,12 +4,12 @@ export const Charts = styled.View`
 	flex-direction: column;
 `
 
-export const SalesCard = styled.View`
+export const SalesCard = styled.TouchableOpacity`
 	width: 95%;
 	height: 75px;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: #191919;
+	background-color: #323232;
 	border-radius: 8px;
 	margin-top: 10px;
 	margin-bottom: 6px;
@@ -23,7 +23,7 @@ export const SalesCardSm = styled.TouchableOpacity`
 	height: 75px;
 	flex-direction: row;
 	justify-content: space-between;
-	background-color: #191919;
+	background-color: #323232;
 	border-radius: 8px;
 	margin-top: 10px;
 	margin-bottom: 6px;

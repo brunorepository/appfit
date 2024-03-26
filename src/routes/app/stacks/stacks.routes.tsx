@@ -1,11 +1,13 @@
 import React from 'react'
 import { Alert } from 'react-native'
 import { TouchableOpacity } from 'react-native'
+import FindChart from 'react-native-vector-icons/MaterialCommunityIcons'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
 import HomeView from 'views/app/Home/HomeView'
 import WorkoutPlanView from 'views/app/WorkoutPlan/WorkoutPlanView'
 import WorkRoomView from 'views/app/WorkRoom/WorkRoomView'
+import YourPlanView from 'views/app/YourPlan/YourPlanView'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
 const StackNavigation: React.FC = () => {
@@ -41,19 +43,28 @@ const StackNavigation: React.FC = () => {
 				component={HomeView}
 				options={{
 					headerShown: true,
-					headerStyle: { backgroundColor: '#101012' },
+					headerStyle: { backgroundColor: '#000000' },
 					headerTitleStyle: {
 						color: '#ffff',
 						fontFamily: 'OpenSans-Bold',
-						fontSize: 18,
+						fontSize: 26,
 					},
 					headerRight: () =>
-						userType !== 'personal' && (
+						userType !== 'personal' ? (
 							<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
 								<Next>0:00</Next>
 							</TouchableOpacity>
+						) : (
+							<FindChart
+								name="file-chart"
+								size={25}
+								color="#ffff"
+								style={{
+									marginRight: 2,
+								}}
+							/>
 						),
-					title: 'Olá, Bruno!',
+					title: 'Olá, Bruno 👋',
 				}}
 			/>
 			<Screen
@@ -94,6 +105,21 @@ const StackNavigation: React.FC = () => {
 						</TouchableOpacity>
 					),
 					title: 'Esteira - 10 minutos',
+				}}
+			/>
+			<Screen
+				name="YourPlan"
+				component={YourPlanView}
+				options={{
+					headerShown: true,
+					headerStyle: { backgroundColor: '#101012' },
+					headerTitleStyle: {
+						color: '#ffff',
+						fontFamily: 'OpenSans-SemiBold',
+						fontSize: 18,
+					},
+					headerTintColor: '#CCFF00',
+					title: 'Assinatura',
 				}}
 			/>
 		</Navigator>

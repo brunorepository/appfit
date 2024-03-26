@@ -8,40 +8,45 @@ import { propsDrawer } from 'routes/models/drawer-navigation-models'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
 import NutritionView from 'views/app/Nutrition/NutritionView'
-import PromptView from 'views/app/Prompt/PromptView'
+import { Menu, MenuItem, MenuItemLabel } from '@gluestack-ui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
 
 const TabNavigation: React.FC = () => {
 	const { Navigator, Screen } = createBottomTabNavigator<propsNavigationStack>()
 
-	const userType = 'personal'
+	const userType = 'student'
 
 	const navigation = useNavigation<propsDrawer>()
 
 	const Touchable = styled.TouchableOpacity``
+	const Title = styled.Text`
+		color: #ccff00;
+		font-family: 'OpenSans-Bold';
+		font-size: 18px;
+	`
 
 	const SCREEN_CONFIG = [
 		{
 			id: 1,
 			name: 'Home',
 			component: StackNavigation,
-			title: 'Meu Plano',
+			title: 'Henrique Reis LTDA',
 			icon: userType === 'personal' ? 'money-bill-trend-up' : 'calendar-check',
 		},
 		{
 			id: 2,
-			name: 'Prompt',
-			component: PromptView,
-			title: 'Prompt',
-			icon: userType === 'personal' ? 'terminal' : 'terminal',
-		},
-		{
-			id: 3,
 			name: 'Nutrition',
 			component: NutritionView,
 			title: userType === 'personal' ? 'Clientes' : 'Nutrição',
 			icon: userType === 'personal' ? 'users' : 'food-apple',
+		},
+		{
+			id: 3,
+			name: 'Files',
+			component: NutritionView,
+			title: 'Arquivos',
+			icon: 'folder',
 		},
 	]
 
@@ -50,8 +55,7 @@ const TabNavigation: React.FC = () => {
 			screenOptions={{
 				headerStyle: {
 					backgroundColor: '#1c1c1e',
-					borderWidth: 0,
-					elevation: 0,
+					borderBottomWidth: 0,
 				},
 				tabBarAllowFontScaling: false,
 				headerTitleAllowFontScaling: false,
@@ -82,9 +86,9 @@ const TabNavigation: React.FC = () => {
 						headerTitleAlign: 'center',
 						tabBarIcon: ({ color, size }) =>
 							userType === 'personal' ? (
-								<Users name={screen.icon} size={size} color={color} />
+								<Users name={screen.icon} size={size * 1.2} color={color} />
 							) : (
-								<Icon name={screen.icon} size={size} color={color} />
+								<Icon name={screen.icon} size={size * 1.2} color={color} />
 							),
 						headerLeft: () => (
 							<Touchable activeOpacity={0.8} onPress={() => navigation.openDrawer()}>
@@ -99,14 +103,146 @@ const TabNavigation: React.FC = () => {
 							</Touchable>
 						),
 						headerRight: () => (
-							<Bell
-								name="bell"
-								color="#CCFF00"
-								size={20}
-								style={{
-									marginRight: 12,
+							<Menu
+								placement="top"
+								bgColor="#323232"
+								trigger={({ ...triggerProps }) => {
+									return (
+										<Touchable {...triggerProps}>
+											<Bell
+												name="bell"
+												color="#CCFF00"
+												size={20}
+												style={{
+													marginRight: 12,
+												}}
+											/>
+										</Touchable>
+									)
 								}}
-							/>
+							>
+								<MenuItem>
+									<Title>Notificações</Title>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+								<MenuItem key="Notification" textValue="Notification">
+									<Bell
+										name="alert"
+										color="#CCFF00"
+										size={15}
+										style={{
+											marginRight: 6,
+										}}
+									/>
+									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
+										Você recebeu notificação
+									</MenuItemLabel>
+								</MenuItem>
+							</Menu>
 						),
 					}}
 				/>

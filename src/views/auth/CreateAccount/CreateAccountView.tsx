@@ -21,7 +21,7 @@ const CreateAccountView: React.FC<ICreateAccountViewProps> = ({ route }) => {
 	const { type } = route.params
 
 	const handleLogin = () => {
-		navigation.navigate('Goals')
+		navigation.navigate('MakeApp')
 	}
 
 	return (
