@@ -6,7 +6,7 @@ import { propsStack } from 'routes/models/stack-models'
 import { EUserTypeProps } from 'src/types/Types'
 import { useNavigation } from '@react-navigation/native'
 import ReturnInputs from './components/ReturnInputs'
-import { Form, ButtonGroup, CreditCard, Label, BoldText, Col, Row } from './styles'
+import { Form, ButtonGroup, CreditCard, Label, BoldText, Col, Row, Title, Value } from './styles'
 
 type PaymentFormProps = {
 	isLoading: boolean
@@ -42,6 +42,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ isLoading, handleLogin }) => 
 
 	return (
 		<Form>
+			<Title>
+				O valor do plano é de <Value>R$ 49,90/mês.</Value> A cobrança é feita no cartão de crédito cadastrado
+			</Title>
 			<CreditCard>
 				<Col>
 					<Label>Títular do cartão:</Label>
@@ -66,13 +69,11 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ isLoading, handleLogin }) => 
 			<ReturnInputs setData={setData} data={data} errors={{}} refPayCard={{}} onSubmit={() => null} />
 			<ButtonGroup>
 				<ButtonLg isLoading={isLoading} onPress={handleLogin}>
-					Criar aplicativo
+					Alterar dados do cartão
 				</ButtonLg>
-				{selected === 'personal' && (
-					<ButtonOutlinedLg onPress={() => navigation.navigate('CreateAccount', { type: returnUserType() })}>
-						Criar uma conta
-					</ButtonOutlinedLg>
-				)}
+				<ButtonOutlinedLg isLoading={isLoading} onPress={handleLogin}>
+					Cancelar assinatura
+				</ButtonOutlinedLg>
 			</ButtonGroup>
 		</Form>
 	)

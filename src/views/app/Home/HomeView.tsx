@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 
-import { AnimatedCircularProgress } from 'react-native-circular-progress'
 import { AppTemplate } from 'components/templates'
 // import { propsStack } from 'routes/models/stack-models'
 import { propsStack } from 'routes/models/stack-models'
-import { Images } from 'src/adapters/constants'
+import ModalAnamnese from 'views/app/Home/components/ModalAnamnese'
 import PersonalCharts from 'views/app/Home/components/PersonalCharts'
-import { ClockIcon } from '@gluestack-ui/themed'
 // import { useNavigation } from '@react-navigation/native'
 import { useNavigation } from '@react-navigation/native'
 import ModalLink from './components/ModalLink'
@@ -16,9 +14,6 @@ import {
 	CardContent,
 	CardDescription,
 	CardFooter,
-	CardSm,
-	CardText,
-	CardTextRow,
 	CardTitle,
 	CardTitleSm,
 	Container,
@@ -26,9 +21,10 @@ import {
 	HList,
 	Heading,
 	BadgeText,
-	Value,
 	Badge,
 	HeaderStart,
+	BannerSm,
+	CardSm,
 } from './styles'
 
 interface CardItem {
@@ -102,14 +98,17 @@ const HomeView: React.FC = () => {
 
 	const [modalVisible, setModalVisible] = useState(false)
 
-	const loggedUserType = 'student'
+	const loggedUserType: any = 'student'
 
 	if (loggedUserType === 'personal') {
 		return (
 			<AppTemplate>
 				<Container>
 					<ModalLink isVisible={modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)} />
-					<PersonalCharts onPressLinkShare={() => setModalVisible(true)} />
+					<PersonalCharts
+						onPressLinkShare={() => setModalVisible(true)}
+						onPressClients={() => navigation.navigate('Nutrition')}
+					/>
 				</Container>
 			</AppTemplate>
 		)
@@ -118,8 +117,14 @@ const HomeView: React.FC = () => {
 	return (
 		<AppTemplate>
 			<Container>
+				<ModalAnamnese isVisible={!modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)} />
+
 				<Card activeOpacity={0.8} onPress={() => navigation.navigate('WorkoutPlan')}>
-					<Banner source={Images.TRAINING_ONE} />
+					<Banner
+						source={{
+							uri: 'https://s2-techtudo.glbimg.com/M8EXp8JrvIWbZf_Z2PU8y1PqZSk=/0x0:620x317/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/N/J/qblUsXRhiDT61CQQ3msA/2012-10-23-video-mostra-como-pegar-uma-garota-na-academia-literalmente.jpg',
+						}}
+					/>
 					<CardContent>
 						<HeaderStart>
 							<Badge>
@@ -130,12 +135,12 @@ const HomeView: React.FC = () => {
 									textTransform="capitalize"
 									allowFontScaling={false}
 								>
-									Treino de hoje
+									📅 Treino de hoje
 								</BadgeText>
 							</Badge>
 						</HeaderStart>
 
-						<CardTitle allowFontScaling={false}>Força em todo o corpo</CardTitle>
+						<CardTitle allowFontScaling={false}>Treino de costas</CardTitle>
 
 						<CardFooter>
 							<FooterStart>
@@ -144,16 +149,6 @@ const HomeView: React.FC = () => {
 									compostos e isolados, incluindo aquecimento e alongamento.
 								</CardDescription>
 							</FooterStart>
-							<AnimatedCircularProgress
-								size={32}
-								width={4}
-								fill={100}
-								tintColor="#ccff00"
-								onAnimationComplete={() => null}
-								backgroundColor="#585958"
-							>
-								{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
-							</AnimatedCircularProgress>
 						</CardFooter>
 					</CardContent>
 				</Card>
@@ -164,93 +159,70 @@ const HomeView: React.FC = () => {
 					data={data}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }: any) => (
-						<CardSm activeOpacity={0.7} onPress={() => null}>
-							<Banner source={Images.TRAINING_ONE} />
+						<CardSm activeOpacity={0.7} onPress={() => navigation.navigate('WorkoutPlan')}>
+							<BannerSm
+								source={{
+									uri: 'https://s2-techtudo.glbimg.com/M8EXp8JrvIWbZf_Z2PU8y1PqZSk=/0x0:620x317/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/N/J/qblUsXRhiDT61CQQ3msA/2012-10-23-video-mostra-como-pegar-uma-garota-na-academia-literalmente.jpg',
+								}}
+							/>
 							<CardContent
 								style={{
-									marginTop: -10,
+									marginTop: -140,
 								}}
 							>
 								<HeaderStart>
 									<Badge>
 										<BadgeText
-											fontSize={11}
+											fontSize={16}
 											color="$black"
 											fontFamily="OpenSans-Medium"
 											textTransform="capitalize"
 											allowFontScaling={false}
 										>
-											{item.exercise}
+											🏋️‍♀️ {item.exercise}
 										</BadgeText>
 									</Badge>
 								</HeaderStart>
 
-								<CardTitleSm allowFontScaling={false}>{item.days}</CardTitleSm>
-								{/* <CardDescription>Um treino de costas completo</CardDescription> */}
-								<CardFooter>
-									<CardTextRow>
-										<ClockIcon color="#ccff00" size="2xs" />
-										<CardText allowFontScaling={false}>16 minutos</CardText>
-									</CardTextRow>
-									<AnimatedCircularProgress
-										size={32}
-										width={4}
-										fill={44}
-										tintColor="#ccff00"
-										onAnimationComplete={() => null}
-										backgroundColor="#585958"
-									>
-										{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
-									</AnimatedCircularProgress>
-								</CardFooter>
+								<CardTitleSm allowFontScaling={false}>{item.days} 📅</CardTitleSm>
+								<CardDescription allowFontScaling={false}>Um treino</CardDescription>
 							</CardContent>
 						</CardSm>
 					)}
 				/>
-				<Heading allowFontScaling={false}>Dicas e recomendações</Heading>
+				<Heading allowFontScaling={false}>Treinos extras</Heading>
 				<HList
 					horizontal
 					data={data}
 					showsHorizontalScrollIndicator={false}
 					renderItem={({ item }: any) => (
 						<CardSm activeOpacity={0.7} onPress={() => null}>
-							<Banner source={Images.TRAINING_ONE} />
+							<BannerSm
+								source={{
+									uri: 'https://s2-techtudo.glbimg.com/M8EXp8JrvIWbZf_Z2PU8y1PqZSk=/0x0:620x317/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/N/J/qblUsXRhiDT61CQQ3msA/2012-10-23-video-mostra-como-pegar-uma-garota-na-academia-literalmente.jpg',
+								}}
+							/>
 							<CardContent
 								style={{
-									marginTop: -10,
+									marginTop: -140,
 								}}
 							>
 								<HeaderStart>
 									<Badge>
 										<BadgeText
-											fontSize={11}
+											fontSize={16}
 											color="$black"
 											fontFamily="OpenSans-Medium"
 											textTransform="capitalize"
 											allowFontScaling={false}
 										>
-											{item.exercise}
+											🏋️‍♀️ {item.exercise}
 										</BadgeText>
 									</Badge>
 								</HeaderStart>
-								<CardTitleSm allowFontScaling={false}>{item.days}</CardTitleSm>
-								{/* <CardDescription>Um treino de costas completo</CardDescription> */}
-								<CardFooter>
-									<CardTextRow>
-										<ClockIcon color="#ccff00" size="2xs" />
-										<CardText allowFontScaling={false}>16 minutos</CardText>
-									</CardTextRow>
-									<AnimatedCircularProgress
-										size={32}
-										width={4}
-										fill={44}
-										tintColor="#ccff00"
-										onAnimationComplete={() => null}
-										backgroundColor="#585958"
-									>
-										{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
-									</AnimatedCircularProgress>
-								</CardFooter>
+
+								<CardTitleSm allowFontScaling={false}>{item.days} 📅</CardTitleSm>
+								<CardDescription allowFontScaling={false}>Um treino</CardDescription>
 							</CardContent>
 						</CardSm>
 					)}

@@ -10,6 +10,7 @@ export type propsNavigationStack = {
 	Illnesses: undefined
 	Joys: undefined
 	Vaccines: undefined
+	YourPlan: undefined
 	Medicines: undefined
 	DiseasesFamily: undefined
 	WorkRoom: undefined

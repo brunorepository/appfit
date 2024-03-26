@@ -5,7 +5,6 @@ import { createDrawerNavigator } from '@react-navigation/drawer'
 import TabNavigation from './tabs/tabs.routes'
 
 const drawerStyle = {
-	swipeEnabled: false,
 	drawerStyle: {
 		backgroundColor: '#191919',
 	},

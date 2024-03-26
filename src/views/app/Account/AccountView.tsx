@@ -16,7 +16,7 @@ const AccountView: React.FC = () => {
 				<ItemList>
 					<UserPhoto
 						source={{
-							uri: 'https://media-gig4-1.cdn.whatsapp.net/v/t61.24694-24/360284187_628747575881805_6206994618273828932_n.jpg?ccb=11-4&oh=01_AdRH91AzlEIo3XpUT1kGcVm9sx1nUL4jUunaU-dMtTdhEA&oe=65CFAEEC&_nc_sid=e6ed6c&_nc_cat=108',
+							uri: 'https://instagram.fvix5-1.fna.fbcdn.net/v/t51.2885-19/432260391_1343324019673881_6728784793413005573_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fvix5-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=qhzpgwr97QYAX-fQHQv&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfAF9zVI_qxrY7F2zhwFwCpwLFP9k6Apq3Fcty-IWwXQnA&oe=65FD6A2A&_nc_sid=8b3546',
 						}}
 					/>
 					<UserName>Cid Malta Corrêa</UserName>

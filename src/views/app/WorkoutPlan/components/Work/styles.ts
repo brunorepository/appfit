@@ -8,7 +8,7 @@ export const Exercise = styled.TouchableOpacity`
 	margin-top: 6px;
 	margin-bottom: 6px;
 	align-items: center;
-	background-color: #191919;
+	background-color: #1c1c1e;
 	padding-left: 8px;
 	padding-right: 16px;
 	elevation: 5;
@@ -28,7 +28,7 @@ export const Title = styled.Text`
 	font-family: 'OpenSans-SemiBold';
 `
 export const Instructions = styled.Text`
-	color: #ffff;
+	color: #cccccc;
 	font-family: 'OpenSans-Medium';
 	margin-top: 4px;
 `

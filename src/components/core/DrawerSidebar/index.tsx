@@ -1,9 +1,16 @@
 import React from 'react'
-import { Images } from 'src/adapters/constants'
-import { Box, VStack, Text, ChevronRightIcon, EditIcon, Badge } from '@gluestack-ui/themed'
+import { TouchableOpacity } from 'react-native'
+import { propsStack } from 'routes/models/stack-models'
+import { useAuth } from 'src/contexts/AuthContext'
+import { Box, VStack, Text, ChevronRightIcon, EditIcon } from '@gluestack-ui/themed'
+import { useNavigation } from '@react-navigation/native'
 import { SideBar, ItemList, UserPhoto } from './styles'
 
 const DrawerSidebar: React.FC = () => {
+	const navigation = useNavigation<propsStack>()
+
+	const { signOut } = useAuth()
+
 	const userType = 'personal'
 
 	return (
@@ -11,7 +18,7 @@ const DrawerSidebar: React.FC = () => {
 			<ItemList>
 				<UserPhoto
 					source={{
-						uri: 'https://scontent.fvix5-1.fna.fbcdn.net/v/t39.30808-6/424578484_397225366117284_4681380279233710549_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=5f2048&_nc_eui2=AeGSeTAHI9nQ_yBHNxApehnwL4UK6CGOg7cvhQroIY6Dt_mAwSaIbWvgsuTvKiITZ8SLtJ_mZ3cRZZSljUz2eYim&_nc_ohc=pMCrkBCWJAsAX-kd-Ei&_nc_ht=scontent.fvix5-1.fna&cb_e2o_trans=t&oh=00_AfCqAKL6jgGH99mXIt807UivnvE-8Dyc-fBg1oKnoNpiAQ&oe=65ED10D4',
+						uri: 'https://instagram.fvix5-1.fna.fbcdn.net/v/t51.2885-19/432260391_1343324019673881_6728784793413005573_n.jpg?stp=dst-jpg_s320x320&_nc_ht=instagram.fvix5-1.fna.fbcdn.net&_nc_cat=109&_nc_ohc=CTQkZFTeV24AX-oczcm&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AfCAJ63PwyZoIEXvqv9Z5k1TTMXeVmrQaXK52pFixqfg-w&oe=65FF646A&_nc_sid=8b3546',
 					}}
 					imageStyle={{
 						borderRadius: 100,
@@ -136,34 +143,58 @@ const DrawerSidebar: React.FC = () => {
 								<ChevronRightIcon color="$white" />
 							</Box>
 						)}
-						<Box
-							w="90%"
-							borderRadius="$lg"
-							paddingHorizontal={6}
-							borderBottomWidth={0.5}
-							borderColor="#585958"
-							paddingVertical={12}
-							flexDirection="row"
-							alignItems="center"
-							justifyContent="space-between"
-						>
-							<Box flexDirection="column">
-								<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
-									Faturas:
-								</Text>
-								<Box flexDirection="row">
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
-										1 fatura em aberto
+						<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('YourPlan')}>
+							<Box
+								w="90%"
+								borderRadius="$lg"
+								paddingHorizontal={6}
+								borderBottomWidth={0.5}
+								borderColor="#585958"
+								paddingVertical={12}
+								flexDirection="row"
+								alignItems="center"
+								justifyContent="space-between"
+							>
+								<Box flexDirection="column">
+									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
+										Assinatura:
 									</Text>
-									<Badge borderRadius={80} ml={8} backgroundColor="#CCFF00">
-										<Text fontFamily="OpenSans-Bold" color="#000000" mt={3}>
-											2
+									<Box flexDirection="row">
+										<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+											Renovação automática no cartão
 										</Text>
-									</Badge>
+									</Box>
 								</Box>
+								<ChevronRightIcon color="$white" />
 							</Box>
-							<ChevronRightIcon color="$white" />
-						</Box>
+						</TouchableOpacity>
+
+						<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('YourPlan')}>
+							<Box
+								w="90%"
+								borderRadius="$lg"
+								paddingHorizontal={6}
+								borderBottomWidth={0.5}
+								borderColor="#585958"
+								paddingVertical={12}
+								flexDirection="row"
+								alignItems="center"
+								justifyContent="space-between"
+							>
+								<Box flexDirection="column">
+									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
+										Anamnese:
+									</Text>
+									<Box flexDirection="row">
+										<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+											Ficha totalmente preenchida
+										</Text>
+									</Box>
+								</Box>
+								<ChevronRightIcon color="$white" />
+							</Box>
+						</TouchableOpacity>
+
 						<Box
 							w="90%"
 							borderRadius="$lg"
@@ -173,11 +204,13 @@ const DrawerSidebar: React.FC = () => {
 							alignItems="center"
 							justifyContent="space-between"
 						>
-							<Box flexDirection="column">
-								<Text fontFamily="OpenSans-Bold" color="#ff0000" mt={3}>
-									Sair da conta
-								</Text>
-							</Box>
+							<TouchableOpacity activeOpacity={0.8} onPress={signOut}>
+								<Box flexDirection="column">
+									<Text fontFamily="OpenSans-Bold" color="#ff0000" mt={3}>
+										Sair da conta
+									</Text>
+								</Box>
+							</TouchableOpacity>
 						</Box>
 					</VStack>
 				</Box>

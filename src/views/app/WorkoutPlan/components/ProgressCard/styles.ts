@@ -27,7 +27,7 @@ export const Title = styled.Text`
 	font-family: 'OpenSans-SemiBold';
 `
 export const Instructions = styled.Text`
-	color: #ffff;
+	color: #cccccc;
 	font-family: 'OpenSans-Medium';
 `
 export const Texts = styled.View`
@@ -36,7 +36,7 @@ export const Texts = styled.View`
 	justify-content: flex-start;
 `
 export const Duration = styled.Text`
-	color: #ffff;
+	color: #cccccc;
 	font-family: 'OpenSans-Medium';
 	font-size: 12px;
 `

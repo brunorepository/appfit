@@ -18,9 +18,20 @@ import {
 
 type PersonalChartsProps = {
 	onPressLinkShare: () => void
+	onPressClients: () => void
 }
 
-const PersonalCharts: React.FC<PersonalChartsProps> = ({ onPressLinkShare }) => {
+// eslint-disable-next-line no-unused-vars
+const dataPersonalCharts = [
+	{ title: 'VENDAS', icon: 'attach-money' },
+	{ title: '', icon: 'users' },
+	{ title: '', icon: 'ticket' },
+	{ title: '', icon: 'stacked-line-chart' },
+	{ title: '', icon: 'account-balance-wallet' },
+	{ title: '', icon: 'account-balance-wallet' },
+]
+
+const PersonalCharts: React.FC<PersonalChartsProps> = ({ onPressLinkShare, onPressClients }) => {
 	return (
 		<Charts>
 			<Row>
@@ -46,13 +57,22 @@ const PersonalCharts: React.FC<PersonalChartsProps> = ({ onPressLinkShare }) => 
 					<Money name="attach-money" color="#000000" size={20} />
 				</GreenCircle>
 			</SalesCard>
-			<SalesCard>
+			<SalesCard onPress={onPressClients} activeOpacity={0.7}>
 				<FlexColumn>
 					<SalesTitle>Clientes Ativos</SalesTitle>
 					<WhiteText>78</WhiteText>
 				</FlexColumn>
 				<GreenCircle>
 					<Users name="users" color="#000000" size={20} />
+				</GreenCircle>
+			</SalesCard>
+			<SalesCard onPress={onPressClients} activeOpacity={0.7}>
+				<FlexColumn>
+					<SalesTitle>Treinos montados</SalesTitle>
+					<WhiteText>55</WhiteText>
+				</FlexColumn>
+				<GreenCircle>
+					<Users name="calendar" color="#000000" size={20} />
 				</GreenCircle>
 			</SalesCard>
 			<SalesCard>

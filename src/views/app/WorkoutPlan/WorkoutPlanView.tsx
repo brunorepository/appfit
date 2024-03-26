@@ -13,12 +13,6 @@ const WorkoutPlanView: React.FC = () => {
 					<ProgressCard />
 					<Work />
 					<Work />
-					<Work />
-					<Work />
-					<Work />
-					<Work />
-					<Work />
-					<Work />
 				</Container>
 			</ScrollCustomized>
 			<FooterButtonContainer>

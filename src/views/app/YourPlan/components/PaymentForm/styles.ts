@@ -8,7 +8,7 @@ export const Form = styled.View`
 	background-color: #323232;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: -38px;
+	margin-top: 2px;
 `
 export const CreditCard = styled.View`
 	width: 88%;
@@ -16,6 +16,19 @@ export const CreditCard = styled.View`
 	border-radius: 10px;
 	padding: 18px;
 	border: solid 1px #cdcdcd;
+`
+export const Title = styled.Text`
+	color: #ffff;
+	font-family: 'OpenSans-SemiBold';
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 24px;
+	margin-left: 20px;
+	margin-right: 20px;
+`
+export const Value = styled.Text`
+	color: #ccff00;
+	font-family: 'OpenSans-Bold';
 `
 export const Col = styled.View`
 	flex-direction: column;
