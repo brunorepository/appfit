@@ -18,7 +18,7 @@ export const Title = styled.Text`
 `
 export const Warning = styled.Text`
 	font-family: 'OpenSans-SemiBold';
-	color: #ccff00;
+	color: #0ed907;
 	font-size: 16px;
 `
 export const Actions = styled.View`
@@ -53,7 +53,7 @@ export const CircleWhite = styled.View`
 export const CircleYellow = styled.TouchableOpacity`
 	width: 110px;
 	height: 110px;
-	border: ${({ showBorder }: any) => (showBorder ? 'solid 4px #ccff00' : 'solid 4px #ffff')};
+	border: ${({ showBorder }: any) => (showBorder ? 'solid 4px #0ED907' : 'solid 4px #ffff')};
 	border-radius: 100px;
 	align-items: center;
 	justify-content: center;

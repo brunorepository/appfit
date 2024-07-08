@@ -45,7 +45,7 @@ export const Warning = styled.Text`
 	margin-left: 24px;
 `
 export const TitleYellow = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-size: 30px;
 	margin-top: -6px;
 	align-self: flex-start;

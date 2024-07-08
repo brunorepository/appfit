@@ -48,7 +48,7 @@ const ChangeDataHealthForm: React.FC<ChangeDataHealthFormProps> = ({ data, handl
 								{question.options.map((option, optionIndex) => (
 									// eslint-disable-next-line react/no-array-index-key
 									<Radio key={optionIndex} size="sm" value={option.value}>
-										<RadioIndicator mr="$2" borderColor="#CCFF00">
+										<RadioIndicator mr="$2" borderColor="#0ED907">
 											<RadioIcon as={CheckedIcon} />
 										</RadioIndicator>
 										<RadioLabel color="$white" fontFamily="OpenSans-SemiBold">

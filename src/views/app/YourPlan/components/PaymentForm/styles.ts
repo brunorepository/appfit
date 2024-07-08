@@ -27,7 +27,7 @@ export const Title = styled.Text`
 	margin-right: 20px;
 `
 export const Value = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-Bold';
 `
 export const Col = styled.View`

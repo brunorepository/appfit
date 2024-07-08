@@ -79,7 +79,7 @@ const QuizForm: React.FC<QuizFormProps> = ({ data }) => {
 							<VStack space="lg">
 								{answerOptions.map((option) => (
 									<Radio key={option} value={option} size="md" borderColor="#ffff">
-										<RadioIndicator mr="$2" borderColor="#CCFF00">
+										<RadioIndicator mr="$2" borderColor="#0ED907">
 											<RadioIcon as={CheckedIcon} />
 										</RadioIndicator>
 										<RadioLabel color="$white" fontFamily="OpenSans-SemiBold">

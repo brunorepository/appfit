@@ -53,7 +53,7 @@ export const SalesPrice = styled.Text`
 	margin-top: 2px;
 `
 export const WhiteText = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-Bold';
 	text-transform: uppercase;
 	font-size: 22px;
@@ -63,7 +63,7 @@ export const FlexColumn = styled.View`
 	flex-direction: column;
 `
 export const GreenCircle = styled.View`
-	background-color: #ccff00;
+	background-color: #0ed907;
 	width: 40px;
 	height: 90%;
 	border-radius: 100px;

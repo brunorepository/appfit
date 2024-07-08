@@ -23,10 +23,10 @@ export const Forms = styled.ScrollView`
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	margin-bottom: 16px;
-	border: solid 1px #ccff00;
+	border: solid 1px #0ed907;
 `
 export const LoginAccount = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-size: 12px;
 	margin-top: 24px;
 	font-family: 'OpenSans-SemiBold';

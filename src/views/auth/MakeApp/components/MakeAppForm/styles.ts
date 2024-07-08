@@ -42,19 +42,19 @@ export const ContentPreview = styled.View`
 export const Skeleton1 = styled.View`
 	width: 60%;
 	height: 14px;
-	background-color: #ccff00;
+	background-color: #0ed907;
 	border-radius: 100px;
 	margin-bottom: 8px;
 `
 export const Skeleton2 = styled.View`
 	width: 90%;
 	height: 14px;
-	background-color: #ccff00;
+	background-color: #0ed907;
 	border-radius: 100px;
 	margin-top: 4px;
 `
 export const AppName = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-Bold';
 `
 export const Forms = styled.View`

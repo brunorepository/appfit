@@ -23,7 +23,7 @@ const WorkoutsView: React.FC = () => {
 						fontSize: 12,
 					}}
 					placeholderTextColor="#ffff"
-					cursorColor="#ccff00"
+					cursorColor="#0ED907"
 					placeholder="Procurar aqui..."
 					// eslint-disable-next-line no-console
 					onPress={() => console.log('onPress')}

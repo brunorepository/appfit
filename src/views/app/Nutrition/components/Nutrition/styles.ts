@@ -12,7 +12,7 @@ export const Header = styled.View`
 	margin-left: 8px;
 `
 export const Value = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 8px;
 `
@@ -34,7 +34,7 @@ export const Title = styled.Text`
 	align-self: flex-start;
 `
 export const TitleYellow = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-ExtraBold';
 `
 export const Heading = styled.Text`
@@ -52,7 +52,7 @@ export const HeaderStart = styled.View`
 export const Badge = styled.View`
 	flex-direction: row;
 	align-items: center;
-	background-color: #ccff00;
+	background-color: #0ed907;
 	border-radius: 5px;
 	padding-left: 6px;
 	padding-right: 6px;

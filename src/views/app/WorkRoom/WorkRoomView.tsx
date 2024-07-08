@@ -19,11 +19,11 @@ const WorkRoomView: React.FC = () => {
 			<Container>
 				<Video />
 				<Texts>
-					<Title>Elevação lateral e frontal com halteres em pé</Title>
+					<Title>Remada máquina unilateral</Title>
 				</Texts>
 				<Texts>
 					<Warning>
-						Peso recomendado: 10kg para cada braço <InfoIcon color="#CCFF00" />
+						Peso recomendado: 10kg para cada braço <InfoIcon color="#0ED907" />
 					</Warning>
 				</Texts>
 				<Actions>
@@ -32,7 +32,7 @@ const WorkRoomView: React.FC = () => {
 					</CircleWhite>
 
 					<CircleYellow activeOpacity={0.8} onPress={handleLock} showBorder={locked}>
-						{locked ? <LockIcon size="xl" color="#CCFF00" /> : <UnlockIcon size="xl" color="#ffff" />}
+						{locked ? <LockIcon size="xl" color="#0ED907" /> : <UnlockIcon size="xl" color="#ffff" />}
 					</CircleYellow>
 
 					<CircleWhite>

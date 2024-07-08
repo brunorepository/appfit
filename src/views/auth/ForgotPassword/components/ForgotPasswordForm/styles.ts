@@ -34,7 +34,7 @@ export const UserButton = styled.TouchableOpacity`
 	border-radius: 10px;
 	align-items: center;
 	justify-content: center;
-	border-color: #ccff00;
+	border-color: #0ed907;
 	border-width: ${({ isSelected }: any) => (isSelected ? '1px' : '0px')};
 `
 export const UserText = styled.Text`

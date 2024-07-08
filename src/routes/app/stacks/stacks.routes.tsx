@@ -31,7 +31,7 @@ const StackNavigation: React.FC = () => {
 		)
 
 	const Next = styled.Text`
-		color: #ccff00;
+		color: #0ed907;
 		font-family: 'OpenSans-Bold';
 		font-size: 18px;
 	`
@@ -78,7 +78,7 @@ const StackNavigation: React.FC = () => {
 						fontFamily: 'OpenSans-SemiBold',
 						fontSize: 18,
 					},
-					headerTintColor: '#CCFF00',
+					headerTintColor: '#0ED907',
 					headerRight: () => (
 						<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
 							<Next>00:00</Next>
@@ -98,13 +98,13 @@ const StackNavigation: React.FC = () => {
 						fontFamily: 'OpenSans-SemiBold',
 						fontSize: 18,
 					},
-					headerTintColor: '#CCFF00',
+					headerTintColor: '#0ED907',
 					headerRight: () => (
 						<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
 							<Next>00:00</Next>
 						</TouchableOpacity>
 					),
-					title: 'Esteira - 10 minutos',
+					title: 'Remada máquina unilateral - 10 minutos',
 				}}
 			/>
 			<Screen
@@ -118,7 +118,7 @@ const StackNavigation: React.FC = () => {
 						fontFamily: 'OpenSans-SemiBold',
 						fontSize: 18,
 					},
-					headerTintColor: '#CCFF00',
+					headerTintColor: '#0ED907',
 					title: 'Assinatura',
 				}}
 			/>

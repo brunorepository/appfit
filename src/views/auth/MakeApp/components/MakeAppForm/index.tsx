@@ -50,9 +50,9 @@ const MakeAppForm: React.FC<MakeAppFormProps> = ({ isLoading, handleLogin }) => 
 		<Form>
 			<AppPreview>
 				<AppHeader>
-					<MaterialCommunityIcons name="menu" color={selectedColor || '#CCFF00'} size={15} style={{}} />
+					<MaterialCommunityIcons name="menu" color={selectedColor || '#0ED907'} size={15} style={{}} />
 					<AppName>{appName || 'FitPersonal'}</AppName>
-					<MaterialCommunityIcons name="bell" color={selectedColor || '#CCFF00'} size={15} style={{}} />
+					<MaterialCommunityIcons name="bell" color={selectedColor || '#0ED907'} size={15} style={{}} />
 				</AppHeader>
 				<ContentPreview>
 					<Skeleton1 />
