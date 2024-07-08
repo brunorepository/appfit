@@ -36,7 +36,7 @@ const InputGender: React.FC = () => {
 					<SelectIcon>
 						<Icon />
 					</SelectIcon>
-					<InputIcon as={ChevronDownIcon} color="#CCFF00" />
+					<InputIcon as={ChevronDownIcon} color="#0ED907" />
 				</SelectTrigger>
 				<SelectPortal>
 					<SelectBackdrop />

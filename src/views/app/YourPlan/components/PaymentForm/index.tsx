@@ -63,7 +63,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ isLoading, handleLogin }) => 
 						<Label>CVC:</Label>
 						<BoldText>321</BoldText>
 					</Col>
-					<CardIcon name="integrated-circuit-chip" size={40} color="#ccff00" />
+					<CardIcon name="integrated-circuit-chip" size={40} color="#0ED907" />
 				</Row>
 			</CreditCard>
 			<ReturnInputs setData={setData} data={data} errors={{}} refPayCard={{}} onSubmit={() => null} />

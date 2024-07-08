@@ -16,7 +16,7 @@ const Work: React.FC = () => {
 					}}
 				/>
 				<Texts>
-					<Title>Esteira</Title>
+					<Title>Remada máquina unilateral</Title>
 					<Instructions>25 min | 110 - 140 bpm</Instructions>
 				</Texts>
 			</Start>

@@ -37,7 +37,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										Nome:
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										Cid Malta Corrêa
 									</Text>
 								</Box>
@@ -58,7 +58,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										Endereço de e-mail:
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										cidmalta@fitpersonal.com.br
 									</Text>
 								</Box>
@@ -79,7 +79,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										Objetivo:
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										Ganhar massa muscular
 									</Text>
 								</Box>
@@ -100,7 +100,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										IMC (Índice de massa corporal):
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										24.69
 									</Text>
 								</Box>
@@ -121,7 +121,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										Seu Personal Trainer:
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										Henrique Reis
 									</Text>
 								</Box>
@@ -142,7 +142,7 @@ const AccountView: React.FC = () => {
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
 										Faturas:
 									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#CCFF00" mt={3}>
+									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
 										Nenhuma fatura em aberto
 									</Text>
 								</Box>

@@ -27,7 +27,7 @@ export const Description = styled.Text`
 `
 export const Link = styled.Text`
 	font-family: 'OpenSans-Bold';
-	color: #ccff00;
+	color: #0ed907;
 `
 export const CardArea = styled.View`
 	background-color: #323232;

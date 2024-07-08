@@ -7,6 +7,7 @@ import StackNavigation from 'routes/app/stacks/stacks.routes'
 import { propsDrawer } from 'routes/models/drawer-navigation-models'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
+import FilesView from 'views/app/Files/FilesView'
 import NutritionView from 'views/app/Nutrition/NutritionView'
 import { Menu, MenuItem, MenuItemLabel } from '@gluestack-ui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -15,13 +16,13 @@ import { useNavigation } from '@react-navigation/native'
 const TabNavigation: React.FC = () => {
 	const { Navigator, Screen } = createBottomTabNavigator<propsNavigationStack>()
 
-	const userType = 'student'
+	const userType: any = 'student'
 
 	const navigation = useNavigation<propsDrawer>()
 
 	const Touchable = styled.TouchableOpacity``
 	const Title = styled.Text`
-		color: #ccff00;
+		color: #0ed907;
 		font-family: 'OpenSans-Bold';
 		font-size: 18px;
 	`
@@ -31,22 +32,23 @@ const TabNavigation: React.FC = () => {
 			id: 1,
 			name: 'Home',
 			component: StackNavigation,
-			title: 'Henrique Reis LTDA',
+			title: 'MÉTODO HFIT',
 			icon: userType === 'personal' ? 'money-bill-trend-up' : 'calendar-check',
 		},
+
 		{
 			id: 2,
+			name: 'Files',
+			component: FilesView,
+			title: 'Arquivos',
+			icon: 'folder',
+		},
+		{
+			id: 3,
 			name: 'Nutrition',
 			component: NutritionView,
 			title: userType === 'personal' ? 'Clientes' : 'Nutrição',
 			icon: userType === 'personal' ? 'users' : 'food-apple',
-		},
-		{
-			id: 3,
-			name: 'Files',
-			component: NutritionView,
-			title: 'Arquivos',
-			icon: 'folder',
 		},
 	]
 
@@ -59,8 +61,8 @@ const TabNavigation: React.FC = () => {
 				},
 				tabBarAllowFontScaling: false,
 				headerTitleAllowFontScaling: false,
-				headerTintColor: '#CCFF00',
-				tabBarActiveTintColor: '#CCFF00',
+				headerTintColor: '#0ED907',
+				tabBarActiveTintColor: '#0ED907',
 				tabBarShowLabel: false,
 				headerTitleStyle: {
 					fontFamily: 'OpenSans-Bold',
@@ -94,7 +96,7 @@ const TabNavigation: React.FC = () => {
 							<Touchable activeOpacity={0.8} onPress={() => navigation.openDrawer()}>
 								<Bell
 									name="menu"
-									color="#CCFF00"
+									color="#0ED907"
 									size={20}
 									style={{
 										marginLeft: 12,
@@ -111,7 +113,7 @@ const TabNavigation: React.FC = () => {
 										<Touchable {...triggerProps}>
 											<Bell
 												name="bell"
-												color="#CCFF00"
+												color="#0ED907"
 												size={20}
 												style={{
 													marginRight: 12,
@@ -127,7 +129,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -140,7 +142,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -153,7 +155,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -166,7 +168,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -179,7 +181,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -193,7 +195,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -206,7 +208,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -219,7 +221,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,
@@ -232,7 +234,7 @@ const TabNavigation: React.FC = () => {
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell
 										name="alert"
-										color="#CCFF00"
+										color="#0ED907"
 										size={15}
 										style={{
 											marginRight: 6,

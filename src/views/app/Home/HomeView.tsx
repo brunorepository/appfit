@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { AppTemplate } from 'components/templates'
 // import { propsStack } from 'routes/models/stack-models'
+import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
+import userType from 'store/atoms/userTypeAtom'
 import ModalAnamnese from 'views/app/Home/components/ModalAnamnese'
 import PersonalCharts from 'views/app/Home/components/PersonalCharts'
 // import { useNavigation } from '@react-navigation/native'
@@ -98,7 +100,9 @@ const HomeView: React.FC = () => {
 
 	const [modalVisible, setModalVisible] = useState(false)
 
-	const loggedUserType: any = 'student'
+	const [typeUser, setUserType] = useRecoilState(userType)
+
+	const loggedUserType: any = typeUser
 
 	if (loggedUserType === 'personal') {
 		return (
@@ -117,9 +121,7 @@ const HomeView: React.FC = () => {
 	return (
 		<AppTemplate>
 			<Container>
-				<ModalAnamnese isVisible={!modalVisible} onBackdropPress={() => setModalVisible(!modalVisible)} />
-
-				<Card activeOpacity={0.8} onPress={() => navigation.navigate('WorkoutPlan')}>
+				<Card activeOpacity={0.8} onPress={() => navigation.navigate('WorkoutPlan', { workoutType: '' })}>
 					<Banner
 						source={{
 							uri: 'https://s2-techtudo.glbimg.com/M8EXp8JrvIWbZf_Z2PU8y1PqZSk=/0x0:620x317/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/N/J/qblUsXRhiDT61CQQ3msA/2012-10-23-video-mostra-como-pegar-uma-garota-na-academia-literalmente.jpg',

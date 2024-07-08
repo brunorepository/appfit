@@ -11,7 +11,7 @@ export const UserPhoto = styled.Image`
 	height: 95px;
 	border-radius: 120px;
 	background-color: #323232;
-	border: solid 1px #ccff00;
+	border: solid 1px #0ed907;
 `
 export const UserName = styled.Text`
 	font-family: 'OpenSans-Bold';
@@ -23,7 +23,7 @@ export const UserName = styled.Text`
 export const ItemList = styled.View`
 	width: 90%;
 	background-color: #323232;
-	border: solid 0.5px #ccff00;
+	border: solid 0.5px #0ed907;
 	align-items: center;
 	padding-top: 24px;
 	elevation: 5;

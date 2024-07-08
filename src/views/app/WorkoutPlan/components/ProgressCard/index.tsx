@@ -10,7 +10,7 @@ const ProgressCard: React.FC = () => {
 					size={50}
 					width={3}
 					fill={33}
-					tintColor="#ccff00"
+					tintColor="#0ED907"
 					onAnimationComplete={() => null}
 					backgroundColor="#585958"
 				>

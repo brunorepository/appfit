@@ -13,7 +13,7 @@ export const Header = styled.View`
 	width: 100%;
 	padding-top: 18px;
 	padding-bottom: 64px;
-	background-color: #ccff00;
+	background-color: #0ed907;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
@@ -34,13 +34,13 @@ export const Version = styled.Text`
 	font-family: 'OpenSans-SemiBold';
 `
 export const HeaderTitle = styled.Text`
-	color: #191919;
+	color: #2a2f40;
 	font-family: 'OpenSans-Bold';
 	font-size: 20px;
 	text-align: center;
 `
 export const HeaderInfo = styled.Text`
-	color: #191919;
+	color: #2a2f40;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 11px;
 	margin-top: 2px;

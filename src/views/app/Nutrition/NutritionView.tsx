@@ -18,7 +18,7 @@ const NutritionView: React.FC = () => {
 
 	return (
 		<AppTemplate>
-			<Container colors={['#1c1c1e', '#262525', '#ccff00b1']}>{returnUserContent()}</Container>
+			<Container colors={['#1c1c1e', '#262525', '#0ED907b1']}>{returnUserContent()}</Container>
 		</AppTemplate>
 	)
 }

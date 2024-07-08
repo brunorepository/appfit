@@ -1,4 +1,4 @@
-import { ICreateAccount, IHealth } from 'src/types/Types'
+import { ICreateAccount, IHealth, IWorkoutPlan } from 'src/types/Types'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export type propsNavigationStack = {
@@ -15,7 +15,7 @@ export type propsNavigationStack = {
 	DiseasesFamily: undefined
 	WorkRoom: undefined
 	ChangeDataHealth: IHealth
-	WorkoutPlan: undefined
+	WorkoutPlan: IWorkoutPlan
 	PhysicalAssessment: undefined
 	PhysicalActivityHistory: undefined
 	Payment: undefined

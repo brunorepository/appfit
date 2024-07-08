@@ -26,7 +26,7 @@ const InputValue: React.FC<InputValueProps> = ({ value, onChangeText }) => {
 				/>
 				<InputSlot>
 					<InputIcon size="md" color="$amber800">
-						<AddIcon color="#CCFF00" />
+						<AddIcon color="#0ED907" />
 					</InputIcon>
 				</InputSlot>
 			</Input>

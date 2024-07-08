@@ -41,7 +41,7 @@ export const Duration = styled.Text`
 	font-size: 12px;
 `
 export const Value = styled.Text`
-	color: #ccff00;
+	color: #0ed907;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 12px;
 `

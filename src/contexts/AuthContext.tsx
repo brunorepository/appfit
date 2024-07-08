@@ -1,4 +1,6 @@
 import React, { ReactNode, createContext, useContext, useState } from 'react'
+import { useRecoilState } from 'recoil'
+import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
 
 // Definindo o tipo para o usuário
 type User = {
@@ -28,6 +30,7 @@ const AuthContext = createContext<AuthContextType>({
 // Provedor de autenticação que será utilizado na aplicação
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
+	const [authContext, setAuthContext] = useRecoilState(isAuthenticated)
 
 	// Função para simular o login
 	const signIn = (username: string) => {
@@ -39,6 +42,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	// Função para simular o logout
 	const signOut = () => {
 		setUser(null)
+		setAuthContext(false)
 	}
 
 	return <AuthContext.Provider value={{ user, signIn, signOut }}>{children}</AuthContext.Provider>

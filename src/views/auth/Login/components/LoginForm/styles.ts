@@ -27,7 +27,7 @@ export const UserButton = styled.TouchableOpacity`
 	border-radius: 20px;
 	align-items: center;
 	justify-content: center;
-	border-color: #ccff00;
+	border-color: #0ed907;
 	border-width: ${({ isSelected }: any) => (isSelected ? '1px' : '0px')};
 `
 export const UserText = styled.Text`
@@ -42,7 +42,7 @@ export const ForgotPassword = styled.Text`
 	margin-top: 4px;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 12px;
-	color: #ccff00;
+	color: #0ed907;
 	text-decoration-line: underline;
 `
 export const ButtonGroup = styled.View`
