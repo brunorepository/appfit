@@ -7,7 +7,6 @@ import StackNavigation from 'routes/app/stacks/stacks.routes'
 import { propsDrawer } from 'routes/models/drawer-navigation-models'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
-import FilesView from 'views/app/Files/FilesView'
 import NutritionView from 'views/app/Nutrition/NutritionView'
 import { Menu, MenuItem, MenuItemLabel } from '@gluestack-ui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -32,22 +31,14 @@ const TabNavigation: React.FC = () => {
 			id: 1,
 			name: 'Home',
 			component: StackNavigation,
-			title: 'MÉTODO HFIT',
+			title: 'Plano de treinos',
 			icon: userType === 'personal' ? 'money-bill-trend-up' : 'calendar-check',
-		},
-
-		{
-			id: 2,
-			name: 'Files',
-			component: FilesView,
-			title: 'Arquivos',
-			icon: 'folder',
 		},
 		{
 			id: 3,
 			name: 'Nutrition',
 			component: NutritionView,
-			title: userType === 'personal' ? 'Clientes' : 'Nutrição',
+			title: 'Plano de dieta',
 			icon: userType === 'personal' ? 'users' : 'food-apple',
 		},
 	]
@@ -63,14 +54,16 @@ const TabNavigation: React.FC = () => {
 				headerTitleAllowFontScaling: false,
 				headerTintColor: '#0ED907',
 				tabBarActiveTintColor: '#0ED907',
-				tabBarShowLabel: false,
 				headerTitleStyle: {
 					fontFamily: 'OpenSans-Bold',
 					fontSize: 14,
 				},
+				tabBarLabelStyle: {
+					fontFamily: 'OpenSans-SemiBold',
+				},
 				tabBarStyle: {
 					backgroundColor: '#1c1c1e',
-					height: 55,
+					height: 65,
 					paddingTop: 6,
 					paddingBottom: 6,
 					borderTopWidth: 0,
@@ -85,6 +78,7 @@ const TabNavigation: React.FC = () => {
 					options={{
 						headerShown: true,
 						headerTitle: screen.title,
+						title: screen.title,
 						headerTitleAlign: 'center',
 						tabBarIcon: ({ color, size }) =>
 							userType === 'personal' ? (
@@ -125,111 +119,6 @@ const TabNavigation: React.FC = () => {
 							>
 								<MenuItem>
 									<Title>Notificações</Title>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
 								</MenuItem>
 								<MenuItem key="Notification" textValue="Notification">
 									<Bell

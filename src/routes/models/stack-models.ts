@@ -19,6 +19,7 @@ export type propsNavigationStack = {
 	PhysicalAssessment: undefined
 	PhysicalActivityHistory: undefined
 	Payment: undefined
+	Charts: undefined
 	FinalQuestions: undefined
 	AvailableEquipment: undefined
 	Plans: undefined

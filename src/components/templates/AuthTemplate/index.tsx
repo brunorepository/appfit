@@ -30,7 +30,7 @@ const AuthTemplate: React.FC<AuthTemplateProps> = ({ showBack, children, title, 
 					</Top>
 				)}
 
-				<HeaderTitle allowFontScaling={false}>{title || 'Bem vindo(a) de volta!'}</HeaderTitle>
+				<HeaderTitle allowFontScaling={false}>{title || 'Bem vindo(a) ao HFIT!'}</HeaderTitle>
 				<HeaderInfo allowFontScaling={false}>
 					{description || 'Insira suas credenciais abaixo para acessar a plataforma'}
 				</HeaderInfo>

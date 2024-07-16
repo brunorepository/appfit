@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { TouchableOpacity } from 'react-native'
 import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
+import { AuthContext } from 'src/contexts/AuthContext'
 import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
 import { Box, VStack, Text, ChevronRightIcon, EditIcon } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
@@ -13,23 +14,11 @@ const DrawerSidebar: React.FC = () => {
 
 	const userType: any = 'student'
 
+	const { logout, user } = useContext(AuthContext)
+
 	return (
 		<SideBar>
 			<ItemList>
-				<UserPhoto
-					source={{
-						uri: 'https://st3.depositphotos.com/1000816/18270/i/450/depositphotos_182709340-stock-photo-successful-businessman-sitting-in-the.jpg',
-					}}
-					imageStyle={{
-						borderRadius: 100,
-						borderWidth: 1,
-						borderColor: '#0ED907',
-						alignItems: 'center',
-						justifyContent: 'center',
-					}}
-				>
-					<EditIcon color="#ffff" size="md" />
-				</UserPhoto>
 				<Box mt={8} justifyContent="center" alignItems="center">
 					<VStack space="sm">
 						<Box
@@ -48,7 +37,7 @@ const DrawerSidebar: React.FC = () => {
 									Nome:
 								</Text>
 								<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
-									Bruno Da Silva Freitas
+									{user.name}
 								</Text>
 							</Box>
 							<ChevronRightIcon color="$white" />
@@ -69,35 +58,12 @@ const DrawerSidebar: React.FC = () => {
 									Endereço de e-mail:
 								</Text>
 								<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
-									bruno@fitpersonal.com.br
+									{user.email}
 								</Text>
 							</Box>
 							<ChevronRightIcon color="$white" />
 						</Box>
 
-						{userType !== 'personal' && (
-							<Box
-								w="90%"
-								borderRadius="$lg"
-								paddingHorizontal={6}
-								borderBottomWidth={0.5}
-								borderColor="#585958"
-								paddingVertical={12}
-								flexDirection="row"
-								alignItems="center"
-								justifyContent="space-between"
-							>
-								<Box flexDirection="column">
-									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
-										Seu Personal Trainer:
-									</Text>
-									<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
-										Henrique Reis
-									</Text>
-								</Box>
-								<ChevronRightIcon color="$white" />
-							</Box>
-						)}
 						<TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate('YourPlan')}>
 							<Box
 								w="90%"
@@ -112,11 +78,11 @@ const DrawerSidebar: React.FC = () => {
 							>
 								<Box flexDirection="column">
 									<Text fontFamily="OpenSans-Medium" color="$white" fontSize={12}>
-										Assinatura:
+										Plano contratado:
 									</Text>
 									<Box flexDirection="row">
 										<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
-											Renovação automática no cartão
+											Plano De Treinos Anual
 										</Text>
 									</Box>
 								</Box>
@@ -141,8 +107,14 @@ const DrawerSidebar: React.FC = () => {
 										Anamnese:
 									</Text>
 									<Box flexDirection="row">
-										<Text fontFamily="OpenSans-Bold" color="#0ED907" mt={3}>
-											Ficha totalmente preenchida
+										<Text
+											fontFamily="OpenSans-Bold"
+											color={user.anamnese ? '#0ED907' : '#f6ff00'}
+											mt={3}
+										>
+											{user.anamnese
+												? 'Ficha totalmente preenchida'
+												: 'Ficha de anamnese incompleta'}
 										</Text>
 									</Box>
 								</Box>
@@ -159,7 +131,7 @@ const DrawerSidebar: React.FC = () => {
 							alignItems="center"
 							justifyContent="space-between"
 						>
-							<TouchableOpacity activeOpacity={0.8} onPress={() => setAuthContext(false)}>
+							<TouchableOpacity activeOpacity={0.8} onPress={() => logout()}>
 								<Box flexDirection="column">
 									<Text fontFamily="OpenSans-Bold" color="#ff0000" mt={3}>
 										Sair da conta

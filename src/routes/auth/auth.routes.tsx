@@ -1,19 +1,9 @@
 import React from 'react'
 import { propsNavigationStack } from 'routes/models/stack-models'
-import CreateAccountView from 'views/auth/CreateAccount/CreateAccountView'
-import ForgotPasswordView from 'views/auth/ForgotPassword/ForgotPasswordView'
 import LoginView from 'views/auth/Login/LoginView'
-import MakeAppView from 'views/auth/MakeApp/MakeAppView'
-import PaymentView from 'views/auth/Payment/PaymentView'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-const SCREEN_CONFIG = [
-	{ id: 1, name: 'Login', component: LoginView },
-	{ id: 2, name: 'ForgotPassword', component: ForgotPasswordView },
-	{ id: 3, name: 'CreateAccount', component: CreateAccountView },
-	{ id: 4, name: 'MakeApp', component: MakeAppView },
-	{ id: 5, name: 'Payment', component: PaymentView },
-]
+const SCREEN_CONFIG = [{ id: 1, name: 'Login', component: LoginView }]
 
 const AuthNavigation: React.FC = () => {
 	const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
