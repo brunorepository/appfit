@@ -1,3 +1,4 @@
+// store/atoms/isAuthenticatedAtom.ts
 import { atom } from 'recoil'
 
 const isAuthenticated = atom({

@@ -22,12 +22,12 @@ const InputEmail: React.FC<InputEmailProps> = ({ value, onChangeText }) => {
 					fontSize={12}
 					type="text"
 					inputMode="email"
-					placeholder="Endereço de E-mail"
+					placeholder="Insira o e-mail de acesso"
 					pl={6}
 					color="$white"
 					placeholderTextColor="#CDCDCD"
 					value={value}
-					onChange={onChangeText}
+					onChangeText={onChangeText}
 				/>
 			</Input>
 		</FormControl>

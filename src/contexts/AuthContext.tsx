@@ -1,52 +1,58 @@
-import React, { ReactNode, createContext, useContext, useState } from 'react'
-import { useRecoilState } from 'recoil'
-import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
+import React, { createContext, useState, useEffect, ReactNode } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
-// Definindo o tipo para o usuário
-type User = {
-	username: string
+interface User {
+	name: string
 	email: string
 }
 
-type AuthProviderProps = {
+interface AuthContextType {
+	user: User | null
+	login: (userData: User) => void
+	logout: () => void
+}
+
+export const AuthContext = createContext<AuthContextType | undefined>(undefined)
+
+interface AuthProviderProps {
 	children: ReactNode
 }
 
-// Definindo o tipo para o contexto de autenticação
-type AuthContextType = {
-	user: User | null
-	// eslint-disable-next-line no-unused-vars
-	signIn: (username: string, password: string) => void
-	signOut: () => void
-}
-
-// Criando o contexto de autenticação
-const AuthContext = createContext<AuthContextType>({
-	user: null,
-	signIn: () => {},
-	signOut: () => {},
-})
-
-// Provedor de autenticação que será utilizado na aplicação
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
-	const [authContext, setAuthContext] = useRecoilState(isAuthenticated)
 
-	// Função para simular o login
-	const signIn = (username: string) => {
-		// Aqui você faria a lógica real de autenticação, como fazer uma requisição para um servidor
-		// Neste exemplo, apenas definimos o usuário como logado
-		setUser({ username, email: `${username}@example.com` })
+	useEffect(() => {
+		const loadUser = async () => {
+			try {
+				const storedUser = await AsyncStorage.getItem('user')
+				if (storedUser) {
+					setUser(JSON.parse(storedUser))
+				}
+			} catch (error) {
+				console.error('Failed to load user:', error)
+			}
+		}
+
+		loadUser()
+	}, [])
+
+	const login = async (userData: User) => {
+		try {
+			await AsyncStorage.setItem('user', JSON.stringify(userData))
+			setUser(userData)
+		} catch (error) {
+			console.error('Failed to save user:', error)
+		}
 	}
 
-	// Função para simular o logout
-	const signOut = () => {
-		setUser(null)
-		setAuthContext(false)
+	const logout = async () => {
+		try {
+			await AsyncStorage.removeItem('user')
+			setUser(null)
+		} catch (error) {
+			console.error('Failed to remove user:', error)
+		}
 	}
 
-	return <AuthContext.Provider value={{ user, signIn, signOut }}>{children}</AuthContext.Provider>
+	return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>
 }
-
-// Hook para utilizar o contexto de autenticação em componentes
-export const useAuth = (): AuthContextType => useContext(AuthContext)

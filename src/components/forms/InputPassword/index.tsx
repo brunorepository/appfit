@@ -7,7 +7,7 @@ import {
 	EyeOffIcon,
 	EyeIcon,
 	InputSlot,
-	LockIcon,
+	CalendarDaysIcon,
 } from '@gluestack-ui/themed'
 
 const InputPassword: React.FC = () => {
@@ -21,7 +21,7 @@ const InputPassword: React.FC = () => {
 			<Input variant="rounded" borderWidth={0} pl={12} pr={12} bgColor="#242424" size="xl">
 				<InputSlot>
 					<InputIcon size="md" color="$amber800">
-						<LockIcon color="#ffff" />
+						<CalendarDaysIcon color="#ffff" />
 					</InputIcon>
 				</InputSlot>
 				<InputField
@@ -29,15 +29,12 @@ const InputPassword: React.FC = () => {
 					fontFamily="OpenSans-Regular"
 					size="lg"
 					fontSize={12}
-					placeholder="Senha"
+					placeholder="Data de nascimento"
 					placeholderTextColor="#CDCDCD"
 					pl={6}
 					type={showPassword ? 'text' : 'password'}
 					color="$white"
 				/>
-				<InputSlot onPress={handleState}>
-					<InputIcon as={showPassword ? EyeIcon : EyeOffIcon} color="#0ED907" size="md" />
-				</InputSlot>
 			</Input>
 		</FormControl>
 	)

@@ -1,14 +1,15 @@
-import React from 'react'
-import { useRecoilState } from 'recoil'
+import React, { useContext } from 'react'
 import AppRoutes from 'routes/app/drawer.routes'
 import AuthNavigation from 'routes/auth/auth.routes'
-import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
+import { AuthContext } from 'src/contexts/AuthContext'
 import { NavigationContainer } from '@react-navigation/native'
 
 const Navigation: React.FC = () => {
-	const [user, setAuthContext] = useRecoilState(isAuthenticated)
+	const { user } = useContext(AuthContext)
 
-	return <NavigationContainer>{user ? <AppRoutes /> : <AuthNavigation />}</NavigationContainer>
+	console.log(user)
+
+	return <NavigationContainer>{user?.email ? <AppRoutes /> : <AuthNavigation />}</NavigationContainer>
 }
 
 export default Navigation
