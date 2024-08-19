@@ -7,20 +7,23 @@ import { Center, Description, ModalContent, ModalTitle, Start } from './styles'
 type ModalAnamneseProps = {
 	isVisible: boolean
 	onBackdropPress: () => void
+	onPressLg: () => void
 }
 
-const ModalAnamnese: React.FC<ModalAnamneseProps> = ({ isVisible, onBackdropPress }) => {
+const ModalAnamnese: React.FC<ModalAnamneseProps> = ({ isVisible, onBackdropPress, onPressLg }) => {
 	return (
-		<Modal isVisible={isVisible} onBackdropPress={onBackdropPress} collapsable={false}>
+		<Modal isVisible={isVisible} onBackdropPress={() => null} collapsable={false}>
 			<ModalContent>
 				<Start>
 					<ModalTitle>Preencha sua ficha de anamnese para acessar seus treinos</ModalTitle>
-					<Description>Com as ficha de anamnese seus treinos são gerados com mais acertividade.</Description>
+					<Description>
+						Nossa equipe vai análisar sua ficha de anamnese e preparar seu plano de treinos ainda hoje.
+					</Description>
 				</Start>
 				<Center>
 					<AnamneseIcon width={200} height={200} />
 				</Center>
-				<ButtonLg onPress={() => null}>Preencher ficha de anamnese</ButtonLg>
+				<ButtonLg onPress={onPressLg}>Preencher ficha de anamnese</ButtonLg>
 			</ModalContent>
 		</Modal>
 	)

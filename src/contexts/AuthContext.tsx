@@ -1,15 +1,24 @@
-import React, { createContext, useState, useEffect, ReactNode } from 'react'
+import React, { createContext, useState, useEffect, ReactNode, useContext } from 'react'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+// Atualizamos a interface para incluir todos os dados importantes do usuário
 interface User {
-	name: string
+	_id: string
+	first_name: string
+	full_name: string
 	email: string
+	cpf: string
+	purchaseDate: string
+	productName: string
+	haveAnamnese: boolean
 }
 
+// Definimos o tipo do contexto, incluindo o login, logout e o usuário atual
 interface AuthContextType {
-	user: User | null
-	login: (userData: User) => void
+	user: User | any
+	login: (userData: User) => void | any
 	logout: () => void
+	setAnamneseCompleted: () => Promise<void> // Adicionamos a função setAnamneseCompleted aqui
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined)
@@ -21,6 +30,7 @@ interface AuthProviderProps {
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
 
+	// Carrega as informações do usuário quando o aplicativo é iniciado
 	useEffect(() => {
 		const loadUser = async () => {
 			try {
@@ -36,6 +46,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		loadUser()
 	}, [])
 
+	// Função para realizar o login e salvar os dados no AsyncStorage
 	const login = async (userData: User) => {
 		try {
 			await AsyncStorage.setItem('user', JSON.stringify(userData))
@@ -45,6 +56,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		}
 	}
 
+	// Função para realizar o logout e remover os dados do AsyncStorage
 	const logout = async () => {
 		try {
 			await AsyncStorage.removeItem('user')
@@ -54,5 +66,27 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
 		}
 	}
 
-	return <AuthContext.Provider value={{ user, login, logout }}>{children}</AuthContext.Provider>
+	// Função para setar a anamnese como true
+	const setAnamneseCompleted = async (): Promise<void> => {
+		if (user) {
+			const updatedUser: User = { ...user, haveAnamnese: true }
+			try {
+				await AsyncStorage.setItem('user', JSON.stringify(updatedUser))
+				setUser(updatedUser)
+			} catch (error) {
+				console.error('Failed to update user anamnese:', error)
+			}
+		}
+	}
+
+	return <AuthContext.Provider value={{ user, login, logout, setAnamneseCompleted }}>{children}</AuthContext.Provider>
+}
+
+// Hook para garantir o uso seguro do contexto
+export const useAuth = (): AuthContextType => {
+	const context = useContext(AuthContext)
+	if (!context) {
+		throw new Error('useAuth must be used within an AuthProvider')
+	}
+	return context
 }

@@ -9,7 +9,8 @@ import ChartsView from 'views/app/Charts/ChartsView'
 import HomeView from 'views/app/Home/HomeView'
 import WorkoutPlanView from 'views/app/WorkoutPlan/WorkoutPlanView'
 import WorkRoomView from 'views/app/WorkRoom/WorkRoomView'
-import YourPlanView from 'views/app/YourPlan/YourPlanView'
+import AnamneseView from 'views/app/Anamnese/AnamneseView'
+
 import { useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -73,7 +74,7 @@ const StackNavigation: React.FC = () => {
 								/>
 							</TouchableOpacity>
 						),
-					title: `Olá, ${user.name} 👋`,
+					title: `Olá, ${user.full_name} 👋`,
 				}}
 			/>
 			<Screen
@@ -117,8 +118,8 @@ const StackNavigation: React.FC = () => {
 				}}
 			/>
 			<Screen
-				name="YourPlan"
-				component={YourPlanView}
+				name="Anamnese"
+				component={AnamneseView}
 				options={{
 					headerShown: true,
 					headerStyle: { backgroundColor: '#101012' },
@@ -128,7 +129,7 @@ const StackNavigation: React.FC = () => {
 						fontSize: 18,
 					},
 					headerTintColor: '#0ED907',
-					title: 'Assinatura',
+					title: 'Ficha de anamnese',
 				}}
 			/>
 			<Screen

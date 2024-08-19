@@ -13,6 +13,7 @@ export const UserPhoto = styled.ImageBackground`
 	border-radius: 90px;
 	align-items: center;
 	justify-content: center;
+	align-self: center;
 `
 export const UserName = styled.Text`
 	font-family: 'OpenSans-Bold';

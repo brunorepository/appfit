@@ -19,8 +19,9 @@ export const Start = styled.View`
 	height: 100%;
 `
 export const Thumb = styled.Image`
-	width: 50px;
+	width: 60px;
 	height: 90%;
+	border-radius: 10px;
 `
 export const Title = styled.Text`
 	color: #ffff;

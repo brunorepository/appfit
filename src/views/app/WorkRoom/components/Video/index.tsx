@@ -7,7 +7,7 @@ import { VideoPlayer } from './styles'
 const Video: React.FC = () => {
 	const videoRef = useRef<VideoRef>(null)
 
-	return <VideoPlayer resizeMode="cover" source={Mp4} repeat ref={videoRef} />
+	return <VideoPlayer resizeMode="cover" source={Mp4} repeat ref={videoRef} volume={0} />
 }
 
 export default Video
