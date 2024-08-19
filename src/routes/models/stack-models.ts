@@ -15,8 +15,8 @@ export type propsNavigationStack = {
 	DiseasesFamily: undefined
 	WorkRoom: undefined
 	ChangeDataHealth: IHealth
-	WorkoutPlan: IWorkoutPlan
-	PhysicalAssessment: undefined
+	WorkoutPlan: undefined
+	Anamnese: undefined
 	PhysicalActivityHistory: undefined
 	Payment: undefined
 	Charts: undefined

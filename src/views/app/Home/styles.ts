@@ -135,3 +135,12 @@ export const HList = styled.FlatList`
 	margin-top: 8px;
 	width: 95%;
 `
+export const Description = styled.Text`
+	color: #ffff;
+	font-family: 'OpenSans-Medium';
+	margin-top: 10px;
+	text-align: center;
+	margin-left: 32px;
+	margin-right: 32px;
+	margin-bottom: 16px;
+`

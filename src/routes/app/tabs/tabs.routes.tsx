@@ -31,7 +31,7 @@ const TabNavigation: React.FC = () => {
 			id: 1,
 			name: 'Home',
 			component: StackNavigation,
-			title: 'Plano de treinos',
+			title: 'Meu plano',
 			icon: userType === 'personal' ? 'money-bill-trend-up' : 'calendar-check',
 		},
 		{
@@ -50,6 +50,7 @@ const TabNavigation: React.FC = () => {
 					backgroundColor: '#1c1c1e',
 					borderBottomWidth: 0,
 				},
+				tabBarHideOnKeyboard: true,
 				tabBarAllowFontScaling: false,
 				headerTitleAllowFontScaling: false,
 				headerTintColor: '#0ED907',
@@ -97,43 +98,6 @@ const TabNavigation: React.FC = () => {
 									}}
 								/>
 							</Touchable>
-						),
-						headerRight: () => (
-							<Menu
-								placement="top"
-								bgColor="#323232"
-								trigger={({ ...triggerProps }) => {
-									return (
-										<Touchable {...triggerProps}>
-											<Bell
-												name="bell"
-												color="#0ED907"
-												size={20}
-												style={{
-													marginRight: 12,
-												}}
-											/>
-										</Touchable>
-									)
-								}}
-							>
-								<MenuItem>
-									<Title>Notificações</Title>
-								</MenuItem>
-								<MenuItem key="Notification" textValue="Notification">
-									<Bell
-										name="alert"
-										color="#0ED907"
-										size={15}
-										style={{
-											marginRight: 6,
-										}}
-									/>
-									<MenuItemLabel size="sm" color="$white" fontFamily="OpenSans-SemiBold">
-										Você recebeu notificação
-									</MenuItemLabel>
-								</MenuItem>
-							</Menu>
 						),
 					}}
 				/>

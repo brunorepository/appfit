@@ -9,7 +9,7 @@ const ProgressCard: React.FC = () => {
 				<AnimatedCircularProgress
 					size={50}
 					width={3}
-					fill={33}
+					fill={0}
 					tintColor="#0ED907"
 					onAnimationComplete={() => null}
 					backgroundColor="#585958"
@@ -21,7 +21,7 @@ const ProgressCard: React.FC = () => {
 					<Title>1 dia de treino</Title>
 				</Texts>
 			</Start>
-			<Duration>58 minutos</Duration>
+			<Duration>50 - 1:30 minutos</Duration>
 		</Card>
 	)
 }

@@ -14,57 +14,40 @@ import {
 interface Question {
 	id: number
 	text: string
-	instructions: string
+	instructions: string // Instruções podem ser opcionais
+	options: string[] // Defina as opções por pergunta para torná-las dinâmicas
 }
 
-const questions: Question[] = [
-	{
-		id: 1,
-		text: 'Você tem alguma doença?',
-		instructions: 'Instrução para resposta da pergunta',
-	},
-	{
-		id: 2,
-		text: 'Você é diabético?',
-		instructions: 'Instrução para resposta da pergunta',
-	},
-	{
-		id: 3,
-		text: 'Tem asma?',
-		instructions: 'Instrução para resposta da pergunta',
-	},
-]
-
-type QuizFormProps = {
-	data?: Question[]
+interface QuizFormProps {
+	data?: Question[] // Agora o componente espera que as perguntas sejam passadas como prop, opcional
+	iconComponent?: React.FC // Permite que o ícone do Radio seja customizado
+	onSubmit?: (answers: Record<number, string>) => void // Callback para submissão
 }
 
-const answerOptions = ['Sim', 'Nao', 'Nenhuma das alternativas']
-
-const QuizForm: React.FC<QuizFormProps> = ({ data }) => {
-	const [selectedOptions, setSelectedOptions] = useState<any>(
-		questions.reduce((acc, question) => ({ ...acc, [question.id]: '' }), {})
+const QuizForm: React.FC<QuizFormProps> = ({ data = [], iconComponent: IconComponent = CheckedIcon, onSubmit }) => {
+	// Usando um valor padrão vazio para evitar erros de undefined
+	const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>(
+		data.length > 0 ? data.reduce((acc, question) => ({ ...acc, [question.id]: '' }), {}) : {}
 	)
 
-	const handleOptionChange = (questionId: number, choice: any) => {
-		setSelectedOptions((prev: any) => ({
+	const handleOptionChange = (questionId: number, choice: string) => {
+		setSelectedOptions((prev) => ({
 			...prev,
 			[questionId]: choice,
 		}))
 	}
 
-	const returnDataProvider = () => {
-		if (data) {
-			return data
+	const handleSubmit = () => {
+		if (onSubmit) {
+			onSubmit(selectedOptions) // Chama o callback de submissão com as respostas
 		}
-
-		return questions
+		console.log('Respostas submetidas:', selectedOptions)
 	}
 
 	return (
-		<FormControl>
+		<FormControl alignSelf="flex-start" ml={10}>
 			<VStack space="md" pl={16} pr={16} mb={4}>
-				{returnDataProvider().map((question) => (
+				{data.map((question) => (
 					<VStack key={question.id} space="md">
 						<Text size="sm" color="$white" fontFamily="OpenSans-Bold">
 							{question.text}
@@ -73,14 +56,13 @@ const QuizForm: React.FC<QuizFormProps> = ({ data }) => {
 							value={selectedOptions[question.id]}
 							onChange={(e) => {
 								handleOptionChange(question.id, e)
-								console.log(selectedOptions)
 							}}
 						>
 							<VStack space="lg">
-								{answerOptions.map((option) => (
+								{question.options.map((option) => (
 									<Radio key={option} value={option} size="md" borderColor="#ffff">
 										<RadioIndicator mr="$2" borderColor="#0ED907">
-											<RadioIcon as={CheckedIcon} />
+											<RadioIcon as={IconComponent} />
 										</RadioIndicator>
 										<RadioLabel color="$white" fontFamily="OpenSans-SemiBold">
 											{option}
@@ -89,9 +71,11 @@ const QuizForm: React.FC<QuizFormProps> = ({ data }) => {
 								))}
 							</VStack>
 						</RadioGroup>
-						<Text fontSize="$sm" color="$coolGray400" fontFamily="OpenSans-Medium" mt={6} mb={4}>
-							{question.instructions}
-						</Text>
+						{question.instructions && (
+							<Text fontSize="$sm" color="$coolGray400" fontFamily="OpenSans-Medium" mt={6} mb={4}>
+								{question.instructions}
+							</Text>
+						)}
 					</VStack>
 				))}
 			</VStack>

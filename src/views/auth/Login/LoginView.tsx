@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react'
 import Toast from 'react-native-toast-message'
 import axios from 'axios'
@@ -6,9 +5,10 @@ import AuthTemplate from 'components/templates/AuthTemplate'
 import { AuthContext } from 'src/contexts/AuthContext'
 import LoginForm from './components/LoginForm'
 import { Container } from './styles'
+import { Linking } from 'react-native'
 
 const LoginView: React.FC = () => {
-	const { login } = useContext(AuthContext)
+	const { login } = useContext(AuthContext) // Acessa o contexto de autenticação
 	const [isLoading, setLoading] = useState<boolean>(false)
 	const [email, setEmail] = useState<string>('')
 	const [data, setData] = useState<any>(null)
@@ -19,11 +19,9 @@ const LoginView: React.FC = () => {
 			const response = await axios.post('https://hfit-backend.vercel.app/user/login', {
 				email: `${email.toLocaleLowerCase()}`,
 			})
+
 			if (response.data.exists) {
-				const user = {
-					name: response.data.user.first_name,
-					email: response.data.user.email,
-				}
+				const user = response.data
 				setData(user)
 
 				Toast.show({
@@ -38,13 +36,15 @@ const LoginView: React.FC = () => {
 						fontSize: 12,
 						fontFamily: 'OpenSans-SemiBold',
 					},
-					onHide: login(user),
+					onShow: () => {
+						login(user.user)
+					},
 				})
 			} else {
 				Toast.show({
 					type: 'error',
-					text1: `E-mail não encontrado.`,
-					text2: 'Não encontramos nenhum usuário com esse e-mail. Fale com o suporte',
+					text1: 'E-mail não encontrado.',
+					text2: 'Não encontramos nenhum usuário com esse e-mail. Fale com o suporte.',
 					text1Style: {
 						fontSize: 16,
 						fontFamily: 'OpenSans-Bold',
@@ -58,8 +58,8 @@ const LoginView: React.FC = () => {
 		} catch (err) {
 			Toast.show({
 				type: 'error',
-				text1: `E-mail não encontrado.`,
-				text2: 'Não encontramos nenhum usuário com esse e-mail. Fale com o suporte',
+				text1: 'Erro ao tentar login.',
+				text2: 'Ocorreu um erro ao tentar efetuar o login. Tente novamente.',
 				text1Style: {
 					fontSize: 16,
 					fontFamily: 'OpenSans-Bold',
@@ -69,9 +69,12 @@ const LoginView: React.FC = () => {
 					fontFamily: 'OpenSans-SemiBold',
 				},
 			})
+		} finally {
+			setLoading(false)
 		}
-		setLoading(false)
 	}
+
+	console.log(data) // Para fins de depuração, mas pode ser removido posteriormente
 
 	return (
 		<AuthTemplate showBack title="" description="Insira o e-mail usado na assinatura para acessar a plataforma.">
@@ -85,7 +88,7 @@ const LoginView: React.FC = () => {
 							: () =>
 									Toast.show({
 										type: 'info',
-										text1: `O Campo de e-mail está vazio.`,
+										text1: 'O Campo de e-mail está vazio.',
 										text1Style: {
 											fontSize: 16,
 											fontFamily: 'OpenSans-Bold',
