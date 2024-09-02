@@ -31,17 +31,18 @@ export const Instructions = styled.Text`
 	font-family: 'OpenSans-Medium';
 `
 export const Texts = styled.View`
-	margin-left: 12px;
+	margin-left: 8px;
 	flex-direction: column;
 	justify-content: flex-start;
 `
-export const Duration = styled.Text`
-	color: #cccccc;
-	font-family: 'OpenSans-Medium';
-	font-size: 12px;
-`
+
 export const Value = styled.Text`
 	color: #0ed907;
 	font-family: 'OpenSans-SemiBold';
 	font-size: 12px;
+`
+export const Next = styled.Text`
+	color: #0ed907;
+	font-family: 'OpenSans-Bold';
+	font-size: 18px;
 `

@@ -58,7 +58,6 @@ export const Badge = styled.View`
 	padding-right: 6px;
 	padding-top: 2px;
 	padding-bottom: 2px;
-	margin-top: 3px;
 	margin-bottom: 3px;
 `
 export const BadgeText = styled.Text`
@@ -66,26 +65,34 @@ export const BadgeText = styled.Text`
 	font-family: 'OpenSans-SemiBold';
 	font-size: 10px;
 `
-export const Card = styled.TouchableOpacity`
+export const Card = styled.TouchableOpacity<{ customOpacity?: number; bgColor?: string }>`
 	width: 95%;
 	border-radius: 20px;
 	margin-top: 6px;
 	padding-bottom: 14px;
 	justify-content: flex-end;
 	elevation: 5;
-	background-color: #1c1c1e;
+	background-color: ${({ bgColor }) => bgColor || '#1c1c1e'};
+	opacity: ${({ customOpacity }) => customOpacity || 1};
+`
+export const Instructions = styled.Text`
+	color: #cccccc;
+	font-family: 'OpenSans-Medium';
 `
 export const CardContent = styled.View`
 	padding-left: 12px;
-	padding-right: 16px;
-	margin-top: -12px;
+	padding-right: 12px;
 `
 export const CardTitle = styled.Text`
 	color: #ffff;
-	font-size: 20px;
 	font-family: 'OpenSans-Bold';
-	opacity: 1;
+
 	margin-bottom: 2px;
+`
+export const CardTextRow = styled.View`
+	flex-direction: row;
+	align-items: center;
+	margin-right: 16px;
 `
 export const CardDescription = styled.Text`
 	color: #cccccc;
@@ -109,28 +116,36 @@ export const FooterStart = styled.View`
 	flex-direction: row;
 	max-width: 90%;
 `
-export const Banner = styled.Image`
+export const Banner = styled.ImageBackground`
 	width: 100%;
 	height: 70px;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
+	align-items: center;
+	justify-content: center;
+	background-color: #323232;
+`
+export const Emoji = styled.Text`
+	font-size: 38px;
 `
 export const BannerSm = styled.Image`
 	width: 100%;
-	height: 120px;
+	height: 100px;
+	background-color: #323232;
 	border-top-left-radius: 20px;
 	border-top-right-radius: 20px;
 `
-export const CardSm = styled.TouchableOpacity`
+export const CardSm = styled.TouchableOpacity<{ customOpacity?: number }>`
 	width: 135px;
+	opacity: ${({ customOpacity }) => (customOpacity !== undefined ? customOpacity : 0.8)};
 	border-radius: 20px;
 	justify-content: space-between;
 	background-color: #1c1c1e;
 	elevation: 5;
-	height: 185px;
 	margin-right: 8px;
-	padding-bottom: 16px;
+	padding-bottom: 12px;
 `
+
 export const HList = styled.FlatList`
 	margin-top: 8px;
 	width: 95%;

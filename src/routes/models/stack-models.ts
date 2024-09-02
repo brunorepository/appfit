@@ -1,6 +1,7 @@
-import { ICreateAccount, IHealth, IWorkoutPlan } from 'src/types/Types'
+import { EWorkoutProps, ICreateAccount, IHealth, IWorkoutPlan } from 'src/types/Types'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
+// Definição das rotas e parâmetros aceitos para cada uma
 export type propsNavigationStack = {
 	PersonalInformations: undefined
 	Quiz: undefined
@@ -13,9 +14,14 @@ export type propsNavigationStack = {
 	YourPlan: undefined
 	Medicines: undefined
 	DiseasesFamily: undefined
-	WorkRoom: undefined
+	WorkRoom: {
+		title: string
+		series: number
+		repetitions: number
+		thumbnail?: string
+	}
 	ChangeDataHealth: IHealth
-	WorkoutPlan: undefined
+	WorkoutPlan: { workoutType: string; exercises: IWorkoutPlan['exercises'] }
 	Anamnese: undefined
 	PhysicalActivityHistory: undefined
 	Payment: undefined
@@ -33,4 +39,5 @@ export type propsNavigationStack = {
 	CreateAccount: ICreateAccount
 }
 
+// Definição do tipo de navegação para usar com o hook useNavigation
 export type propsStack = NativeStackNavigationProp<propsNavigationStack>

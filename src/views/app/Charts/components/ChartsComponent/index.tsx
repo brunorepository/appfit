@@ -11,7 +11,7 @@ type PersonalChartsProps = {
 const ChartsComponent: React.FC<PersonalChartsProps> = () => {
 	return (
 		<Charts>
-			<SalesCard>
+			<SalesCard activeOpacity={0.8}>
 				<FlexColumn>
 					<Label>data do treino: 12/07/2024</Label>
 					<Title>Treino de costas</Title>

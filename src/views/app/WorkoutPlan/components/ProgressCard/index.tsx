@@ -1,27 +1,33 @@
 import React from 'react'
 import { AnimatedCircularProgress } from 'react-native-circular-progress'
-import { Duration, Card, Instructions, Start, Texts, Title, Value } from './styles'
+import { Card, Start, Texts, Title, Value, Next } from './styles'
 
-const ProgressCard: React.FC = () => {
+interface ProgressCardProps {
+	fill: number // Progresso a ser exibido
+	title: string // Dias de treino
+	timeElapsed: string // Tempo decorrido no formato "MM:SS"
+}
+
+const ProgressCard: React.FC<ProgressCardProps> = ({ fill, title, timeElapsed }) => {
 	return (
 		<Card activeOpacity={0.8}>
 			<Start>
 				<AnimatedCircularProgress
 					size={50}
 					width={3}
-					fill={0}
+					fill={fill}
 					tintColor="#0ED907"
 					onAnimationComplete={() => null}
 					backgroundColor="#585958"
 				>
-					{(fill) => <Value allowFontScaling={false}>{fill}%</Value>}
+					{(fillValue) => <Value allowFontScaling={false}>{Math.round(fillValue)}%</Value>}
 				</AnimatedCircularProgress>
 				<Texts>
-					<Instructions>parte superior do corpo</Instructions>
-					<Title>1 dia de treino</Title>
+					<Title>{title}</Title>
 				</Texts>
 			</Start>
-			<Duration>50 - 1:30 minutos</Duration>
+			{/* Exibir o cronômetro */}
+			<Next>{timeElapsed}</Next>
 		</Card>
 	)
 }
