@@ -1,17 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { ScrollView, Alert, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { useForm, Controller } from 'react-hook-form'
+import { ScrollView, Alert, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
+import User from 'react-native-vector-icons/MaterialIcons'
 import axios from 'axios'
-import { AppTemplate } from 'components/templates'
 import { ButtonLg } from 'components/core'
+import { CheckedIcon } from 'components/icons'
+import { AppTemplate } from 'components/templates'
+import { propsStack } from 'routes/models/stack-models'
 import { AuthContext, useAuth } from 'src/contexts/AuthContext'
 import { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed'
-import { CheckedIcon } from 'components/icons'
 import { useNavigation } from '@react-navigation/native'
-import { propsStack } from 'routes/models/stack-models'
-import User from 'react-native-vector-icons/MaterialIcons'
 import { Container, Label, Input, UserPhoto } from './styles'
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
 
 const genderOptions = [
 	{ label: 'Masculino', value: 'masculino' },
@@ -206,7 +206,7 @@ const AnamneseView = () => {
 											borderColor: '#00ff00',
 										}}
 									>
-										{!imageUri && <User name="add-a-photo" size={40} color={'#0ed907'} />}
+										{!imageUri && <User name="add-a-photo" size={40} color="#0ed907" />}
 									</UserPhoto>
 								</TouchableOpacity>
 								{error && <Text style={{ color: 'red' }}>{error.message}</Text>}

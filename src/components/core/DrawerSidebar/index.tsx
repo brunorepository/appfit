@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import { Alert, Linking, TouchableOpacity } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome' // Importação do ícone
 import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
 import { AuthContext } from 'src/contexts/AuthContext'
@@ -7,7 +8,6 @@ import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
 import { Box, VStack, Text, ChevronRightIcon } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
 import { SideBar, ItemList, UserPhoto } from './styles'
-import Icon from 'react-native-vector-icons/FontAwesome' // Importação do ícone
 
 const DrawerSidebar: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
@@ -17,13 +17,14 @@ const DrawerSidebar: React.FC = () => {
 	const returnFrequency = (frequency: string) => {
 		if (frequency === 'quarterly') {
 			return 'Plano trimestral'
-		} else if (frequency === 'semestral') {
-			return 'Plano Semestral'
-		} else if (frequency === 'annually') {
-			return 'Plano Anual'
-		} else {
-			return 'Não definido'
 		}
+		if (frequency === 'semestral') {
+			return 'Plano Semestral'
+		}
+		if (frequency === 'annually') {
+			return 'Plano Anual'
+		}
+		return 'Não definido'
 	}
 
 	// Array de dados com os detalhes do usuário, agora com um campo de ícone
@@ -55,7 +56,7 @@ const DrawerSidebar: React.FC = () => {
 			value: 'Suporte pelo whatsapp',
 			icon: 'whatsapp',
 			onPress: () =>
-				Linking.openURL('https://wa.me/553185150173?text=Olá,%20vim%20pelo%20suporte%20do%20app%20HFIT.'),
+				Linking.openURL('https://wa.me/31995988003?text=Olá,%20vim%20pelo%20suporte%20do%20app%20HFIT.'),
 		},
 	]
 

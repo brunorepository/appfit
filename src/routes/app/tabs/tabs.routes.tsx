@@ -8,7 +8,6 @@ import { propsDrawer } from 'routes/models/drawer-navigation-models'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import styled from 'styled-components/native'
 import NutritionView from 'views/app/Nutrition/NutritionView'
-import { Menu, MenuItem, MenuItemLabel } from '@gluestack-ui/themed'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useNavigation } from '@react-navigation/native'
 
@@ -20,11 +19,6 @@ const TabNavigation: React.FC = () => {
 	const navigation = useNavigation<propsDrawer>()
 
 	const Touchable = styled.TouchableOpacity``
-	const Title = styled.Text`
-		color: #0ed907;
-		font-family: 'OpenSans-Bold';
-		font-size: 18px;
-	`
 
 	const SCREEN_CONFIG = [
 		{

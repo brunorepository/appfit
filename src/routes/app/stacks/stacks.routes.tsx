@@ -1,16 +1,14 @@
 import React, { useContext } from 'react'
-import { Alert } from 'react-native'
-import { TouchableOpacity } from 'react-native'
+import { Alert, TouchableOpacity } from 'react-native'
 import FindChart from 'react-native-vector-icons/MaterialCommunityIcons'
 import { propsNavigationStack, propsStack } from 'routes/models/stack-models'
 import { AuthContext } from 'src/contexts/AuthContext'
 import styled from 'styled-components/native'
+import AnamneseView from 'views/app/Anamnese/AnamneseView'
 import ChartsView from 'views/app/Charts/ChartsView'
 import HomeView from 'views/app/Home/HomeView'
 import WorkoutPlanView from 'views/app/WorkoutPlan/WorkoutPlanView'
 import WorkRoomView from 'views/app/WorkRoom/WorkRoomView'
-import AnamneseView from 'views/app/Anamnese/AnamneseView'
-
 import { useNavigation } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
@@ -18,21 +16,6 @@ const StackNavigation: React.FC = () => {
 	const { Navigator, Screen } = createNativeStackNavigator<propsNavigationStack>()
 
 	const userType = 'personal'
-
-	const createTwoButtonAlert = () =>
-		Alert.alert(
-			'Tem certeza que deseja terminar o treino?',
-			'',
-			[
-				{
-					text: 'Não',
-					onPress: () => console.log('Cancel Pressed'),
-					style: 'cancel',
-				},
-				{ text: 'Sim', onPress: () => console.log('OK Pressed') },
-			],
-			{ cancelable: false }
-		)
 
 	const Next = styled.Text`
 		color: #0ed907;
@@ -52,6 +35,7 @@ const StackNavigation: React.FC = () => {
 				options={{
 					headerShown: true,
 					headerStyle: { backgroundColor: '#000000' },
+
 					headerTitleStyle: {
 						color: '#ffff',
 						fontFamily: 'OpenSans-Bold',
@@ -59,7 +43,7 @@ const StackNavigation: React.FC = () => {
 					},
 					headerRight: () =>
 						userType !== 'personal' ? (
-							<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
+							<TouchableOpacity activeOpacity={0.8}>
 								<Next>0:00</Next>
 							</TouchableOpacity>
 						) : (
@@ -89,12 +73,23 @@ const StackNavigation: React.FC = () => {
 						fontSize: 18,
 					},
 					headerTintColor: '#0ED907',
-					headerRight: () => (
-						<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
-							<Next>00:00</Next>
-						</TouchableOpacity>
-					),
-					title: 'Treino de hoje - Exercícios',
+					title: 'Exercícios',
+				}}
+				// Listener para interceptar a navegação e exibir o alerta
+				listeners={{
+					beforeRemove: (e) => {
+						// Interceptar a navegação se o treino não estiver finalizado
+						e.preventDefault()
+
+						Alert.alert('Sair sem finalizar?', 'Você ainda não concluiu o treino. Deseja realmente sair?', [
+							{ text: 'Cancelar', style: 'cancel', onPress: () => {} },
+							{
+								text: 'Sair',
+								style: 'destructive',
+								onPress: () => navigation.dispatch(e.data.action), // Permitir a navegação
+							},
+						])
+					},
 				}}
 			/>
 			<Screen
@@ -109,12 +104,6 @@ const StackNavigation: React.FC = () => {
 						fontSize: 18,
 					},
 					headerTintColor: '#0ED907',
-					headerRight: () => (
-						<TouchableOpacity activeOpacity={0.8} onPress={createTwoButtonAlert}>
-							<Next>00:00</Next>
-						</TouchableOpacity>
-					),
-					title: 'Remada máquina unilateral - 10 minutos',
 				}}
 			/>
 			<Screen
@@ -144,7 +133,7 @@ const StackNavigation: React.FC = () => {
 						fontSize: 18,
 					},
 					headerTintColor: '#0ED907',
-					title: 'Relátorios de treino',
+					title: 'Relatórios de treino',
 				}}
 			/>
 		</Navigator>
