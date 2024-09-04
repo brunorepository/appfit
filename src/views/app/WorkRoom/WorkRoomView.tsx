@@ -1,13 +1,26 @@
-import React, { useLayoutEffect } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
+import { Switch, Text, View } from 'react-native'
 import { AppTemplate } from 'components/templates'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import YouTubeVideo from 'views/app/WorkRoom/components/YoutubeVideo'
 import { RouteProp, useRoute, useNavigation } from '@react-navigation/native'
-import { Actions, CircleText, CircleWhite, Container, Texts, Title, FeedbackButton } from './styles'
+import {
+	Actions,
+	CircleText,
+	CircleWhite,
+	Container,
+	Texts,
+	Title,
+	FeedbackButton,
+	Row,
+	ExtraVideoText,
+} from './styles'
 
 type WorkRoomRouteProp = RouteProp<propsNavigationStack, 'WorkRoom'>
 
 const WorkRoomView: React.FC = () => {
+	const [isExtraVideo, setIsExtraVideo] = useState(false)
+
 	const route = useRoute<WorkRoomRouteProp>()
 	const {
 		title,
@@ -18,10 +31,12 @@ const WorkRoomView: React.FC = () => {
 		secondTitle,
 		secondSeries,
 		secondRepetitions,
+		extraVideoId, // Video extra para alternar
 	} = route.params
 
 	const navigation = useNavigation()
 
+	// Definir título da tela com base nos vídeos
 	useLayoutEffect(() => {
 		const navigationTitle =
 			secondTitle && secondTitle.trim() !== 'undefined' && secondTitle.trim() !== ''
@@ -36,13 +51,15 @@ const WorkRoomView: React.FC = () => {
 		onComplete?.(title)
 		navigation.goBack()
 	}
-	console.log(videoId)
+
+	// Alternar entre o vídeo principal e o extra
+	const toggleSwitch = () => setIsExtraVideo((previousState) => !previousState)
 
 	return (
 		<AppTemplate>
 			<Container>
-				{/* Usando o mapeamento estático para obter o vídeo */}
-				<YouTubeVideo videoId={videoId} />
+				{/* Exibir o vídeo com base no estado do switch */}
+				<YouTubeVideo videoId={isExtraVideo && extraVideoId ? extraVideoId : videoId} />
 
 				<Texts>
 					<Title>
@@ -58,7 +75,18 @@ const WorkRoomView: React.FC = () => {
 					<CircleWhite>
 						<CircleText>{`${series} séries`}</CircleText>
 					</CircleWhite>
-
+					{extraVideoId && (
+						<Row>
+							<ExtraVideoText>{isExtraVideo ? 'Vídeo Extra' : 'Vídeo Principal'}</ExtraVideoText>
+							<Switch
+								trackColor={{ false: '#323232', true: '#323232' }}
+								thumbColor={isExtraVideo ? '#0ed907' : '#f4f3f4'}
+								ios_backgroundColor="#3e3e3e"
+								onValueChange={toggleSwitch}
+								value={isExtraVideo}
+							/>
+						</Row>
+					)}
 					<CircleWhite>
 						<CircleText>{`${repetitions} reps`}</CircleText>
 					</CircleWhite>
