@@ -1,21 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { ActivityIndicator, ScrollView, RefreshControl } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { ActivityIndicator, ScrollView, RefreshControl, Alert } from 'react-native'
 import axiosInstance from 'src/adapters/services/api'
-import { AuthContext } from 'src/contexts/AuthContext'
+import { useAuth } from 'src/contexts/AuthContext'
 import { Container, Title, DietText, Loading } from './styles' // Importa os estilos do arquivo separado
-
-interface User {
-	_id: string
-	haveAnamnese: boolean
-	full_name: string
-}
 
 const NutritionView: React.FC = () => {
 	const [dietPlan, setDietPlan] = useState<string>('') // Estado para armazenar o plano de dieta
+	// eslint-disable-next-line no-unused-vars
 	const [anamneseData, setAnamneseData] = useState<any>(null) // Estado para armazenar os dados da anamnese
 	const [loading, setLoading] = useState<boolean>(false) // Estado para controlar o loading
 	const [refreshing, setRefreshing] = useState<boolean>(false) // Estado para controlar o refresh
-	const { user } = useContext(AuthContext) as { user: User }
+	const { user } = useAuth()
 
 	const generateDietMessage = (anamnese: any) => {
 		return `Olá ${user.full_name}, a Plataforma HFIT preparou uma prescrição de dieta personalizada para você. 
@@ -32,7 +27,7 @@ const NutritionView: React.FC = () => {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer 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`, // Substitua por sua chave da OpenAI
+					Authorization: `Bearer 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`, // Substitua por sua chave da OpenAI
 				},
 				body: JSON.stringify({
 					model: 'gpt-4',
@@ -55,20 +50,20 @@ const NutritionView: React.FC = () => {
 			if (data && data.choices && data.choices[0] && data.choices[0].message) {
 				const plan = data.choices[0].message.content // Extrair o plano da resposta
 				setDietPlan(plan) // Armazena o plano no estado
-			} else {
-				console.error('Estrutura de resposta inesperada:', data) // Log para debugar
 			}
 		} catch (error) {
-			console.error('Erro ao buscar plano de dieta:', error)
+			Alert.alert('Erro ao buscar plano de dieta:', JSON.stringify(error))
 		} finally {
 			setLoading(false) // Termina o loading
 		}
 	}
 
 	// Função para buscar dados da anamnese
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	const fetchAnamnese = async () => {
 		setLoading(true) // Ativa o loading
 		try {
+			// eslint-disable-next-line no-underscore-dangle
 			const response = await axiosInstance.get(`/buyer/anamnese/${user._id}`) // Substitua por seu user ID
 			if (response.status === 200) {
 				const { anamnese } = response.data
@@ -117,7 +112,7 @@ const NutritionView: React.FC = () => {
 	// Chama as funções de busca quando o componente é montado
 	useEffect(() => {
 		fetchAnamnese()
-	}, [])
+	}, [fetchAnamnese])
 
 	return (
 		<ScrollView

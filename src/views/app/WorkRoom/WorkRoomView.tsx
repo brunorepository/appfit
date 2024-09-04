@@ -1,5 +1,4 @@
 import React, { useLayoutEffect } from 'react'
-import Video from 'react-native-video'
 import { AppTemplate } from 'components/templates'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import YouTubeVideo from 'views/app/WorkRoom/components/YoutubeVideo'

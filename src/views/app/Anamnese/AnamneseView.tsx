@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { Alert, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
 import { launchImageLibrary } from 'react-native-image-picker'
@@ -8,7 +8,7 @@ import { CheckedIcon } from 'components/icons'
 import { AppTemplate } from 'components/templates'
 import { propsStack } from 'routes/models/stack-models'
 import axiosInstance from 'src/adapters/services/api'
-import { AuthContext, useAuth } from 'src/contexts/AuthContext'
+import { useAuth } from 'src/contexts/AuthContext'
 import { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Label, Input, UserPhoto } from './styles'
@@ -53,8 +53,7 @@ const sleepQualityOptions = [
 ]
 
 const AnamneseView = () => {
-	const { user } = useContext(AuthContext) // Obtém o contexto do usuário autenticado
-	const { setAnamneseCompleted } = useAuth() // Obtendo a função do contexto de autenticação
+	const { user, setAnamneseCompleted } = useAuth() // Obtém o contexto do usuário autenticado
 	const [loading, setLoading] = useState(false) // Estado de loading para busca de dados
 	const [submitting, setSubmitting] = useState(false) // Estado de loading para submissão
 	const [imageUri, setImageUri] = useState<string>('')

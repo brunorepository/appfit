@@ -1,11 +1,11 @@
-import React, { useContext, useState, useCallback, useEffect } from 'react'
+import React, { useState, useCallback, useEffect } from 'react'
 import { Button, RefreshControl, ScrollView, Alert } from 'react-native'
 import Clock from 'react-native-vector-icons/Ionicons'
 import { AnamneseIcon } from 'components/icons'
 import { AppTemplate } from 'components/templates'
 import { propsStack } from 'routes/models/stack-models'
 import axiosInstance from 'src/adapters/services/api'
-import { AuthContext } from 'src/contexts/AuthContext'
+import { useAuth } from 'src/contexts/AuthContext'
 import { useNavigation } from '@react-navigation/native'
 import {
 	Banner,
@@ -26,11 +26,6 @@ import {
 	HeaderPhrase,
 } from './styles'
 
-interface User {
-	_id: string
-	haveAnamnese: boolean
-}
-
 interface Workout {
 	title: string
 	uri: string
@@ -46,7 +41,7 @@ const daysOfWeek = ['Segunda-feira', 'Terça-feira', 'Quarta-feira', 'Quinta-fei
 
 const HomeView: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
-	const { user } = useContext(AuthContext) as { user: User }
+	const { user } = useAuth()
 
 	const [refreshing, setRefreshing] = useState(false)
 	const [workouts, setWorkouts] = useState<Workout[]>([])
@@ -137,13 +132,18 @@ const HomeView: React.FC = () => {
 	}, [fetchWorkouts, fetchAnamnese])
 
 	const organizeWorkoutsByDay = (): (Workout | null)[] => {
+		if (!anamnese) return []
+
+		// Quantidade de dias que o aluno treina por semana
+		const trainingDays = anamnese.trainingDaysPerWeek
 		const organizedWorkouts: (Workout | null)[] = Array(7).fill(null)
 
-		workouts.forEach((workout) => {
-			const workoutDate = new Date(workout.workoutDate)
-			let dayOfWeek = workoutDate.getDay()
-			dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // Ajuste para que domingo seja 7
-			organizedWorkouts[dayOfWeek - 1] = workout // Organiza o treino pelo dia da semana
+		// Organizamos os treinos de forma sequencial, ignorando as datas por agora
+		workouts.forEach((workout, index) => {
+			// Distribuímos os treinos nos primeiros 'trainingDays' da semana (de segunda a domingo)
+			if (index < trainingDays) {
+				organizedWorkouts[index] = workout // Coloca o treino no índice correto da semana
+			}
 		})
 
 		return organizedWorkouts
@@ -153,8 +153,13 @@ const HomeView: React.FC = () => {
 		const today = new Date()
 		let dayOfWeek = today.getDay()
 		dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // Ajuste para que domingo seja 7
+
 		const organizedWorkouts = organizeWorkoutsByDay()
-		return organizedWorkouts[dayOfWeek - 1] // Retorna o treino do dia
+		// Certifica-se que o treino de hoje está dentro dos dias de treino configurados
+		if (anamnese && dayOfWeek <= anamnese.trainingDaysPerWeek) {
+			return organizedWorkouts[dayOfWeek - 1] // Retorna o treino do dia
+		}
+		return null // Caso não tenha treino hoje
 	}
 
 	if (loading) {
@@ -269,7 +274,7 @@ const HomeView: React.FC = () => {
 							<Heading allowFontScaling={false}>Treinos da semana</Heading>
 							<HList
 								horizontal
-								data={organizeWorkoutsByDay()}
+								data={organizeWorkoutsByDay()} // Somente os treinos dentro do limite de trainingDaysPerWeek
 								showsHorizontalScrollIndicator={false}
 								// eslint-disable-next-line react/no-unused-prop-types
 								renderItem={({ item, index }: { item: Workout | null; index: number }) => {

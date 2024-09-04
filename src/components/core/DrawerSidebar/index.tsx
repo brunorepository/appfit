@@ -1,18 +1,15 @@
-import React, { useContext } from 'react'
-import { Alert, Linking, TouchableOpacity } from 'react-native'
+import React from 'react'
+import { Linking, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome' // Importação do ícone
-import { useRecoilState } from 'recoil'
 import { propsStack } from 'routes/models/stack-models'
-import { AuthContext } from 'src/contexts/AuthContext'
-import isAuthenticated from 'store/atoms/isAuthenticatedAtom'
+import { useAuth } from 'src/contexts/AuthContext'
 import { Box, VStack, Text, ChevronRightIcon } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
-import { SideBar, ItemList, UserPhoto } from './styles'
+import { SideBar, ItemList } from './styles'
 
 const DrawerSidebar: React.FC = () => {
 	const navigation = useNavigation<propsStack>()
-	const [authContext, setAuthContext] = useRecoilState(isAuthenticated)
-	const { logout, user } = useContext(AuthContext)
+	const { logout, user } = useAuth()
 
 	const returnFrequency = (frequency: string) => {
 		if (frequency === 'quarterly') {
@@ -71,6 +68,7 @@ const DrawerSidebar: React.FC = () => {
 							}}
 						/> */}
 						{userInfo.map((item, index) => (
+							// eslint-disable-next-line react/no-array-index-key
 							<TouchableOpacity key={index} activeOpacity={0.8} onPress={item.onPress || undefined}>
 								<Box
 									w="90%"
