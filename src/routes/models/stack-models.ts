@@ -26,7 +26,7 @@ export type propsNavigationStack = {
 		secondSeries?: string
 		secondRepetitions?: string
 		videoId: string
-		extraVideo: string
+		extraVideoId: string
 		onComplete: () => void
 	}
 	ChangeDataHealth: IHealth
