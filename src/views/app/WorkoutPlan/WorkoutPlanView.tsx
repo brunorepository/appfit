@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { Alert, Text } from 'react-native'
+import { Alert } from 'react-native'
 import { ButtonLg } from 'components/core'
 import { propsNavigationStack, propsStack } from 'routes/models/stack-models'
 import ResultModal from 'views/app/WorkoutPlan/components/Result'

@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useState } from 'react'
-import { Switch, Text, View } from 'react-native'
+import { Switch } from 'react-native'
 import { AppTemplate } from 'components/templates'
 import { propsNavigationStack } from 'routes/models/stack-models'
 import YouTubeVideo from 'views/app/WorkRoom/components/YoutubeVideo'
