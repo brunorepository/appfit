@@ -1,22 +1,22 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import Toast from 'react-native-toast-message'
-import axios from 'axios'
 import AuthTemplate from 'components/templates/AuthTemplate'
-import { AuthContext } from 'src/contexts/AuthContext'
+import axiosInstance from 'src/adapters/services/api'
+import { useAuth } from 'src/contexts/AuthContext'
 import LoginForm from './components/LoginForm'
 import { Container } from './styles'
-import { Linking } from 'react-native'
 
 const LoginView: React.FC = () => {
-	const { login } = useContext(AuthContext) // Acessa o contexto de autenticação
+	const { login } = useAuth() // Acessa o contexto de autenticação
 	const [isLoading, setLoading] = useState<boolean>(false)
 	const [email, setEmail] = useState<string>('')
+	// eslint-disable-next-line no-unused-vars
 	const [data, setData] = useState<any>(null)
 
 	const handleLogin = async () => {
 		setLoading(true)
 		try {
-			const response = await axios.post('https://hfit-backend.vercel.app/user/login', {
+			const response = await axiosInstance.post('/user/login', {
 				email: `${email.toLocaleLowerCase()}`,
 			})
 
@@ -73,8 +73,6 @@ const LoginView: React.FC = () => {
 			setLoading(false)
 		}
 	}
-
-	console.log(data) // Para fins de depuração, mas pode ser removido posteriormente
 
 	return (
 		<AuthTemplate showBack title="" description="Insira o e-mail usado na assinatura para acessar a plataforma.">

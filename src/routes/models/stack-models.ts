@@ -1,4 +1,4 @@
-import { EWorkoutProps, ICreateAccount, IHealth, IWorkoutPlan } from 'src/types/Types'
+import { ICreateAccount, IHealth, IWorkoutPlan } from 'src/types/Types'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 // Definição das rotas e parâmetros aceitos para cada uma
@@ -16,12 +16,20 @@ export type propsNavigationStack = {
 	DiseasesFamily: undefined
 	WorkRoom: {
 		title: string
-		series: number
-		repetitions: number
-		thumbnail?: string
+		id: string
+		name: string
+		secondTitle: string
+		series: string
+		repetitions: string
+		thumbnail: string
+		secondExercise?: string
+		secondSeries?: string
+		secondRepetitions?: string
+		videoId: string
+		onComplete: () => void
 	}
 	ChangeDataHealth: IHealth
-	WorkoutPlan: { workoutType: string; exercises: IWorkoutPlan['exercises'] }
+	WorkoutPlan: { workoutType: any; exercises: IWorkoutPlan['exercises'] }
 	Anamnese: undefined
 	PhysicalActivityHistory: undefined
 	Payment: undefined

@@ -1,10 +1,7 @@
 import axios from 'axios'
 
-// .env
-const API_URL = 'https://jsonplaceholder.typicode.com'
-
 const axiosInstance = axios.create({
-	baseURL: API_URL,
+	baseURL: 'https://hfit-shared-web-services.vercel.app',
 })
 
 export default axiosInstance

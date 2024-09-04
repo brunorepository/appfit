@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { ScrollView, Alert, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
-import { launchCamera, launchImageLibrary } from 'react-native-image-picker'
+import { Alert, Text, ActivityIndicator, TouchableOpacity } from 'react-native'
+import { launchImageLibrary } from 'react-native-image-picker'
 import User from 'react-native-vector-icons/MaterialIcons'
-import axios from 'axios'
 import { ButtonLg } from 'components/core'
 import { CheckedIcon } from 'components/icons'
 import { AppTemplate } from 'components/templates'
 import { propsStack } from 'routes/models/stack-models'
-import { AuthContext, useAuth } from 'src/contexts/AuthContext'
+import axiosInstance from 'src/adapters/services/api'
+import { useAuth } from 'src/contexts/AuthContext'
 import { Radio, RadioGroup, RadioIcon, RadioIndicator, RadioLabel } from '@gluestack-ui/themed'
 import { useNavigation } from '@react-navigation/native'
 import { Container, Label, Input, UserPhoto } from './styles'
@@ -53,8 +53,7 @@ const sleepQualityOptions = [
 ]
 
 const AnamneseView = () => {
-	const { user } = useContext(AuthContext) // Obtém o contexto do usuário autenticado
-	const { setAnamneseCompleted } = useAuth() // Obtendo a função do contexto de autenticação
+	const { user, setAnamneseCompleted } = useAuth() // Obtém o contexto do usuário autenticado
 	const [loading, setLoading] = useState(false) // Estado de loading para busca de dados
 	const [submitting, setSubmitting] = useState(false) // Estado de loading para submissão
 	const [imageUri, setImageUri] = useState<string>('')
@@ -63,6 +62,7 @@ const AnamneseView = () => {
 
 	const { control, handleSubmit, reset } = useForm({
 		defaultValues: {
+			full_name: user.full_name,
 			userPhoto: imageUri,
 			age: '',
 			gender: '',
@@ -89,6 +89,7 @@ const AnamneseView = () => {
 		setSubmitting(true) // Ativa o estado de submissão (loading)
 		try {
 			const updateData = {
+				full_name: user.full_name || '',
 				haveAnamnese: true,
 				userPhoto: imageUri || '',
 				age: data.age ? parseInt(data.age, 10) : undefined,
@@ -110,7 +111,7 @@ const AnamneseView = () => {
 				sleepQuality: data.sleepQuality || undefined,
 			}
 
-			const response = await axios.put(`https://hfit-backend.vercel.app/buyer/anamnese/${user._id}`, updateData)
+			const response = await axiosInstance.put(`/buyer/anamnese/${user._id}`, updateData)
 
 			if (response.status === 200) {
 				Alert.alert('Sucesso', 'Anamnese atualizada com sucesso!')
@@ -121,8 +122,7 @@ const AnamneseView = () => {
 				await setAnamneseCompleted() // Marca como completo no contexto
 			}
 		} catch (error) {
-			console.error('Erro ao atualizar a anamnese:', error.response?.data || error.message)
-			Alert.alert('Erro', error.response?.data?.message || 'Ocorreu um erro ao atualizar os dados.')
+			Alert.alert('Erro ao atualizar a anamnese:', JSON.stringify(error.response?.data) || error.message)
 		} finally {
 			setSubmitting(false) // Desativa o estado de submissão
 		}
@@ -133,7 +133,7 @@ const AnamneseView = () => {
 		const fetchAnamnese = async () => {
 			setLoading(true) // Ativa o loading
 			try {
-				const response = await axios.get(`https://hfit-backend.vercel.app/buyer/anamnese/${user._id}`)
+				const response = await axiosInstance.get(`/buyer/anamnese/${user._id}`)
 				if (response.status === 200) {
 					const anamneseData = response.data.anamnese
 
@@ -171,6 +171,7 @@ const AnamneseView = () => {
 		}
 
 		fetchAnamnese()
+		// eslint-disable-next-line no-underscore-dangle
 	}, [user._id, reset])
 
 	const openGallery = async () => {
@@ -181,8 +182,6 @@ const AnamneseView = () => {
 		}).then((response) => setImageUri(response.assets[0].base64))
 	}
 
-	console.log(imageUri)
-
 	return (
 		<AppTemplate>
 			{loading ? (
@@ -192,7 +191,7 @@ const AnamneseView = () => {
 					<Controller
 						control={control}
 						name="userPhoto"
-						render={({ field: { value }, fieldState: { error } }) => (
+						render={({ fieldState: { error } }) => (
 							<>
 								{/* Foto do usuário */}
 								<TouchableOpacity onPress={openGallery} activeOpacity={0.8}>

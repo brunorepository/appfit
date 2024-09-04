@@ -31,5 +31,7 @@ export const Loading = styled.Text`
 	margin-top: 12px;
 	color: #ffff;
 	text-align: center;
+	font-family: 'OpenSans-Medium';
+
 	margin-bottom: 10px;
 `

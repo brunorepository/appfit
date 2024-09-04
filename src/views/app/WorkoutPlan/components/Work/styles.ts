@@ -1,8 +1,7 @@
 import styled from 'styled-components/native'
 
-export const Exercise = styled.TouchableOpacity`
+export const Exercise = styled.TouchableOpacity<{ checked?: boolean }>`
 	width: 100%;
-	height: 70px;
 	flex-direction: row;
 	justify-content: space-between;
 	margin-top: 6px;
@@ -10,8 +9,10 @@ export const Exercise = styled.TouchableOpacity`
 	align-items: center;
 	background-color: #1c1c1e;
 	padding-left: 8px;
-	padding-right: 16px;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	elevation: 5;
+	opacity: ${({ checked }) => (checked ? 0.5 : 1)};
 `
 export const Start = styled.View`
 	flex-direction: row;
@@ -25,10 +26,17 @@ export const Thumb = styled.Image`
 `
 export const Title = styled.Text`
 	color: #ffff;
-	font-size: 18px;
+	font-size: 16px;
 	font-family: 'OpenSans-SemiBold';
+	max-width: 95%;
 `
 export const Instructions = styled.Text`
+	color: #cccccc;
+	font-family: 'OpenSans-Medium';
+	margin-top: 4px;
+	max-width: 95%;
+`
+export const SecondInstructions = styled.Text`
 	color: #cccccc;
 	font-family: 'OpenSans-Medium';
 	margin-top: 4px;

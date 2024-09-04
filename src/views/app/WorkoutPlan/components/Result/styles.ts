@@ -27,7 +27,7 @@ export const ModalContent = styled.View`
 
 // Título do modal (parabéns)
 export const ModalTitle = styled.Text`
-	font-size: 32px;
+	font-size: 26px;
 	color: #0ed907;
 	margin-bottom: 10px;
 	font-family: 'OpenSans-Bold';
@@ -41,12 +41,10 @@ export const ButtonContainer = styled.View`
 
 // Texto dos botões
 export const ButtonText = styled.Text`
-	color: #fff;
+	color: #000000;
 	font-size: 16px;
-	background-color: #0ed907;
 	padding: 12px 24px;
 	border-radius: 8px;
 	text-align: center;
-	margin-top: 10px;
-	font-family: 'OpenSans-SemiBold';
+	font-family: 'OpenSans-Bold';
 `

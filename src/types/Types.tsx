@@ -2,7 +2,6 @@
 /* eslint-disable no-shadow */
 
 export enum EUserTypeProps {
-	Student = 'student',
 	Personal = 'personal',
 }
 
