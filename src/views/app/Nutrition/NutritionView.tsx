@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { ActivityIndicator, ScrollView, RefreshControl } from 'react-native'
-import axios from 'axios' // Certifique-se de que axios está instalado
-import { AppTemplate } from 'components/templates'
+import axiosInstance from 'src/adapters/services/api'
 import { AuthContext } from 'src/contexts/AuthContext'
 import { Container, Title, DietText, Loading } from './styles' // Importa os estilos do arquivo separado
 
@@ -33,7 +32,7 @@ const NutritionView: React.FC = () => {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
-					Authorization: `Bearer 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`, // Substitua por sua chave da OpenAI
+					Authorization: `Bearer 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`, // Substitua por sua chave da OpenAI
 				},
 				body: JSON.stringify({
 					model: 'gpt-4',
@@ -70,7 +69,7 @@ const NutritionView: React.FC = () => {
 	const fetchAnamnese = async () => {
 		setLoading(true) // Ativa o loading
 		try {
-			const response = await axios.get(`https://hfit-backend.vercel.app/buyer/anamnese/${user._id}`) // Substitua por seu user ID
+			const response = await axiosInstance.get(`/buyer/anamnese/${user._id}`) // Substitua por seu user ID
 			if (response.status === 200) {
 				const { anamnese } = response.data
 

@@ -1,13 +1,11 @@
 import React, { useContext, useState, useCallback, useEffect } from 'react'
 import { Button, RefreshControl, ScrollView, Alert } from 'react-native'
 import Clock from 'react-native-vector-icons/Ionicons'
-import axios from 'axios'
 import { AnamneseIcon } from 'components/icons'
 import { AppTemplate } from 'components/templates'
-
 import { propsStack } from 'routes/models/stack-models'
+import axiosInstance from 'src/adapters/services/api'
 import { AuthContext } from 'src/contexts/AuthContext'
-import { EWorkoutProps } from 'src/types/Types'
 import { useNavigation } from '@react-navigation/native'
 import {
 	Banner,
@@ -24,6 +22,8 @@ import {
 	CardSm,
 	Description,
 	Instructions,
+	HeaderContainer,
+	HeaderPhrase,
 } from './styles'
 
 interface User {
@@ -49,23 +49,56 @@ const HomeView: React.FC = () => {
 	const { user } = useContext(AuthContext) as { user: User }
 
 	const [refreshing, setRefreshing] = useState(false)
-	const [workouts, setWorkouts] = useState<Workout[]>([]) // Estado para armazenar os treinos do usuário
-	const [anamnese, setAnamnese] = useState<Anamnese | null>(null) // Estado para armazenar a anamnese
-	const [loading, setLoading] = useState(true) // Estado de carregamento
+	const [workouts, setWorkouts] = useState<Workout[]>([])
+	const [anamnese, setAnamnese] = useState<Anamnese | null>(null)
+	const [loading, setLoading] = useState(true)
 
-	// Função para buscar a anamnese do aluno
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	const motivationalQuotes = [
+		'A única maneira de fazer um ótimo trabalho é amar o que você faz. - Steve Jobs',
+		'Você não precisa ser ótimo para começar, mas precisa começar para ser ótimo. - Zig Ziglar',
+		'O sucesso é a soma de pequenos esforços repetidos dia após dia. - Robert Collier',
+		'A dor que você sente hoje será a força que você sentirá amanhã. - Arnold Schwarzenegger',
+		'O corpo conquista o que a mente acredita. - Anônimo',
+		'Transforme suas metas em conquistas. - Anônimo',
+		'Não pare quando estiver cansado. Pare quando estiver terminado. - Anônimo',
+		'Você é mais forte do que pensa. - Anônimo',
+		'A jornada de mil milhas começa com um único passo. - Lao Tzu',
+		'O único lugar onde o sucesso vem antes do trabalho é no dicionário. - Vidal Sassoon',
+		'Seu corpo pode quase tudo. É sua mente que você precisa convencer. - Anônimo',
+		'O sucesso não é definitivo, o fracasso não é fatal: é a coragem de continuar que conta. - Winston Churchill',
+		'O único limite para o seu impacto é a sua imaginação e compromisso. - Tony Robbins',
+		'A dor é temporária. Desistir é para sempre. - Lance Armstrong',
+		'Se você quer algo que nunca teve, você precisa fazer algo que nunca fez. - Thomas Jefferson',
+		'Você é o único responsável por quão longe você vai. - Anônimo',
+		'Sonhos não funcionam a menos que você faça. - John C. Maxwell',
+		'O que você faz hoje pode melhorar todos os seus amanhãs. - Ralph Marston',
+		'A diferença entre o impossível e o possível está na determinação. - Tommy Lasorda',
+		'A melhor maneira de prever o futuro é criá-lo. - Peter Drucker',
+		'Corra quando puder, ande se precisar, rasteje se for necessário; mas nunca desista. - Dean Karnazes',
+		'Não é sobre o quão ruim você quer. É sobre o quão duro você está disposto a trabalhar para isso. - Anônimo',
+		'O que não nos mata nos fortalece. - Friedrich Nietzsche',
+		'Hoje eu farei o que os outros não farão, para amanhã fazer o que os outros não podem. - Jerry Rice',
+		'Não há elevador para o sucesso. Você tem que subir as escadas. - Zig Ziglar',
+		'Força não vem da capacidade física. Ela vem de uma vontade indomável. - Mahatma Gandhi',
+	]
+
+	const [randomQuote, setRandomQuote] = useState<string>('')
+
+	useEffect(() => {
+		const randomIndex = Math.floor(Math.random() * motivationalQuotes.length)
+		setRandomQuote(motivationalQuotes[randomIndex])
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [])
+
 	const fetchAnamnese = useCallback(async () => {
 		try {
 			setLoading(true)
 			// eslint-disable-next-line no-underscore-dangle
-			const response = await axios.get(`https://hfit-backend.vercel.app/buyer/anamnese/${user._id}`)
+			const response = await axiosInstance.get(`/buyer/anamnese/${user._id}`)
 			if (response.status === 200) {
 				const anamneseData = response.data.anamnese
-
-				// Armazena a quantidade de dias de treino por semana na anamnese
-				setAnamnese({
-					trainingDaysPerWeek: anamneseData.trainingDaysPerWeek,
-				})
+				setAnamnese(anamneseData)
 			}
 		} catch (error) {
 			Alert.alert('Erro', 'Não foi possível carregar a anamnese do aluno.')
@@ -75,19 +108,12 @@ const HomeView: React.FC = () => {
 		// eslint-disable-next-line no-underscore-dangle
 	}, [user._id])
 
-	// Função para buscar os treinos do aluno
 	const fetchWorkouts = useCallback(async () => {
 		try {
 			setLoading(true)
 			// eslint-disable-next-line no-underscore-dangle
-			const response = await axios.get(`https://hfit-backend.vercel.app/update/current/workouts/${user._id}`)
-			const fetchedWorkouts = response.data.workouts
-
-			if (fetchedWorkouts && fetchedWorkouts.length > 0) {
-				setWorkouts(fetchedWorkouts)
-			} else {
-				setWorkouts([])
-			}
+			const response = await axiosInstance.get(`/update/current/workouts/${user._id}`)
+			setWorkouts(response.data.workouts || [])
 		} catch (error) {
 			Alert.alert('Erro', 'Não foi possível carregar os treinos do aluno.')
 		} finally {
@@ -97,7 +123,6 @@ const HomeView: React.FC = () => {
 	}, [user._id])
 
 	useEffect(() => {
-		// Chama ambas as funções ao montar o componente
 		fetchAnamnese()
 		fetchWorkouts()
 	}, [fetchAnamnese, fetchWorkouts])
@@ -111,36 +136,27 @@ const HomeView: React.FC = () => {
 		}, 2000)
 	}, [fetchWorkouts, fetchAnamnese])
 
-	// Função para organizar os treinos por dia da semana com base na anamnese
-	const organizeWorkoutsByDay = () => {
+	const organizeWorkoutsByDay = (): (Workout | null)[] => {
 		const organizedWorkouts: (Workout | null)[] = Array(7).fill(null)
 
 		workouts.forEach((workout) => {
 			const workoutDate = new Date(workout.workoutDate)
-			let dayOfWeek = workoutDate.getDay() // Obtemos o índice do dia (0 = domingo, 6 = sábado)
-
-			// Ajusta o dia para começar na segunda-feira (1) e domingo (7)
-			dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // Ajusta domingo para ser o último dia da semana (7)
-
-			organizedWorkouts[dayOfWeek - 1] = workout // Insere o treino no dia correto
+			let dayOfWeek = workoutDate.getDay()
+			dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // Ajuste para que domingo seja 7
+			organizedWorkouts[dayOfWeek - 1] = workout // Organiza o treino pelo dia da semana
 		})
 
 		return organizedWorkouts
 	}
 
-	// Função para pegar o treino do dia atual
-	const getTodayWorkout = () => {
+	const getTodayWorkout = (): Workout | null => {
 		const today = new Date()
 		let dayOfWeek = today.getDay()
-
-		// Ajusta domingo para ser o último dia da semana (7)
-		dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek
-
+		dayOfWeek = dayOfWeek === 0 ? 7 : dayOfWeek // Ajuste para que domingo seja 7
 		const organizedWorkouts = organizeWorkoutsByDay()
-		return organizedWorkouts[dayOfWeek - 1] // Retorna o treino do dia atual
+		return organizedWorkouts[dayOfWeek - 1] // Retorna o treino do dia
 	}
 
-	// Se estiver carregando, exiba um feedback visual
 	if (loading) {
 		return (
 			<AppTemplate>
@@ -158,21 +174,12 @@ const HomeView: React.FC = () => {
 		)
 	}
 
-	// Caso o usuário não tenha anamnese preenchida
 	if (!user.haveAnamnese) {
 		return (
 			<AppTemplate>
-				<Container
-					style={{
-						marginTop: 32,
-					}}
-				>
+				<Container style={{ marginTop: 32 }}>
 					<AnamneseIcon width={170} height={200} />
-					<CardTitle
-						style={{
-							textAlign: 'center',
-						}}
-					>
+					<CardTitle style={{ textAlign: 'center' }}>
 						Preencha sua ficha de anamnese para acessar seus treinos
 					</CardTitle>
 					<Description>
@@ -188,7 +195,6 @@ const HomeView: React.FC = () => {
 		)
 	}
 
-	// Se não houver anamnese carregada
 	if (!anamnese) {
 		return (
 			<AppTemplate>
@@ -201,109 +207,94 @@ const HomeView: React.FC = () => {
 
 	const todaysWorkout = getTodayWorkout()
 
-	console.log(todaysWorkout?.title)
-
 	return (
 		<AppTemplate>
+			<HeaderContainer>
+				<HeaderPhrase>{randomQuote}</HeaderPhrase>
+			</HeaderContainer>
 			<ScrollView
 				refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={['#0ED907']} />}
 			>
 				<Container>
 					{/* Treino do dia */}
-					{todaysWorkout ? (
-						<Card
-							activeOpacity={0.8}
-							onPress={() =>
-								navigation.navigate('WorkoutPlan', {
-									workoutType: todaysWorkout?.title,
-									exercises: todaysWorkout?.exercises || [],
-								})
+					<Card
+						activeOpacity={todaysWorkout ? 0.8 : 1}
+						onPress={() =>
+							todaysWorkout &&
+							navigation.navigate('WorkoutPlan', {
+								workoutType: todaysWorkout.title,
+								exercises: todaysWorkout.exercises || [],
+							})
+						}
+						style={{
+							backgroundColor: todaysWorkout ? '#1c1c1e' : '#323232',
+							opacity: todaysWorkout ? 1 : 0.4,
+						}}
+					>
+						<Banner
+							imageStyle={{
+								borderTopLeftRadius: 10,
+								borderTopRightRadius: 10,
+							}}
+							source={
+								!todaysWorkout?.uri
+									? require('src/adapters/assets/images/logo.png')
+									: { uri: `data:image/jpeg;base64,${todaysWorkout.uri}` }
 							}
-							style={{
-								backgroundColor: todaysWorkout ? '#1c1c1e' : '#323232', // Cor customizada para o treino do dia
-								opacity: todaysWorkout ? 1 : 0.4, // Ajusta opacidade para treinos anteriores
-							}}
-						>
-							<Banner
-								imageStyle={{
-									borderTopLeftRadius: 10,
-									borderTopRightRadius: 10,
-								}}
-								source={
-									!todaysWorkout?.uri
-										? require('src/adapters/assets/images/logo.png')
-										: { uri: `data:image/jpeg;base64,${todaysWorkout.uri}` }
-								}
-							/>
-							<CardContent>
-								<HeaderStart>
-									<Badge>
-										<BadgeText
-											fontSize={11}
-											color="$black"
-											fontFamily="OpenSans-Medium"
-											textTransform="capitalize"
-											allowFontScaling={false}
-										>
-											📅 Hoje
-										</BadgeText>
-									</Badge>
-								</HeaderStart>
-								<CardTitle allowFontScaling={false}>{todaysWorkout?.title}</CardTitle>
-								{todaysWorkout?.exercises.length !== 0 && (
-									<Instructions>
-										{todaysWorkout?.exercises.length} exercício
-										{todaysWorkout.exercises.length > 1 ? 's' : ''}
-									</Instructions>
-								)}
-							</CardContent>
-						</Card>
-					) : (
-						<CardTitle
-							style={{
-								marginTop: 12,
-							}}
-						>
-							Não há treino para hoje.
-						</CardTitle>
-					)}
+						/>
+						<CardContent>
+							<HeaderStart>
+								<Badge>
+									<BadgeText
+										fontSize={11}
+										color="$black"
+										fontFamily="OpenSans-Medium"
+										textTransform="capitalize"
+										allowFontScaling={false}
+									>
+										📅 Hoje
+									</BadgeText>
+								</Badge>
+							</HeaderStart>
+							<CardTitle allowFontScaling={false}>{todaysWorkout?.title}</CardTitle>
+							{todaysWorkout?.exercises.length !== 0 && (
+								<Instructions>{todaysWorkout?.exercises.length} exercícios</Instructions>
+							)}
+						</CardContent>
+					</Card>
 
-					{/* Treinos da semana com base nos dias de treino da anamnese */}
-					{workouts && (
+					{/* Treinos da semana */}
+					{workouts && workouts.length > 0 && (
 						<>
 							<Heading allowFontScaling={false}>Treinos da semana</Heading>
 							<HList
 								horizontal
-								data={organizeWorkoutsByDay().slice(0, anamnese.trainingDaysPerWeek)}
+								data={organizeWorkoutsByDay()}
 								showsHorizontalScrollIndicator={false}
 								// eslint-disable-next-line react/no-unused-prop-types
-
 								renderItem={({ item, index }: { item: Workout | null; index: number }) => {
-									// Obtendo o dia atual da semana
 									const today = new Date()
 									let todayDayOfWeek = today.getDay()
-									todayDayOfWeek = todayDayOfWeek === 0 ? 7 : todayDayOfWeek // Ajusta domingo para ser o último dia da semana (7)
-
-									// Verifica se o dia do treino (index) é anterior ao dia atual
-									const isPastWorkout = index + 1 < todayDayOfWeek // +1 porque o index começa de 0 e os dias da semana de 1
+									todayDayOfWeek = todayDayOfWeek === 0 ? 7 : todayDayOfWeek
+									const isPastWorkout = index + 1 < todayDayOfWeek
 
 									return (
 										<CardSm
-											activeOpacity={isPastWorkout || !item ? 0.4 : 0.7} // 0.4 para dias passados ou sem treino, 0.7 para os demais
+											activeOpacity={item?.exercises.length ? 0.7 : 0.4}
 											onPress={
-												isPastWorkout || !item
-													? () => null
-													: () => {
-															// Lógica para navegar para o plano de treino ou ação desejada
+												item?.exercises.length
+													? () =>
 															navigation.navigate('WorkoutPlan', {
-																workoutType: item.title,
-																exercises: item?.exercises || [], // Passa os exercícios se houver
+																workoutType: item?.title,
+																exercises: item?.exercises || [],
 															})
-														}
+													: () => null
 											}
-											customOpacity={isPastWorkout || !item ? 0.4 : 1}
+											customOpacity={
+												item && item.exercises && item.exercises.length > 0 ? 1 : 0.4
+											}
 											style={{
-												backgroundColor: isPastWorkout ? '#323232' : '#1c1c1e', // Cinza para treinos passados, cor padrão para futuros
+												backgroundColor: isPastWorkout ? '#323232' : '#1c1c1e',
 											}}
 										>
 											<BannerSm

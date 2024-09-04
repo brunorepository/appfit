@@ -18,3 +18,9 @@ export const FooterButtonContainer = styled.View`
 	background-color: transparent;
 	align-items: center;
 `
+export const ListEmptyText = styled.Text`
+	color: #fff;
+	text-align: center;
+	margin-top: 20px;
+	font-family: 'OpenSans-SemiBold';
+`

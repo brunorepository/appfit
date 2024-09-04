@@ -1,11 +1,10 @@
 import React, { useContext, useState } from 'react'
 import Toast from 'react-native-toast-message'
-import axios from 'axios'
 import AuthTemplate from 'components/templates/AuthTemplate'
+import axiosInstance from 'src/adapters/services/api'
 import { AuthContext } from 'src/contexts/AuthContext'
 import LoginForm from './components/LoginForm'
 import { Container } from './styles'
-import { Linking } from 'react-native'
 
 const LoginView: React.FC = () => {
 	const { login } = useContext(AuthContext) // Acessa o contexto de autenticação
@@ -16,7 +15,7 @@ const LoginView: React.FC = () => {
 	const handleLogin = async () => {
 		setLoading(true)
 		try {
-			const response = await axios.post('https://hfit-backend.vercel.app/user/login', {
+			const response = await axiosInstance.post('/user/login', {
 				email: `${email.toLocaleLowerCase()}`,
 			})
 

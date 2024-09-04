@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { Alert, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
 import FindChart from 'react-native-vector-icons/MaterialCommunityIcons'
 import { propsNavigationStack, propsStack } from 'routes/models/stack-models'
 import { AuthContext } from 'src/contexts/AuthContext'
@@ -76,21 +76,6 @@ const StackNavigation: React.FC = () => {
 					title: 'Exercícios',
 				}}
 				// Listener para interceptar a navegação e exibir o alerta
-				listeners={{
-					beforeRemove: (e) => {
-						// Interceptar a navegação se o treino não estiver finalizado
-						e.preventDefault()
-
-						Alert.alert('Sair sem finalizar?', 'Você ainda não concluiu o treino. Deseja realmente sair?', [
-							{ text: 'Cancelar', style: 'cancel', onPress: () => {} },
-							{
-								text: 'Sair',
-								style: 'destructive',
-								onPress: () => navigation.dispatch(e.data.action), // Permitir a navegação
-							},
-						])
-					},
-				}}
 			/>
 			<Screen
 				name="WorkRoom"

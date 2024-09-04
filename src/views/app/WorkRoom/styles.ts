@@ -10,13 +10,15 @@ export const Texts = styled.Text`
 	margin-top: 16px;
 	margin-left: 12px;
 	flex-direction: column;
-	align-self: flex-start;
+	align-self: center;
+	text-align: center;
 `
 
 export const Title = styled.Text`
 	color: #ffff;
 	font-family: 'OpenSans-Bold';
-	font-size: 24px;
+	font-size: 20px;
+	text-align: center;
 `
 
 export const Warning = styled.Text`
@@ -54,6 +56,7 @@ export const CircleWhite = styled.View`
 	padding-right: 20px;
 	padding-top: 12px;
 	padding-bottom: 12px;
+	margin-bottom: 16px;
 	border: solid 2px #fff;
 	border-radius: 100px;
 	align-items: center;
@@ -64,13 +67,14 @@ export const CircleText = styled.Text`
 	color: #ffff;
 	font-family: 'OpenSans-Bold';
 	font-size: 18px;
+	text-align: center;
 `
 
 export const FeedbackButton = styled.TouchableOpacity`
 	background-color: #0ed907;
 	padding: 20px;
 	border-radius: 100px;
-	margin-top: 20px;
+	margin-top: 6px;
 	align-items: center;
 	justify-content: center;
 `

@@ -159,3 +159,19 @@ export const Description = styled.Text`
 	margin-right: 32px;
 	margin-bottom: 16px;
 `
+export const HeaderContainer = styled.View`
+	padding: 16px;
+	background-color: #1c1c1e;
+	width: 100%;
+	align-items: center;
+	margin-bottom: 12px;
+`
+
+export const HeaderPhrase = styled.Text`
+	text-align: center;
+	color: #ffff;
+	font-size: 16px;
+
+	max-width: 95%;
+	font-family: 'OpenSans-SemiBold';
+`
