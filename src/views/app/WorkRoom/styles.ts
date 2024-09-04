@@ -78,3 +78,14 @@ export const FeedbackButton = styled.TouchableOpacity`
 	align-items: center;
 	justify-content: center;
 `
+export const ExtraVideoText = styled.Text`
+	font-size: 16px;
+	color: #0ed907;
+	margin-right: 4px;
+	font-family: 'OpenSans-Bold';
+`
+export const Row = styled.View`
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 20px;
+`

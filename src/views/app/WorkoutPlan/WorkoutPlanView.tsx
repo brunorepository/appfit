@@ -26,6 +26,7 @@ interface Exercise {
 	secondSeries?: string
 	secondRepetitions?: string
 	video: string
+	extraVideo: string
 }
 
 const WorkoutPlanView: React.FC<WorkoutPlanProps> = ({ route }) => {
@@ -167,6 +168,7 @@ const WorkoutPlanView: React.FC<WorkoutPlanProps> = ({ route }) => {
 				secondRepetitions: exercise.secondRepetitions,
 				thumbnail: exercise.thumbnail,
 				videoId: exercise.video,
+				extraVideoId: exercise.extraVideo,
 				onComplete: (name: string) => handleCompleteExercise(name),
 			})
 		}

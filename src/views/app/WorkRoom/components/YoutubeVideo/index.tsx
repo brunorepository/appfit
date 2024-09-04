@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 const VideoContainer = styled.View`
 	width: 75%;
+	flex-direction: row;
 	height: 330px; /* Ajuste a altura conforme necessário */
 	margin-top: 20px;
 	background-color: #323232;
